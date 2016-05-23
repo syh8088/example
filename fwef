@@ -1,0 +1,881 @@
+[33mcommit 798917020632a79d21dbadc48443178e9832d652[m
+Author: syh8088 <syh8088@gmail.com>
+Date:   Mon May 23 12:20:07 2016 +0900
+
+    파일 수정
+
+[33mcommit 42fb4b71a6f1d211a6b19a93f07216c4801ec011[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue May 17 10:05:35 2016 +0900
+
+    5.1.18 버전변경
+
+[33mcommit f0134b610b6f8ca034399bea91addb8e76fab447[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue May 17 09:54:23 2016 +0900
+
+    누락된 필드 추가
+
+[33mcommit c2cf34392a2f8871cd937d5071883d37a288867c[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue May 17 09:48:08 2016 +0900
+
+    1:1문의 등록 오류 수정
+
+[33mcommit 20dc859436fedfbb5491490e294ff0a322efc255[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon May 16 15:21:55 2016 +0900
+
+    5.1.17 버전변경
+
+[33mcommit f5ec4d60c07a3257cd66712c37b5234c2d5b6f1e[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri May 13 11:56:44 2016 +0900
+
+    기본환경설정 NHN KCP 사명변경
+
+[33mcommit de00b4e9d338a6dfd9b76c6c41b6ee37706485b4[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed May 4 13:31:42 2016 +0900
+
+    1:1문의 파일업로드 분류 체크 추가
+
+[33mcommit 8c67945c64b9a7a8a488b474533fe0191c31b4f0[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed May 4 10:42:59 2016 +0900
+
+    파일 업로드 개수 코드 수정
+
+[33mcommit e5889df76153825e64a7bfddd60d78495e9ae5c4[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue May 3 17:31:10 2016 +0900
+
+    게시글 카테고리 체크 수정
+
+[33mcommit 624e3d74a6a4f98925d81265d1c0a5c982a74553[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue May 3 16:53:52 2016 +0900
+
+    파일 업로드 개수 체크 추가
+
+[33mcommit 30815f71e005ca5fd6fe68c76064df129bb8c014[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon May 2 16:53:37 2016 +0900
+
+    폼메일에서의 이메일주소 노출 수정
+
+[33mcommit 949a73b4685a9aea8cee3be826ed26d8d8c14f6e[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri Apr 29 15:30:05 2016 +0900
+
+    1:1문의 이메일 체크 수정
+
+[33mcommit 24d57cdd4bbb07b5fa9ea15d15f005bb8eeab19e[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri Apr 29 15:26:21 2016 +0900
+
+    스크랩 게시글 체크 추가
+
+[33mcommit 191f3d2f9734d4d80b2018cb09cb2a1545aace39[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri Apr 29 14:46:59 2016 +0900
+
+    1:1문의 삭제 오류 수정
+
+[33mcommit 4973714e2f8eb5fe33a4a42c42a9c9aa8ad51896[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri Apr 29 14:20:59 2016 +0900
+
+    이메일인증 프로세스 개선
+
+[33mcommit 70bfeefb3bde10332f25cfcceb3a1ca997bee2a6[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Thu Apr 28 09:46:48 2016 +0900
+
+    댓글 등록 오류 수정
+
+[33mcommit e8b83f3a330d8838975b94982b7b1de71787e48e[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Apr 26 17:56:14 2016 +0900
+
+    비밀글 등록 버그 수정
+
+[33mcommit c6bdc172ee642e2cb226dd204f20ed66d7aaa49d[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed Apr 20 11:08:39 2016 +0900
+
+    5.1.16 버전변경
+
+[33mcommit c3cf74f0c52565b7737204af7bb3c233a22395a1[m
+Author: sora90224 <sora90224@naver.com>
+Date:   Mon Apr 18 09:21:33 2016 +0900
+
+    관리자 부가서비스 kcp 로고 변경
+
+[33mcommit 52db203ecd9feb8964e28f890a1f0c6608efa543[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Apr 5 10:08:28 2016 +0900
+
+    필터링 특수문자 추가
+
+[33mcommit 6e05353f31179a3082d0308bf868b9061e5e252c[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Apr 4 14:28:18 2016 +0900
+
+    sst 변수 필터링 특수문자 추가
+
+[33mcommit 7f6a9a090ab90cc8c102c257fcf0fbb71ed6c2e7[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Mar 21 09:50:06 2016 +0900
+
+    5.1.15 버전변경
+
+[33mcommit 1825830c3df8f4f3c02d2e7bb4ea931d95212cb0[m
+Author: sora90224 <sora90224@naver.com>
+Date:   Tue Feb 23 14:32:58 2016 +0900
+
+    모바일 쪽지함 이름겹침수정
+
+[33mcommit 3047e09f88ef2161c6a4e282761f77f898069d92[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Mar 7 10:41:33 2016 +0900
+
+    5.1.14 버전변경
+
+[33mcommit 990af076af3b5337c3b2f027fa08b98a48a8c277[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Feb 22 11:12:58 2016 +0900
+
+    커맨드 인젝션 취약점(16-164, 16-165) 수정
+
+[33mcommit b1f034292175af95f603667180dadc1780e4cc84[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Feb 22 09:48:17 2016 +0900
+
+    5.1.13 버전변경
+
+[33mcommit 63f9e4c8df1f4bc871b05a53530964190ede9b83[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri Feb 19 11:16:11 2016 +0900
+
+    SIR 도메인 변경
+
+[33mcommit 6b43e67c4097e049faa8ed88dd5d32086e1b508a[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed Jan 27 14:59:49 2016 +0900
+
+    비밀 댓글 노출 취약점(16-067) 수정
+
+[33mcommit 9a870506ab94acf04ea1a818a02d583b14f934ec[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed Jan 20 16:23:38 2016 +0900
+
+    Reflected XSS 취약점(16-036) 수정
+
+[33mcommit 008ae978dde3079641855014a77673bd841ba98a[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed Jan 20 14:46:13 2016 +0900
+
+    XSS 취약점(16-060) 수정
+
+[33mcommit 20b1d8c7e5c302121f31667cf7aa950b24cc4aea[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed Jan 20 14:29:32 2016 +0900
+
+    XSS 취약점(16-059) 수정
+
+[33mcommit 1e011ba56dd8d102feda78386539e5777759ba32[m
+Author: thisgun <thisgun@naver.com>
+Date:   Thu Feb 4 10:29:44 2016 +0900
+
+    스마트 에디터 2.8.2 에 추가된 파일 적용
+
+[33mcommit a73e48c3e285e52a5aaab2e6099ebce805eb8016[m
+Author: thisgun <thisgun@naver.com>
+Date:   Thu Feb 4 10:28:23 2016 +0900
+
+    스마트에디터 2.8.2 적용 및 에디터 업로드 보안 수정
+
+[33mcommit e9fd9f03fd46291ea82feb39e68070193a08a6d3[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed Feb 3 10:37:58 2016 +0900
+
+    g5_admin_url 코드 수정
+
+[33mcommit 4913da0a1d06642bcf04688860af084cf4c3de4d[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Thu Jan 28 17:31:58 2016 +0900
+
+    g5_admin_url 변수 설정 코드 변경
+
+[33mcommit 18ef4b0767e2e100eb97b35c078b4d032ab9cc15[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Thu Jan 28 17:02:08 2016 +0900
+
+    메일인증 기능 수정
+
+[33mcommit d0e368fe2a02503391427ecfe05129b92ac69779[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Thu Jan 21 15:58:32 2016 +0900
+
+    sca 필터링 코드 수정
+
+[33mcommit 5185f0c12aa9bb62292a8de175a85d3514ec6d1a[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed Jan 20 10:03:25 2016 +0900
+
+    5.1.12 버전변경
+
+[33mcommit f5f4925d4eb28ba1af728e1065fc2bdd9ce1da58[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Jan 12 09:59:04 2016 +0900
+
+    sca 필터링 코드 추가
+
+[33mcommit bd3fd206305a6f7a37b9a90b88a48ce62f76b258[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Thu Dec 24 15:43:34 2015 +0900
+
+    게시글 등록 메일 이미지 출력 오류 수정
+
+[33mcommit 6797c854808eb37817ae0eab57d1818d2eed3da2[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Jan 5 09:44:47 2016 +0900
+
+    5.1.11 버전변경
+
+[33mcommit 2c9ff2bb520581b18c848bd32fb7a9112d2da608[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed Dec 23 16:39:13 2015 +0900
+
+    모바일 그룹 정렬 필드 수정
+
+[33mcommit cc2b5c246d6c646b9ba93776ee0a89073478413e[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Dec 22 10:06:34 2015 +0900
+
+    PHPMailer 5.2.14 버전 적용
+
+[33mcommit c337bfdf88b03d57b15a4eef94727977f6e268e5[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Dec 21 11:00:46 2015 +0900
+
+    5.1.10 버전변경
+
+[33mcommit cb5603008af21948aa8ce193d24d18e925e4278e[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Dec 14 11:06:14 2015 +0900
+
+    분류 사용할 때 분류선택 여부 체크 추가
+
+[33mcommit 9d147b5e6c42dc63f91eb802203eaf98f9090e55[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Thu Dec 10 15:17:34 2015 +0900
+
+    태그 오류 수정
+
+[33mcommit aabc82ee6cddb275227986f4958c985078b77bb1[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Dec 7 11:24:10 2015 +0900
+
+    5.1.9 버전변경
+
+[33mcommit 40aff270cd8de699b479be39f87146cf320998f8[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Dec 7 11:16:44 2015 +0900
+
+    캡챠 폰트 변경
+
+[33mcommit 851a21a3c128bf9a0a5b835e156c30aa76af03d0[m
+Author: thisgun <thisgun@naver.com>
+Date:   Mon Nov 30 17:27:40 2015 +0900
+
+    엑셀 라이브러리 php7 버젼에서 난 오류 수정
+
+[33mcommit d5b7dd165db0abd9d0fcf0b590ca4edc52db1b7f[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri Nov 27 11:47:43 2015 +0900
+
+    new.php XSS 취약점 수정
+
+[33mcommit beb7a86f2acf44cf7e24451e258132f665cbc738[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed Nov 25 14:05:11 2015 +0900
+
+    토큰 오류 알림 후 이동 url 지정
+
+[33mcommit a6327afac4190b1556efdbf05712be2c1a30fa4a[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed Nov 25 09:55:20 2015 +0900
+
+    5.1.8 버전변경
+
+[33mcommit 30305d78dc5ce929b143189fb88cc3dc3e019e3e[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed Nov 25 09:45:36 2015 +0900
+
+    1:1문의 SMS 발신번호 사전등록제 관련 코드 수정
+
+[33mcommit bb1fd4d3abd938ef0fd872fa2f7accaf6d796734[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Nov 24 16:12:22 2015 +0900
+
+    관리자 CSRF 취약점 수정
+
+[33mcommit a75e00f9e0fabed0baa738be25619ecb2e41a126[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Thu Nov 19 15:50:27 2015 +0900
+
+    모바일 게시판 제목 적용되도록 수정
+
+[33mcommit ad67fca3236ccad55dff15a6e14d32cd8de14ce1[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Nov 17 16:39:16 2015 +0900
+
+    파일면 변경으로인한 중복 파일 삭제
+
+[33mcommit 614dce643c9a182de87344e427728753a6d9a936[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Nov 17 16:37:30 2015 +0900
+
+    캡챠 오류 수정 및 파일명 변경
+
+[33mcommit c0cd45cc18b50909d3093bbdecedf03ea247afe1[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Nov 17 09:07:12 2015 +0900
+
+    캡챠이미지 경로 오류수정
+
+[33mcommit f3e7dbbb439fb54505abd44e5fa1734e3d1ba3cd[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Nov 16 16:45:37 2015 +0900
+
+    5.1.7 버전 변경
+
+[33mcommit 5247359e39094e9d73a248f19848587176016203[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Nov 16 16:39:09 2015 +0900
+
+    오타 수정
+
+[33mcommit 4ed4938cf1e1e00b48821825224959a2ec1b6a8c[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Nov 16 16:36:04 2015 +0900
+
+    캡챠 및 회원가입 값체크 개선
+
+[33mcommit 158d9040d28d4c5f5b8d96b5582c08667fd0ce4d[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri Nov 13 11:23:14 2015 +0900
+
+    접속자 Browscap 적용 기능 개선
+
+[33mcommit aebfc70b104c09b36ecea21d7d9bf3628ba3ea06[m
+Author: sora90224 <sora90224@naver.com>
+Date:   Thu Nov 12 09:31:39 2015 +0900
+
+    불필요한 소스 삭제
+
+[33mcommit 69ca119b10c0a48aeef9562649f045cc869ada48[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Nov 10 14:26:17 2015 +0900
+
+    업로드 파일명 코드 변경
+
+[33mcommit be15f890c982f01cbc51e944421c6b0aa914363c[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Nov 9 09:31:58 2015 +0900
+
+    5.1.6 버전변경
+
+[33mcommit bc71241846b29e6aef68a3fc1ad9da2e2c796579[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Wed Nov 4 17:12:28 2015 +0900
+
+    php7 대응 코드 수정
+
+[33mcommit 4bcce2696c89aa74cca14a43327b6070527686d5[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed Nov 4 10:10:55 2015 +0900
+
+    sql_set_charset 함수 코드 수정
+
+[33mcommit 7083bb0899cdcf30ce603b2c715084da09056267[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Nov 3 15:35:31 2015 +0900
+
+    관리자 접속자 기능 개선
+
+[33mcommit c7b1d0ee96ab3083965a5dd9ba3665da9a488b8a[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Nov 2 09:54:40 2015 +0900
+
+    5.1.5 버전 변경
+
+[33mcommit ba52e4ab6f6d755d325b472a790f4519e3d08d99[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Thu Oct 29 09:59:29 2015 +0900
+
+    회원가입 개인정보취급방침 안내 수정
+
+[33mcommit e47156ede6db5390a185685b0adc7885410374f4[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed Oct 28 14:15:09 2015 +0900
+
+    게시판 복사 중 따옴표로 인한 오류 수정
+
+[33mcommit 36ef8e6447b1b4366e859c8c8615e468822b8db8[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Oct 26 10:05:47 2015 +0900
+
+    5.1.4 버전변경
+
+[33mcommit eb154efa2411dd63757a352fb6d49447361aa5f7[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Oct 20 11:41:46 2015 +0900
+
+    누락된 닫음태그 추가
+
+[33mcommit 9bf15fdf329cfb45bbca46a52482447c965e93b3[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Oct 20 11:06:15 2015 +0900
+
+    htmlpurifier 4.7 버전 적용
+
+[33mcommit 353a0d9409fab03cfcdd0bb85f93edde5bb9dfb0[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Oct 20 11:05:30 2015 +0900
+
+    XSS취약점관련 object 태그 허용설정 변경
+
+[33mcommit 0535b6d26abb94ca37327257d11651ade870362b[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Oct 20 11:19:21 2015 +0900
+
+    post 값 필터링 코드 위치 변경
+
+[33mcommit 1fe4684537198967c19302bcb11180fc54ef1805[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri Oct 16 10:12:06 2015 +0900
+
+    MySQLi 지원 추가 및 SMS5 수정
+
+[33mcommit 0803de998b99682abd9249f4c5695e1d534524e3[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Oct 6 09:49:15 2015 +0900
+
+    반응형 대비 캡챠 코드 수정
+
+[33mcommit 273983c87c174c4fcfc08e4cd935e7dc2431e577[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri Oct 2 17:57:46 2015 +0900
+
+    따옴표 관련 오류 수정
+
+[33mcommit 94cc7639a924ab50efbe5ac65a444e22aca9d68d[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Thu Oct 1 13:46:46 2015 +0900
+
+    XSS 취약점 수정 및 LMS 모듈 추가
+
+[33mcommit 84009dc16cb2a05e221e2d9a0f716543c70a7f9f[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri Aug 28 11:42:25 2015 +0900
+
+    관리자 글현황 추가 및 기타 오류 수정
+
+[33mcommit 82c12f6d98c3f5f18473e628fcbc48e06d0cc5e8[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Aug 4 09:05:41 2015 +0900
+
+    투표 결과 테마스킨 적용 오류 수정
+
+[33mcommit 6beff3a333272b899ac0c2f3b1adf1d512d70cfc[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Aug 3 15:44:15 2015 +0900
+
+    그누보드 5.1.0 테마 지원버전
+
+[33mcommit d49200c99e60e9e4a0f66d110448b49f6f6f94eb[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Jul 27 14:08:23 2015 +0900
+
+    XSS 취약점 및 기타 오류 수정
+
+[33mcommit faed6ac09a92e54a0e6f68fa0953e22cea94f4eb[m
+Author: sungkyuchun <sungkyu.chun@smartandwise.co.kr>
+Date:   Mon Jul 20 16:38:20 2015 +0900
+
+    empty_mb_name checks mb_id, not mb_name
+    
+    empty_mb_name is a function checking name from user input form. But it
+    was not checked by empty_mb_name function. So I fix it.
+
+[33mcommit 9256a5618b8ea1241a47adfa69fab7c94620c06b[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Jul 20 11:52:21 2015 +0900
+
+    버전변경
+
+[33mcommit a52858fc6d91e3fed92323fc94b21dab24c043d0[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Jul 20 11:40:09 2015 +0900
+
+    XSS 취약점, 새 우편번호, 기타 오류 수정
+
+[33mcommit 2ccc407397dfa4e04b92ed4603f65089113f91d2[m
+Author: iz4blue <iz4blue@gmail.com>
+Date:   Sat Jul 11 20:22:31 2015 +0900
+
+    이미지 width 계산 이후 빠진 attributes 추가
+
+[33mcommit d5bd57cdfaa7b14aeccbb79dc081abb85be4ada9[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Jul 13 13:43:46 2015 +0900
+
+    그누보드 5.0.40 수정내역 적용 및 XSS 취약점 수정
+
+[33mcommit 3bbbe96319b5e359fb536b5a0c513abb5f002ea0[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Jul 7 13:50:38 2015 +0900
+
+    XSS 및 Blind SQL Injection 취약점 수정
+
+[33mcommit 78169b372cf05ea9b720c27050f57f4b94856dbb[m
+Merge: 8821583 a79a926
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri Jul 3 17:08:55 2015 +0900
+
+    Merge branch 'merge-patch'
+
+[33mcommit a79a926221388f7a7c591f3fd6c3f718e42cb697[m
+Merge: f72ea87 3c9b72d
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri Jul 3 17:08:21 2015 +0900
+
+    Merge https://github.com/iz4blue/gnuboard5 into merge-patch
+
+[33mcommit f72ea8774e4b33adeee6ece15b372c0cad5fab9b[m
+Merge: 4b93695 8821583
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Fri Jul 3 17:05:45 2015 +0900
+
+    Merge branch 'master' into merge-patch
+
+[33mcommit 3c9b72d17a6cfbf4bf4b692fc9d6c5de97865f54[m
+Author: iz4admin <iz4admin@ClienVPN.clien.net>
+Date:   Fri Jul 3 16:53:04 2015 +0900
+
+    PHP short_open_tag=0 에러 방지
+
+[33mcommit 8821583e8f4ebc62166446723040cbd5b03f33a9[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Jun 29 10:36:44 2015 +0900
+
+    그누보드 5.0.38 수정내역 적용 및 CSRF 취약점 수정
+
+[33mcommit 6e90622328c8be59dc78dcd44ef9aa71e66d285e[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue Jun 23 11:12:23 2015 +0900
+
+    그누보드 5.0.37 수정내역 적용 및 XSS 취약점 수정
+
+[33mcommit d5aca5ab938e80ddba603fba6f510afb47642ef3[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Thu Jun 11 09:54:48 2015 +0900
+
+    그누보드 5.0.36 수정 내역 및 XSS 취약점 수정
+
+[33mcommit 7110ccc12ff36f844c3d399bc035725b4babb168[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Mon Jun 1 09:38:12 2015 +0900
+
+    그누보드 5.0.35 수정내역 적용
+
+[33mcommit 330e656544fd3cd209178a79131995d35858e72d[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Tue May 19 13:59:00 2015 +0900
+
+    그누보드5.0.34 수정내역 적용
+
+[33mcommit 18fc8ec6d15d7d184d138e03581b905d453dbdef[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Thu May 14 09:14:37 2015 +0900
+
+    오타 및 회원가입폼 스타일 수정
+
+[33mcommit 01a31bb18f16b7b4dd9311365225042f26a20824[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed May 13 17:10:08 2015 +0900
+
+    Magic Hash 관련 비밀번호 체크 코드 수정
+
+[33mcommit 2705b9312ccab75c7996755d624e4ae202e70355[m
+Author: chicpro <chicpro@sir.co.kr>
+Date:   Wed May 13 11:57:04 2015 +0900
+
+    그누보드5.0.33 수정내역 적용
+
+[33mcommit 9fd14cfc17ba978c2fb8f15a83690501cf1dd3fa[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Thu Apr 9 09:16:36 2015 +0900
+
+    그누보드 5.0.32 수정내역 적용
+
+[33mcommit a6a2183c7d2aca3aae0b84a6f7d279492269b927[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Tue Mar 10 13:47:21 2015 +0900
+
+    그누보드 5.0.31 수정내역 적용
+
+[33mcommit 4b9369599c2df4d257706d3882ba8fde491843b3[m
+Author: Mabin <mabin359@gmail.com>
+Date:   Wed Mar 4 16:05:18 2015 +0900
+
+    RSS 헤더 오류 수정 (phpxml -> xml)
+
+[33mcommit b477c2e720d51656b4bcc0d52161674712d8690a[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Mon Feb 9 09:57:32 2015 +0900
+
+    XSS 취약점 패치 및 5.0.30버전 수정내역 적용
+
+[33mcommit 7ef2029a316d154db3ac98e57382634953a97e00[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Mon Feb 2 13:35:15 2015 +0900
+
+    그누보드 5.0.29 수정내역 적용
+
+[33mcommit 1cd8d590b25405c241e7289cbb85f27c549cdb6e[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Wed Jan 14 09:13:22 2015 +0900
+
+    mb_tel 필드를 이용한 xss 취약점 수정
+
+[33mcommit 82a55c96a5ee133d5287bb4c37d1dc46d2586417[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Mon Jan 12 15:00:04 2015 +0900
+
+    관리자 부가서비스 페이지 추가
+
+[33mcommit 489c859d3e769aac336d2d85fcd5b9fc327ba69d[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Mon Jan 5 10:18:00 2015 +0900
+
+    그누보드 5.0.26 수정내역 적용
+
+[33mcommit d5db75a4c94969376d8619491b32c8e4dedec2b8[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Thu Dec 18 10:11:16 2014 +0900
+
+    입력금지 메일 도메인 체크 코드 수정
+
+[33mcommit db2ef391264afdddce0c33f07ddff469b656a41b[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Wed Dec 17 10:15:35 2014 +0900
+
+    사용하지 않는 파일 삭제
+
+[33mcommit 87adbf0f8dd1776583e38e9c73aeb292c622e86b[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Wed Dec 17 10:14:29 2014 +0900
+
+    그누보드 5.0.25 보안패치 및 수정내역 적용
+
+[33mcommit 244b8ae819ed78bf8ecc0778acec6311dedf9ad3[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Mon Dec 8 11:23:01 2014 +0900
+
+    보안패치 및 그누보드 5.0.24 수정내역 적용
+
+[33mcommit 7ea9d2e1d2f1d4685011a84ead49a545f90a1fe0[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Tue Dec 2 10:16:35 2014 +0900
+
+    그누보드 5.0.23 수정 내역 적용
+
+[33mcommit 7dc293a147486dd3653d34ffbae5923c1da7d20c[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Fri Nov 7 09:26:16 2014 +0900
+
+    그누보드 5.0.22 보안패치 적용
+
+[33mcommit 097903d0ce903f8512d69259334c6628868b604f[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Tue Oct 28 13:17:24 2014 +0900
+
+    그누보드 5.0.21 보안패치 및 기타 오류 수정
+
+[33mcommit 37b0fa57880e63bf78ac00c959c1e9deb0859c07[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Fri Oct 24 11:02:39 2014 +0900
+
+    SQL Injection 및 관리자가 게시글 수정때 정보 반영되도록 수정
+
+[33mcommit ad78efcdaa45a4517b7acd15c4cfbd4cdb6ceebb[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Thu Oct 23 09:25:33 2014 +0900
+
+    회원 홈페이지를 이용한 SQL Injection 오류 수정
+
+[33mcommit 352deb61333e5e353817b8005f29952d88d1f78e[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Wed Oct 22 13:16:44 2014 +0900
+
+    보안패치 및 그누보드 5.0.20 수정사항 적용
+
+[33mcommit 1355c7ef57578d5c9a2da6fef5326daee3942ce9[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Mon Oct 13 15:13:08 2014 +0900
+
+    그누보드 5.0.19 수정사항 적용
+
+[33mcommit 3fa9aec9f24b865ac5002158112d484a582d06f4[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Mon Sep 29 15:56:30 2014 +0900
+
+    그누보드 5.0.18 수정사항 적용
+
+[33mcommit 4c083b6471a1e47abf4813ad513359906d6fadc2[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Tue Sep 16 10:33:19 2014 +0900
+
+    기능개선 및 라이센스 기타오류 수정
+
+[33mcommit 916cd86330c47c2ee19b9d58397999d909fc63cc[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Fri Aug 22 15:21:23 2014 +0900
+
+    다음주소 API 기본코드로 변경 및 불필요한 파일 삭제
+
+[33mcommit 5a37e8243dc21ffd6f5bf3e979976d4d746c4989[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Wed Aug 20 16:55:18 2014 +0900
+
+    다음주소API 관련 스크립트 코드 및 기타 코드 수정
+
+[33mcommit e891791f869f08c20bd49f26e991ce59c48610d7[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Tue Aug 19 14:55:42 2014 +0900
+
+    불필요한 파일 삭제
+
+[33mcommit 59468d13124a03bef044ccbf8641ccf2ac1d0478[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Tue Aug 19 14:52:47 2014 +0900
+
+    다음 주소 API 적용 및 기타 수정
+
+[33mcommit 43fae4ed50efac33a13b8a412f6dce45d2be1207[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Tue Aug 19 14:47:55 2014 +0900
+
+    불필요한 파일 삭제
+
+[33mcommit fdc93c1c2d3fa76ee353af82a3023963c2d86ab8[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Mon Aug 11 15:01:27 2014 +0900
+
+    5.0.13 버전 패치 적용
+
+[33mcommit 79d7a690f4847e34a2b27af2827cb18d4330c809[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Thu Jul 31 17:01:06 2014 +0900
+
+    XSS 및 SQL Injection 보안 취약점 수정
+
+[33mcommit 0742c5f81bd9b54faa4d5252a2579ce5d5ed2bea[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Wed Jul 30 18:05:52 2014 +0900
+
+    댓글 wr_name 이용한 XSS 보안 취약점 수정
+
+[33mcommit d5e6a07dda240a2ec3e0e79328637f0f43f07c68[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Tue Jul 29 16:33:19 2014 +0900
+
+    xss 대응 코드 추가
+
+[33mcommit e84a1c8c98ce5d8c55a4c6a9218922721bfe4975[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Mon Jul 28 11:41:12 2014 +0900
+
+    그누보드 5.0.9 패치 적용
+
+[33mcommit 2579323ddfd978413d3146c7d5146c37cdee2d27[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Fri Jul 18 17:10:25 2014 +0900
+
+    sql injection 보안패치 및 스마트에디터2 추가
+
+[33mcommit 2658dde159ebe2605336943ac00870a75fbcb09e[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Tue Jul 15 16:59:54 2014 +0900
+
+    카카오톡 링크기능 추가 및 기타 버그 수정
+
+[33mcommit d9b8d312256e5444741b1e3f75389182b09f4ddb[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Wed Jul 9 10:02:56 2014 +0900
+
+    gitignore 충돌수정
+
+[33mcommit 4d8500be0204620f520f2911a919b976b8c1c33e[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Wed Jul 9 10:01:21 2014 +0900
+
+    네이버 신디케이션 적용 및 기타 오류 수정
+
+[33mcommit 288da7f9e197e5a9f9c13576d367a006c5b71c9c[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Tue Jul 1 11:08:19 2014 +0900
+
+    전역배열변수 보안 오류 수정
+
+[33mcommit 41aac911467bb576b9f520408f0f98ed4b83d26b[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Fri Jun 27 10:12:06 2014 +0900
+
+    보고된 버그 수정
+
+[33mcommit a949c32b4c371f21369aafd0e4277bd16e0fc704[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Fri Jun 20 13:37:58 2014 +0900
+
+    기능개선 및 오류 수정
+
+[33mcommit dc06aed1642d663f5b89d834b2a9b14d2eff4d6f[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Mon Jun 16 10:24:15 2014 +0900
+
+    FAQ 검색기능 수정 및 이전 프로그램 오류 수정
+
+[33mcommit 6518b228548843a95d1c13566399fe020d5427e4[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Wed Jun 11 15:30:55 2014 +0900
+
+    1:1문의 XSS 취약점 수정
+
+[33mcommit c8a69b054e530a07b039cda0b87dca13cc80fc2c[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Tue Jun 10 16:10:17 2014 +0900
+
+    sns 사용 때 게시글 보기 로딩 속도 개선
+
+[33mcommit cd50ef5d48f239477446e2e4f54734b2a69589b1[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Mon Jun 9 14:57:31 2014 +0900
+
+    Subtree Merging 설정
+
+[33mcommit 7983affa68bdcc6c05bf8953ec90aa201ebec5ee[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Mon Jun 9 14:48:44 2014 +0900
+
+    그누보드5 정식버전
+
+[33mcommit 0243dabe20e024ea29f669eccdc61952ed6ae5aa[m
+Author: chicpro <chicpro@gmail.com>
+Date:   Mon Jun 9 14:00:04 2014 +0900
+
+    first commit

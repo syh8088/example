@@ -168,6 +168,8 @@ function add_menu()
     var max_code = base_convert(0, 10, 36);
     $("#menulist tr.menu_list").each(function() {
         var me_code = $(this).find("input[name='code[]']").val().substr(0, 2);
+
+        console.log($(this).find("input[name='code[]']").val());
         if(max_code < me_code)
             max_code = me_code;
     });
