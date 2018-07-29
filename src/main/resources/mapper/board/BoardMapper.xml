@@ -4,18 +4,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.api.repositories.BoardRepository">
 
-    <resultMap type="com.example.api.entities.BoardList" id="postMap">
-        <result property="boardId" column="board_id"/>
-    </resultMap>
+   <!-- <resultMap type="com.example.api.repositories.BoardList" id="BoardListMap">
+        <result property="id" column="id"/>
+        <result property="num" column="num"/>
+        <result property="reply" column="reply"/>
+        <result property="parent" column="parent"/>
+        <result property="isComment" column="is_comment"/>
+        <result property="comment" column="comment"/>
+        <result property="commentReply" column="comment_reply"/>
+        <result property="subject" column="subject"/>
+        <result property="content" column="content"/>
+        <result property="hit" column="hit"/>
+        <result property="password" column="password"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="ip" column="ip"/>
+        <result property="isPhoto" column="is_photo"/>
+        <association property='isBest' resultMap='is_best'/>
+        <association property='device' resultMap='device'/>
+    </resultMap>-->
 
-
-
-    <!--TODO #12 Mapper와 xml 연결-->
-    <select id="selectBy" resultType="Board">
+    <select id="getBoard" resultType="Board">
             SELECT * FROM board WHERE board_id = #{boardId}
     </select>
 
-    <select id="boardList" parameterType="java.util.Map" resultType="BoardList" resultMap="postMap">
+    <select id="getBoardList" resultType="BoardList">
             SELECT * FROM board_${boardId}
     </select>
 </mapper>

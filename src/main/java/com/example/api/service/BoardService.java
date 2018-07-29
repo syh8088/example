@@ -1,6 +1,7 @@
 package com.example.api.service;
 
 import com.example.api.entities.Board;
+import com.example.api.entities.BoardAndBoardList;
 import com.example.api.entities.BoardList;
 import com.example.api.repositories.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +19,17 @@ public class BoardService {
         this.boardRepository = boardRepository;
     }
 
-    public BoardList getBoard(String boardId) {
+    public BoardAndBoardList getBoard(String boardId) {
 
-      //  Board board = boardRepository.selectBy(boardId);
-      //  BoardList boardLists = new BoardList();
-      //  boardLists.setBoard(board);
+        BoardAndBoardList boardAndBoardLists = new BoardAndBoardList();
 
-        BoardList boardList = boardRepository.boardList(boardId);
+        Board board = boardRepository.getBoard(boardId);
+        List<BoardList> boardList = boardRepository.getBoardList(boardId);
 
-        return boardList;
-       // return
+        boardAndBoardLists.setBoard(board);
+        boardAndBoardLists.setBoardList(boardList);
+
+        return boardAndBoardLists;
     }
 
 }

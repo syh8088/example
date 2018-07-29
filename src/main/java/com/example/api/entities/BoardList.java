@@ -8,32 +8,30 @@ import org.apache.ibatis.type.Alias;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Setter
 @Getter
+@Setter
 @ToString
 @Alias("BoardList")
 public class BoardList {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Getter
-    private String boardId;
-
     private long num;
+
     private String reply;
 
     private long parent;
 
     private boolean isComment;
 
-    private long comment;
+    // TODO 주석 처리하면 문제 없다 왜?
+    //private long comment;
 
     private String commentReply;
 
     private String subject;
-
+    @Lob
     private String content;
 
     private long hit;
@@ -41,18 +39,16 @@ public class BoardList {
     private String password;
 
     private LocalDateTime createAt;
-
     private LocalDateTime updateAt;
-
     private String createBy;
-
     private String updateBy;
-
     private String ip;
 
     private boolean isPhoto;
-
     private boolean isBest;
+
+
+
 
     @Column(columnDefinition = "enum('PC','MOBILE')")
     @Enumerated(EnumType.STRING)
