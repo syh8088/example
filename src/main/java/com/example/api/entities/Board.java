@@ -3,41 +3,62 @@ package com.example.api.entities;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.type.Alias;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
-@Entity
-@Slf4j
 @Getter
 @Setter
+@ToString
 @Alias("Board")
 public class Board {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
-    @Column(columnDefinition = "enum('NOTICE', 'EVENT', 'UPDATE')")
+    private String boardId;
+
+    private String groupId;
+
+    private String subject;
+
+    private Integer listLevel;
+
+    private Integer readLevel;
+
+    private Integer writeLevel;
+    private Integer replyLevel;
+    private Integer commentLevel;
+    private Integer uploadLevel;
+    private Integer countDelete;
+    private Integer countModify;
+    private Integer useSecret;
+    private Integer useGood;
+    private Integer useNogood;
+
+    private long pageRows;
+
+    private long writeMin;
+    private long writeMax;
+    private long commentMin;
+    private long commentMax;
+
+    private Integer limitWrite;
+
+    private long maxStrlenComment;
+
+    @Column(columnDefinition = "enum('ALWAYS','SOMETIMES','NEVER')")
     @Enumerated(EnumType.STRING)
-    private Category category;
+    private CommentAllowed commentAllowed;
 
-    private String title;
+    private boolean isWriteAuth;
+    private boolean isCommentAuth;
 
-    @Lob
-    private String content;
-
-    private LocalDateTime reserveAt;
-
-    private long viewCount;
-
-    public enum Category {
-        NOTICE("NOTICE"), EVENT("EVENT"), UPDATE("UPDATE");
+    public enum CommentAllowed {
+        ALWAYS("ALWAYS"), SOMETIMES("SOMETIMES"), NEVER("NEVER");
 
         private String value;
 
-        Category(String value) {
+        CommentAllowed(String value) {
             this.value = value;
         }
 
@@ -46,5 +67,6 @@ public class Board {
         }
 
     }
+
 
 }

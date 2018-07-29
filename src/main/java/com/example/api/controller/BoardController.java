@@ -2,6 +2,7 @@ package com.example.api.controller;
 
 
 import com.example.api.entities.Board;
+import com.example.api.entities.BoardList;
 import com.example.api.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +19,10 @@ public class BoardController {
         this.boardService = boardService;
     }
 
-    @GetMapping("/members/{no}")
-    public ResponseEntity<Board> getMember(@PathVariable("no") long no) {
-        return ResponseEntity.ok().body(boardService.getBoard(no));
+    @GetMapping("/members/{boardId}")
+    public ResponseEntity<BoardList> getMember(@PathVariable("boardId") String boardId) {
+        //System.out.println(boardId);
+        return ResponseEntity.ok().body(boardService.getBoard(boardId));
     }
 
 

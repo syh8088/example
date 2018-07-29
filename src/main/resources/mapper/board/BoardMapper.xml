@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.api.repositories.BoardRepository">
+
+    <resultMap type="com.example.api.entities.BoardList" id="postMap">
+        <result property="boardId" column="board_id"/>
+    </resultMap>
+
+
+
+    <!--TODO #12 Mapper와 xml 연결-->
+    <select id="selectBy" resultType="Board">
+            SELECT * FROM board WHERE board_id = #{boardId}
+    </select>
+
+    <select id="boardList" parameterType="java.util.Map" resultType="BoardList" resultMap="postMap">
+            SELECT * FROM board_${boardId}
+    </select>
+</mapper>
