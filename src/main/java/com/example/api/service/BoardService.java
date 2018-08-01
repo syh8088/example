@@ -32,4 +32,18 @@ public class BoardService {
         return boardAndBoardLists;
     }
 
+    public void setBoard(BoardList boardList) {
+
+        String subject = boardList.getSubject();
+        String content = boardList.getContent();
+        String boardId = boardList.getBoardId();
+
+        Board board = boardRepository.getBoard(boardId);
+        int limitWrite = board.getLimitWrite();
+
+
+        int postId = boardRepository.setBoard(boardList);
+
+    }
+
 }

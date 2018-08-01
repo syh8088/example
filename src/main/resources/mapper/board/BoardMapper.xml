@@ -33,4 +33,11 @@
     <select id="getBoardList" resultType="BoardList">
             SELECT * FROM board_${boardId}
     </select>
+
+    <insert id="setBoard" parameterType="BoardList">
+      INSERT INTO board_${boardId}
+      SET subject = #{subject},
+      content = #{content}
+    </insert>
+
 </mapper>

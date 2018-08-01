@@ -15,4 +15,8 @@ public interface BoardRepository {
 
     // TODO @Param으로 하면 문제없다 왜?
     List<BoardList> getBoardList(@Param("boardId") String boardId);
+
+
+
+    int setBoard(BoardList boardList);
 }

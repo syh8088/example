@@ -16,7 +16,7 @@ public class BoardList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    private String boardId;
     private long num;
 
     private String reply;
