@@ -19,4 +19,7 @@ public interface BoardRepository {
 
 
     int setBoard(BoardList boardList);
+
+
+    int getBoardLimitWriteCount(@Param("boardId") String boardId);
 }

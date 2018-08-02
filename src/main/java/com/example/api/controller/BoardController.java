@@ -33,19 +33,20 @@ public class BoardController {
 
 
     @GetMapping("/members/create/{boardId}")
-    public ResponseEntity<?> setMember(
-            @PathVariable("boardId") String boardId,
-            @RequestBody CreatePostRequest request
-    ) {
+    public void setMember(
+            @PathVariable("boardId") String boardId
 
+    ) {
+// @RequestBody CreatePostRequest request
         BoardList boardList = new BoardList();
         boardList.setBoardId(boardId);
-        boardList.setSubject(request.getSubject());
-        boardList.setContent(request.getContent());
-
-
+      //  boardList.setSubject(request.getSubject());
+      //  boardList.setContent(request.getContent());
 
         boardService.setBoard(boardList);
+
+
+        //return ResponseEntity.ok().body(boardService.setBoard(boardList));
     }
 
     @NoArgsConstructor

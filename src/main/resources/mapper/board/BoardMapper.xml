@@ -18,7 +18,7 @@
         <result property="password" column="password"/>
         <result property="createAt" column="create_at"/>
         <result property="updateAt" column="update_at"/>
-        <result property="createBy" column="create_by"/>
+        <result property="createBy" column="cregetBoardListate_by"/>
         <result property="updateBy" column="update_by"/>
         <result property="ip" column="ip"/>
         <result property="isPhoto" column="is_photo"/>
@@ -34,10 +34,15 @@
             SELECT * FROM board_${boardId}
     </select>
 
+    <select id="getBoardLimitWriteCount" resultType="int">
+            SELECT COUNT(*) FROM board_${boardId} WHERE  create_at > date_format(curdate(), '%Y-%m-%d %H:%i:%s' )
+    </select>
+
     <insert id="setBoard" parameterType="BoardList">
       INSERT INTO board_${boardId}
       SET subject = #{subject},
       content = #{content}
     </insert>
+
 
 </mapper>
