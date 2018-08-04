@@ -26,20 +26,25 @@ public class BoardController {
         this.boardService = boardService;
     }
 
+    // 글읽기
     @GetMapping("/members/{boardId}")
     public ResponseEntity<BoardAndBoardList> getMember(@PathVariable("boardId") String boardId) {
         return ResponseEntity.ok().body(boardService.getBoard(boardId));
     }
 
-
-    @GetMapping("/members/create/{boardId}")
+    // 글쓰기
+    @GetMapping("/members/create/{boardId}/{subject}/{content}")
     public void setMember(
-            @PathVariable("boardId") String boardId
+            @PathVariable("boardId") String boardId,
+            @PathVariable("subject") String subject,
+            @PathVariable("content") String content
 
     ) {
 // @RequestBody CreatePostRequest request
         BoardList boardList = new BoardList();
         boardList.setBoardId(boardId);
+        boardList.setSubject(subject);
+        boardList.setContent(content);
       //  boardList.setSubject(request.getSubject());
       //  boardList.setContent(request.getContent());
 
@@ -47,6 +52,16 @@ public class BoardController {
 
 
         //return ResponseEntity.ok().body(boardService.setBoard(boardList));
+    }
+
+    // 글삭제
+    @GetMapping("/member/delete/{boardId}/{postId}")
+    public void delMember(
+        @PathVariable("boardId") String boardId,
+        @PathVariable("postId") int postId
+    ) {
+        boardService.delBoard(boardId, postId);
+        //return ResponseEntity.ok().body(boardService.delBoard(boardId, postId));
     }
 
     @NoArgsConstructor

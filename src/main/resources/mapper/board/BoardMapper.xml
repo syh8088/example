@@ -44,5 +44,10 @@
       content = #{content}
     </insert>
 
+    <delete id="delBoard">
+        DELETE
+        FROM board_${boardId}
+        WHERE id = #{postId}
+    </delete>
 
 </mapper>

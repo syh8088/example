@@ -44,11 +44,9 @@ public class BoardList {
     private String updateBy;
     private String ip;
 
+    @Setter
     private boolean isPhoto;
     private boolean isBest;
-
-
-
 
     @Column(columnDefinition = "enum('PC','MOBILE')")
     @Enumerated(EnumType.STRING)
