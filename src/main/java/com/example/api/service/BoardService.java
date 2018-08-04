@@ -15,6 +15,7 @@ import org.jsoup.safety.Whitelist;
 import org.jsoup.select.Elements;
 
 
+import java.net.InetAddress;
 import java.util.List;
 
 @Service
@@ -78,11 +79,61 @@ public class BoardService {
 
         }
 
-        //int postId = boardRepository.setBoard(boardList);
+        // ip 등록
+        try {
+            InetAddress local = InetAddress.getLocalHost();
+            String ip = local.getHostAddress();
+            boardList.setIp(ip);
+        }catch (Exception e) {
+            System.out.println("InetAddress ERROR");
+        }
+
+        int postId = boardRepository.setBoard(boardList);
 
     }
 
+    public BoardAndBoardList updateBoard(BoardList boardList) {
+
+        String boardId = boardList.getBoardId();
+        String content = boardList.getContent();
+        Board board = boardRepository.getBoard(boardId);
+
+        // ip 등록
+        try {
+            InetAddress local = InetAddress.getLocalHost();
+            String ip = local.getHostAddress();
+            boardList.setIp(ip);
+        }catch (Exception e) {
+            System.out.println("InetAddress ERROR");
+        }
+
+        int countModify = board.getCountModify();
+        System.out.println(countModify);
+        if(countModify == 1) {
+            // TODO 글수정 불가능 조건 처리
+        }
+
+        // 내용 최소 글수 제한
+        if(content.length() < board.getWriteMin()) {
+
+        } else if(content.length() > board.getWriteMax()) {  // 내용 최대 글수 제한
+
+        }
+
+        boardRepository.updateBoard(boardList);
+        return this.getBoard(boardList.getBoardId());
+    }
+
     public void delBoard(String boardId, int postId) {
+
+        Board board = boardRepository.getBoard(boardId);
+
+        int countDelete = board.getCountDelete();
+        System.out.println(countDelete);
+        if(countDelete == 1) {
+            // TODO 글삭제 불가능 조건 처리
+        }
+
         // TODO 성공 및 실패시 리턴값을 어떻게 받지??
         boardRepository.delBoard(boardId, postId);
     }

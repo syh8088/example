@@ -41,8 +41,19 @@
     <insert id="setBoard" parameterType="BoardList">
       INSERT INTO board_${boardId}
       SET subject = #{subject},
+      ip = #{ip},
       content = #{content}
     </insert>
+
+    <update id="updateBoard" parameterType="BoardList">
+        UPDATE board_${boardId}
+        SET
+        <if test="subject != null">subject = #{subject},</if>
+        <if test="content != null">content = #{content},</if>
+        <if test="ip != null">ip = #{ip},</if>
+        update_at = NOW()
+        WHERE id = #{id}
+    </update>
 
     <delete id="delBoard">
         DELETE

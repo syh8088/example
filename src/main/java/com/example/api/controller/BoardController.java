@@ -54,8 +54,25 @@ public class BoardController {
         //return ResponseEntity.ok().body(boardService.setBoard(boardList));
     }
 
+    // 글수정
+    @GetMapping("/members/update/{boardId}/{postId}/{subject}/{content}")
+    public ResponseEntity<BoardAndBoardList> updateMember(
+            @PathVariable("boardId") String boardId,
+            @PathVariable("postId") int postId,
+            @PathVariable("subject") String subject,
+            @PathVariable("content") String content
+    ) {
+        BoardList boardList = new BoardList();
+        boardList.setBoardId(boardId);
+        boardList.setId(postId);
+        boardList.setSubject(subject);
+        boardList.setContent(content);
+
+        return ResponseEntity.ok().body(boardService.updateBoard(boardList));
+    }
+
     // 글삭제
-    @GetMapping("/member/delete/{boardId}/{postId}")
+    @GetMapping("/members/delete/{boardId}/{postId}")
     public void delMember(
         @PathVariable("boardId") String boardId,
         @PathVariable("postId") int postId

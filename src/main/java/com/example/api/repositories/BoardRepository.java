@@ -20,5 +20,7 @@ public interface BoardRepository {
 
     int getBoardLimitWriteCount(@Param("boardId") String boardId);
 
+    int updateBoard(BoardList boardList);
+
     int delBoard(@Param("boardId") String boardId, @Param("postId") int postId);
 }
