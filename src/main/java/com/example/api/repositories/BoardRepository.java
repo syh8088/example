@@ -16,6 +16,10 @@ public interface BoardRepository {
     // TODO @Param으로 하면 문제없다 왜?
     List<BoardList> getBoardList(@Param("boardId") String boardId);
 
+    BoardList getOneBoard(BoardList boardList);
+
+    int setHitBoard(BoardList boardList);
+
     int setBoard(BoardList boardList);
 
     int getBoardLimitWriteCount(@Param("boardId") String boardId);

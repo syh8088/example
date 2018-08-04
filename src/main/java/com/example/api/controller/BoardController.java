@@ -29,12 +29,26 @@ public class BoardController {
     // 글읽기
     @GetMapping("/members/{boardId}")
     public ResponseEntity<BoardAndBoardList> getMember(@PathVariable("boardId") String boardId) {
-        return ResponseEntity.ok().body(boardService.getBoard(boardId));
+
+        BoardList boardList = new BoardList();
+        boardList.setBoardId(boardId);
+
+        return ResponseEntity.ok().body(boardService.getBoard(boardList));
+    }
+
+    // 해당 글읽기
+    @GetMapping("/members/{boardId}/{postId}")
+    public ResponseEntity<BoardList> getOneMember(@PathVariable("boardId") String boardId, @PathVariable("postId") int postId) {
+        BoardList boardList = new BoardList();
+        boardList.setBoardId(boardId);
+        boardList.setId(postId);
+
+        return ResponseEntity.ok().body(boardService.getOneBoard(boardList));
     }
 
     // 글쓰기
     @GetMapping("/members/create/{boardId}/{subject}/{content}")
-    public void setMember(
+    public ResponseEntity<BoardList> setMember(
             @PathVariable("boardId") String boardId,
             @PathVariable("subject") String subject,
             @PathVariable("content") String content
@@ -45,13 +59,8 @@ public class BoardController {
         boardList.setBoardId(boardId);
         boardList.setSubject(subject);
         boardList.setContent(content);
-      //  boardList.setSubject(request.getSubject());
-      //  boardList.setContent(request.getContent());
 
-        boardService.setBoard(boardList);
-
-
-        //return ResponseEntity.ok().body(boardService.setBoard(boardList));
+        return ResponseEntity.ok().body(boardService.setBoard(boardList));
     }
 
     // 글수정

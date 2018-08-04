@@ -28,20 +28,30 @@ public class BoardService {
         this.boardRepository = boardRepository;
     }
 
-    public BoardAndBoardList getBoard(String boardId) {
+    public BoardAndBoardList getBoard(BoardList boardList) {
 
         BoardAndBoardList boardAndBoardLists = new BoardAndBoardList();
 
-        Board board = boardRepository.getBoard(boardId);
-        List<BoardList> boardList = boardRepository.getBoardList(boardId);
+        Board board = boardRepository.getBoard(boardList.getBoardId());
+        List<BoardList> newBoardList = boardRepository.getBoardList(boardList.getBoardId());
 
         boardAndBoardLists.setBoard(board);
-        boardAndBoardLists.setBoardList(boardList);
+        boardAndBoardLists.setBoardList(newBoardList);
 
         return boardAndBoardLists;
     }
 
-    public void setBoard(BoardList boardList) {
+    public BoardList getOneBoard(BoardList boardList) {
+
+        Board board = boardRepository.getBoard(boardList.getBoardId());
+        int hit = boardRepository.setHitBoard(boardList);
+
+        BoardList newBoardList = boardRepository.getOneBoard(boardList);
+
+        return newBoardList;
+    }
+
+    public BoardList setBoard(BoardList boardList) {
 
         String subject = boardList.getSubject();
         String content = boardList.getContent();
@@ -65,9 +75,8 @@ public class BoardService {
 
         }
 
-
         int attachmentsCount = StringUtils.countMatches(content, "<img");
-        System.out.println(attachmentsCount);
+
         // TODO 데이터 타입인 boolean은 셋터 겟터 사용못하나?
         //boardList.isPhoto();
         if(attachmentsCount > 0) boardList.setPhoto(true);
@@ -88,8 +97,10 @@ public class BoardService {
             System.out.println("InetAddress ERROR");
         }
 
+        // TODO 리턴값이 CREATE 한 id값으로 오는게 아니라 도메인 boardList에 자동 저장되는가??
         int postId = boardRepository.setBoard(boardList);
 
+        return getOneBoard(boardList);
     }
 
     public BoardAndBoardList updateBoard(BoardList boardList) {
@@ -121,7 +132,7 @@ public class BoardService {
         }
 
         boardRepository.updateBoard(boardList);
-        return this.getBoard(boardList.getBoardId());
+        return this.getBoard(boardList);
     }
 
     public void delBoard(String boardId, int postId) {

@@ -34,6 +34,18 @@
             SELECT * FROM board_${boardId}
     </select>
 
+    <select id="getOneBoard" resultType="BoardList">
+            SELECT * FROM board_${boardId} WHERE id = #{id}
+    </select>
+
+
+    <update id="setHitBoard" parameterType="int">
+        UPDATE board_${boardId}
+        SET
+        hit = hit+1
+        WHERE id = #{id}
+    </update>
+
     <select id="getBoardLimitWriteCount" resultType="int">
             SELECT COUNT(*) FROM board_${boardId} WHERE  create_at > date_format(curdate(), '%Y-%m-%d %H:%i:%s' )
     </select>
@@ -41,8 +53,12 @@
     <insert id="setBoard" parameterType="BoardList">
       INSERT INTO board_${boardId}
       SET subject = #{subject},
+      content = #{content},
       ip = #{ip},
-      content = #{content}
+      create_at = NOW()
+    <selectKey resultType="int" keyProperty="id" order="AFTER">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
     </insert>
 
     <update id="updateBoard" parameterType="BoardList">
