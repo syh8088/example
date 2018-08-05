@@ -25,8 +25,7 @@ public class BoardList {
 
     private boolean isComment;
 
-    // TODO 주석 처리하면 문제 없다 왜?
-    //private long comment;
+    private long commentCount;
 
     private String commentReply;
 

@@ -1,7 +1,6 @@
 package com.example.api.controller;
 
 
-import com.example.api.entities.Board;
 import com.example.api.entities.BoardAndBoardList;
 import com.example.api.entities.BoardList;
 import com.example.api.service.BoardService;
@@ -12,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 public class BoardController {
@@ -83,8 +79,8 @@ public class BoardController {
     // 글삭제
     @GetMapping("/members/delete/{boardId}/{postId}")
     public void delMember(
-        @PathVariable("boardId") String boardId,
-        @PathVariable("postId") int postId
+            @PathVariable("boardId") String boardId,
+            @PathVariable("postId") int postId
     ) {
         boardService.delBoard(boardId, postId);
         //return ResponseEntity.ok().body(boardService.delBoard(boardId, postId));

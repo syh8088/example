@@ -65,6 +65,7 @@ public class BoardService {
             int limitWriteCount = boardRepository.getBoardLimitWriteCount(boardId);
             if(limitWriteCount > limitWrite) {
                 // TODO 하루 글쓰기 초과
+
             }
         }
 
