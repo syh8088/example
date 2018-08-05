@@ -22,9 +22,13 @@ public interface BoardRepository {
 
     int setBoard(BoardList boardList);
 
+    int updateBoardParentId(BoardList boardList);
+
     int getBoardLimitWriteCount(@Param("boardId") String boardId);
 
     int updateBoard(BoardList boardList);
 
     int delBoard(@Param("boardId") String boardId, @Param("postId") int postId);
+
+    int setBoardComment(BoardList boardList);
 }

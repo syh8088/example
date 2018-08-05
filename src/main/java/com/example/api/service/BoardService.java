@@ -98,7 +98,11 @@ public class BoardService {
         }
 
         // TODO 리턴값이 CREATE 한 id값으로 오는게 아니라 도메인 boardList에 자동 저장되는가??
+        System.out.println(boardList.getId());
         int postId = boardRepository.setBoard(boardList);
+        boardRepository.updateBoardParentId(boardList);
+        System.out.println(boardList.getId());
+
 
         return getOneBoard(boardList);
     }
@@ -148,5 +152,27 @@ public class BoardService {
         // TODO 성공 및 실패시 리턴값을 어떻게 받지??
         boardRepository.delBoard(boardId, postId);
     }
+
+    public BoardList setBoardComment(BoardList boardList) {
+
+        long id = boardList.getId();
+        String content = boardList.getContent();
+        String boardId = boardList.getBoardId();
+
+        Board board = boardRepository.getBoard(boardId);
+
+        // ip 등록
+        try {
+            InetAddress local = InetAddress.getLocalHost();
+            String ip = local.getHostAddress();
+            boardList.setIp(ip);
+        }catch (Exception e) {
+            System.out.println("InetAddress ERROR");
+        }
+
+        int postId = boardRepository.setBoardComment(boardList);
+        return getOneBoard(boardList);
+    }
+
 
 }

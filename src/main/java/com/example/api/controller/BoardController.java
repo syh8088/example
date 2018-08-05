@@ -90,6 +90,22 @@ public class BoardController {
         //return ResponseEntity.ok().body(boardService.delBoard(boardId, postId));
     }
 
+    // 댓글 쓰기
+    @GetMapping("/members/create/comment/{boardId}/{postId}/{content}")
+    public ResponseEntity<BoardList> setMemberComment(
+            @PathVariable("boardId") String boardId,
+            @PathVariable("postId") int postId,
+            @PathVariable("content") String content
+
+    ) {
+        BoardList boardList = new BoardList();
+        boardList.setBoardId(boardId);
+        boardList.setId(postId);
+        boardList.setContent(content);
+
+        return ResponseEntity.ok().body(boardService.setBoardComment(boardList));
+    }
+
     @NoArgsConstructor
     @Data
     @JsonPropertyOrder({"category", "title", "content"})
