@@ -9,9 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BoardController {
@@ -43,20 +41,26 @@ public class BoardController {
     }
 
     // 글쓰기
-    @GetMapping("/members/create/{boardId}/{subject}/{content}")
-    public ResponseEntity<BoardList> setMember(
+    //@GetMapping("/members/create/{boardId}/{subject}/{content}")
+    @PostMapping("/members/create/{boardId}/posts")
+    //public ResponseEntity<BoardList> setMember(
+    public void setMember(
             @PathVariable("boardId") String boardId,
-            @PathVariable("subject") String subject,
-            @PathVariable("content") String content
+            //@PathVariable("subject") String subject,
+            //@PathVariable("content") String content,
+            @RequestBody CreatePostRequest request
 
     ) {
 // @RequestBody CreatePostRequest request
+        System.out.println(boardId);
+        System.out.println("dssdsdssdds");
+        System.out.println(request);
         BoardList boardList = new BoardList();
         boardList.setBoardId(boardId);
-        boardList.setSubject(subject);
-        boardList.setContent(content);
+       // boardList.setSubject(subject);
+       // boardList.setContent(content);
 
-        return ResponseEntity.ok().body(boardService.setBoard(boardList));
+        //return ResponseEntity.ok().body(boardService.setBoard(boardList));
     }
 
     // 글수정
@@ -104,10 +108,9 @@ public class BoardController {
 
     @NoArgsConstructor
     @Data
-    @JsonPropertyOrder({"category", "title", "content"})
+    @JsonPropertyOrder({"subject", "content"})
     private static class CreatePostRequest {
 
-        private String category;
         private String subject;
         private String content;
 
