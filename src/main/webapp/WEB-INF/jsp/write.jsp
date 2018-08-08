@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,11 +17,11 @@
         </tr>--%>
         <tr>
             <td> 제목 </td>
-            <td> <input type="text" name="subject" size = "50"> </td>
+            <td> <input type="text" id="subject" name="subject" size = "50"> </td>
         </tr>
         <tr>
             <td> 내용 </td>
-            <td> <textarea name="content" rows="10" ></textarea> </td>
+            <td> <textarea id="content" name="content" rows="10" ></textarea> </td>
         </tr>
         <tr >
             <td colspan="2"> <input type="button" onclick="send();" value="입력"><input type="button" id="json" value="json"> &nbsp;&nbsp; <a href="list.do">목록보기</a></td>
@@ -32,42 +33,36 @@
 </html>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
-    $(function(){
+
 
         $("#json").click(function(){
 
-            var data = {'subject' : 'ewwewe' ,'content' : 'vcxvxvc'};
-            var www = $(data).serializeObject();
-            var fff =JSON.stringify(www);
-
-
-
+            var sendData = JSON.stringify(
+                    {
+                        subject:$('#subject').val(),
+                        content:$('#content').val()
+                    }
+                );
+            console.log(sendData);
             $.ajax({
-
-                url:'json',
-
-                data:{ formData:fff  },
-
-                type:'POST',
-
-                dataType:'json',
-
-                beforeSend:function(xhr){
-
-                    xhr.setRequestHeader("Accept", "application/json");
-
-                    xhr.setRequestHeader("Content-Type", "application/json");
-
-                }).done(function(body){
-
-                $('#response').val(body);
-
+                type: "POST",
+                url : "<c:url value='/members/create/community' />",
+                data: sendData,
+                dataType: "json",
+                contentType:"application/json;charset=UTF-8",
+                async: true,
+                success : function(data, status, xhr) {
+                    console.log(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                }
             });
 
+
+
         });
-
-    });
-
+/*
     $.fn.serializeObject = function(){
         var o = {};
         var a = this.serializeArray();
@@ -85,7 +80,7 @@
             }
         });
         return o;
-    };
+    };*/
 
     function send() {
 

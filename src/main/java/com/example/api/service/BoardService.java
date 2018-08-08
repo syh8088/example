@@ -104,7 +104,7 @@ public class BoardService {
         boardRepository.updateBoardParentId(boardList);
         System.out.println(boardList.getId());
 
-
+        //boardList.setBoardId(boardId);
         return getOneBoard(boardList);
     }
 

@@ -42,25 +42,17 @@ public class BoardController {
 
     // 글쓰기
     //@GetMapping("/members/create/{boardId}/{subject}/{content}")
-    @PostMapping("/members/create/{boardId}/posts")
-    //public ResponseEntity<BoardList> setMember(
-    public void setMember(
+    @PostMapping("/members/create/{boardId}")
+    public ResponseEntity<BoardList> setMember(
             @PathVariable("boardId") String boardId,
-            //@PathVariable("subject") String subject,
-            //@PathVariable("content") String content,
             @RequestBody CreatePostRequest request
-
     ) {
-// @RequestBody CreatePostRequest request
-        System.out.println(boardId);
-        System.out.println("dssdsdssdds");
-        System.out.println(request);
         BoardList boardList = new BoardList();
         boardList.setBoardId(boardId);
-       // boardList.setSubject(subject);
-       // boardList.setContent(content);
+        boardList.setSubject(request.subject);
+        boardList.setContent(request.content);
 
-        //return ResponseEntity.ok().body(boardService.setBoard(boardList));
+        return ResponseEntity.ok().body(boardService.setBoard(boardList));
     }
 
     // 글수정
