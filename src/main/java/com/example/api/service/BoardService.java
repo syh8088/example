@@ -3,6 +3,7 @@ package com.example.api.service;
 import com.example.api.entities.Board;
 import com.example.api.entities.BoardAndBoardList;
 import com.example.api.entities.BoardList;
+import com.example.api.exception.ExampleException;
 import com.example.api.repositories.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,7 +52,7 @@ public class BoardService {
         return newBoardList;
     }
 
-    public BoardList setBoard(BoardList boardList) {
+    public BoardList setBoard(BoardList boardList) throws Exception{
 
         String subject = boardList.getSubject();
         String content = boardList.getContent();
@@ -110,6 +111,7 @@ public class BoardService {
 
     public BoardAndBoardList updateBoard(BoardList boardList) {
 
+
         String boardId = boardList.getBoardId();
         String content = boardList.getContent();
         Board board = boardRepository.getBoard(boardId);
@@ -126,6 +128,7 @@ public class BoardService {
         int countModify = board.getCountModify();
         System.out.println(countModify);
         if(countModify == 1) {
+
             // TODO 글수정 불가능 조건 처리
         }
 
@@ -144,10 +147,14 @@ public class BoardService {
 
         Board board = boardRepository.getBoard(boardId);
 
+
+
+
         int countDelete = board.getCountDelete();
         System.out.println(countDelete);
         if(countDelete == 1) {
             // TODO 글삭제 불가능 조건 처리
+
         }
 
         // TODO 성공 및 실패시 리턴값을 어떻게 받지??
