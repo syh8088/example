@@ -13,8 +13,10 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Alias("Board")
+@Entity
 public class Board {
 
+    @Id
     private String boardId;
 
     private String groupId;

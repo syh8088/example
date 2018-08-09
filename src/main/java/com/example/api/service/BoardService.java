@@ -5,6 +5,7 @@ import com.example.api.entities.BoardAndBoardList;
 import com.example.api.entities.BoardList;
 import com.example.api.exception.ExampleException;
 import com.example.api.repositories.BoardRepository;
+import com.example.api.repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
@@ -23,17 +24,24 @@ import java.util.List;
 public class BoardService {
 
     private BoardRepository boardRepository;
+    private MemberRepository memberRepository; // JPA
 
     @Autowired
-    public BoardService(BoardRepository boardRepository) {
+    public BoardService(BoardRepository boardRepository, MemberRepository memberRepository) {
         this.boardRepository = boardRepository;
+        this.memberRepository = memberRepository;
     }
 
     public BoardAndBoardList getBoard(BoardList boardList) {
 
         BoardAndBoardList boardAndBoardLists = new BoardAndBoardList();
 
-        Board board = boardRepository.getBoard(boardList.getBoardId());
+        //Board board = boardRepository.getBoard(boardList.getBoardId());
+        Board board = memberRepository.getOne(boardList.getBoardId());
+
+
+        System.out.println(board);
+
         List<BoardList> newBoardList = boardRepository.getBoardList(boardList.getBoardId());
 
         boardAndBoardLists.setBoard(board);

@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 @Alias("BoardList")
+@Entity
 public class BoardList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
