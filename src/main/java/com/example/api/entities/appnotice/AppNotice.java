@@ -21,11 +21,11 @@ public class AppNotice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private int mobile_web;
-    private int sport_android;
-    private int sport_ios;
-    private int game_android;
-    private int game_ios;
+    private boolean mobileWeb;
+    private boolean sportAndroid;
+    private boolean sportIos;
+    private boolean gameAndroid;
+    private boolean gameIos;
 
     //private Map<String, String> subSelectArray;
 

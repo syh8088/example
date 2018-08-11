@@ -48,7 +48,7 @@ public class AppNoticeService {
         subSelectArray4.setSubTableName("game_android");
         subSelectArray5.setSubTableName("game_ios");*/
 
-        List<String> list = Arrays.asList("sport_android", "sport_android");
+        List<String> list = Arrays.asList("mobile_web", "sport_android", "sport_ios", "game_android", "game_ios");
        /* list.add(subSelectArray1);
         list.add(subSelectArray2);
         list.add(subSelectArray3);
@@ -59,7 +59,7 @@ public class AppNoticeService {
 
 //System.out.println(subSelectArray);
 
-        AppNotice appNoticeList = appNoticeMapper.getAppNoticeList(subSelectArray);
+        AppNotice appNoticeList = appNoticeMapper.getAppNoticeList(list);
         return appNoticeList;
     }
 

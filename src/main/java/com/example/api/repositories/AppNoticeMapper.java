@@ -11,6 +11,6 @@ import java.util.Map;
 @Repository
 public interface AppNoticeMapper {
 
-    AppNotice getAppNoticeList(Map<String, List> subSelectArray);
+    AppNotice getAppNoticeList(List<String> subSelectArray);
 
 }
