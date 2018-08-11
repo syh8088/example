@@ -36,8 +36,8 @@ public class BoardService {
 
         BoardAndBoardList boardAndBoardLists = new BoardAndBoardList();
 
-        //Board board = boardRepository.getBoard(boardList.getBoardId());
-        Board board = memberRepository.getOne(boardList.getBoardId());
+        Board board = boardRepository.getBoard(boardList.getBoardId());
+        //Board board = memberRepository.getOne(boardList.getBoardId());
 
 
         System.out.println(board);

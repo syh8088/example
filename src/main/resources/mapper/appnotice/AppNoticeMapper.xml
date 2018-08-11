@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.api.repositories.AppNoticeMapper">
+
+    <select id="getAppNoticeList" resultType="AppNotice">
+            SELECT N.id, N.category, N.title,
+            <foreach collection="subSelectArray" item="item" separator=",">
+                (SELECT notice_top_allowed FROM app_notice_device AS D WHERE D.type=#{item} AND D.notice_id=N.id) AS #{item}
+            </foreach>
+            FROM app_notice AS N
+            ORDER BY N.id DESC
+    </select>
+
+
+</mapper>
