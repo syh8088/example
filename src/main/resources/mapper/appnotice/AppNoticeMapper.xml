@@ -6,8 +6,8 @@
 
     <select id="getAppNoticeList" resultType="AppNotice">
             SELECT N.id, N.category, N.title,
-            <foreach collection="subSelectArray" item="item" separator=",">
-                (SELECT notice_top_allowed FROM app_notice_device AS D WHERE D.type=#{item} AND D.notice_id=N.id) AS #{item}
+            <foreach collection="list" item="item" separator=",">
+                (SELECT notice_top_allowed FROM app_notice_device AS D WHERE D.type=#{item.subTableName} AND D.notice_id=N.id) AS #{item.subTableName}
             </foreach>
             FROM app_notice AS N
             ORDER BY N.id DESC

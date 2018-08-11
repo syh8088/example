@@ -17,10 +17,10 @@ public class AppNoticeController {
         this.appNoticeService = appNoticeService;
     }
 
-    @GetMapping("/mapper/appnotice/getAppNoticeList/")
+    @GetMapping("/appnotice/getAppNoticeList/")
     public ResponseEntity<AppNotice> getAppNoticeList() {
     //public void getAppNoticeList() {
-        appNoticeService.getAppNoticeList();
+        //appNoticeService.getAppNoticeList();
 
         return ResponseEntity.ok().body(appNoticeService.getAppNoticeList());
     }

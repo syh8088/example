@@ -3,46 +3,49 @@ package com.example.api.service;
 import com.example.api.entities.Board;
 import com.example.api.entities.BoardAndBoardList;
 import com.example.api.entities.BoardList;
-import com.example.api.exception.ExampleException;
+import com.example.api.repositories.BoardMapper;
 import com.example.api.repositories.BoardRepository;
-import com.example.api.repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
 
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.safety.Whitelist;
 import org.jsoup.select.Elements;
 
 
+import javax.transaction.Transactional;
 import java.net.InetAddress;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BoardService {
 
-    private BoardRepository boardRepository;
-    private MemberRepository memberRepository; // JPA
+    private BoardMapper boardMapper;
+    private BoardRepository boardRepository; // JPA
 
     @Autowired
-    public BoardService(BoardRepository boardRepository, MemberRepository memberRepository) {
+    public BoardService(BoardMapper boardMapper, BoardRepository boardRepository) {
+        this.boardMapper = boardMapper;
         this.boardRepository = boardRepository;
-        this.memberRepository = memberRepository;
     }
 
+    @Transactional
     public BoardAndBoardList getBoard(BoardList boardList) {
 
         BoardAndBoardList boardAndBoardLists = new BoardAndBoardList();
 
-        Board board = boardRepository.getBoard(boardList.getBoardId());
-        //Board board = memberRepository.getOne(boardList.getBoardId());
-
+        //Board board = boardMapper.getBoard(boardList.getBoardId());
+        Board board = boardRepository.findById(boardList.getBoardId()).get();
+/*
+        Optional<Board> board1 = Optional.of(new Board());
+        board1.orElse(new Board());
+        */
 
         System.out.println(board);
 
-        List<BoardList> newBoardList = boardRepository.getBoardList(boardList.getBoardId());
+        List<BoardList> newBoardList = boardMapper.getBoardList(boardList.getBoardId());
 
         boardAndBoardLists.setBoard(board);
         boardAndBoardLists.setBoardList(newBoardList);
@@ -52,10 +55,10 @@ public class BoardService {
 
     public BoardList getOneBoard(BoardList boardList) {
 
-        Board board = boardRepository.getBoard(boardList.getBoardId());
-        int hit = boardRepository.setHitBoard(boardList);
+        Board board = boardMapper.getBoard(boardList.getBoardId());
+        int hit = boardMapper.setHitBoard(boardList);
 
-        BoardList newBoardList = boardRepository.getOneBoard(boardList);
+        BoardList newBoardList = boardMapper.getOneBoard(boardList);
 
         return newBoardList;
     }
@@ -66,12 +69,12 @@ public class BoardService {
         String content = boardList.getContent();
         String boardId = boardList.getBoardId();
 
-        Board board = boardRepository.getBoard(boardId);
+        Board board = boardMapper.getBoard(boardId);
 
         // 하루 글쓰기 제한 유효성 검사
         int limitWrite = board.getLimitWrite();
         if(limitWrite > 0) {
-            int limitWriteCount = boardRepository.getBoardLimitWriteCount(boardId);
+            int limitWriteCount = boardMapper.getBoardLimitWriteCount(boardId);
             if(limitWriteCount > limitWrite) {
                 // TODO 하루 글쓰기 초과
 
@@ -109,8 +112,8 @@ public class BoardService {
 
         // TODO 리턴값이 CREATE 한 id값으로 오는게 아니라 도메인 boardList에 자동 저장되는가??
         System.out.println(boardList.getId());
-        int postId = boardRepository.setBoard(boardList);
-        boardRepository.updateBoardParentId(boardList);
+        int postId = boardMapper.setBoard(boardList);
+        boardMapper.updateBoardParentId(boardList);
         System.out.println(boardList.getId());
 
         //boardList.setBoardId(boardId);
@@ -122,7 +125,7 @@ public class BoardService {
 
         String boardId = boardList.getBoardId();
         String content = boardList.getContent();
-        Board board = boardRepository.getBoard(boardId);
+        Board board = boardMapper.getBoard(boardId);
 
         // ip 등록
         try {
@@ -147,13 +150,13 @@ public class BoardService {
 
         }
 
-        boardRepository.updateBoard(boardList);
+        boardMapper.updateBoard(boardList);
         return this.getBoard(boardList);
     }
 
     public void delBoard(String boardId, int postId) {
 
-        Board board = boardRepository.getBoard(boardId);
+        Board board = boardMapper.getBoard(boardId);
 
 
 
@@ -166,7 +169,7 @@ public class BoardService {
         }
 
         // TODO 성공 및 실패시 리턴값을 어떻게 받지??
-        boardRepository.delBoard(boardId, postId);
+        boardMapper.delBoard(boardId, postId);
     }
 
     public BoardList setBoardComment(BoardList boardList) {
@@ -175,7 +178,7 @@ public class BoardService {
         String content = boardList.getContent();
         String boardId = boardList.getBoardId();
 
-        Board board = boardRepository.getBoard(boardId);
+        Board board = boardMapper.getBoard(boardId);
 
         // ip 등록
         try {
@@ -186,7 +189,7 @@ public class BoardService {
             System.out.println("InetAddress ERROR");
         }
 
-        int postId = boardRepository.setBoardComment(boardList);
+        int postId = boardMapper.setBoardComment(boardList);
         return getOneBoard(boardList);
     }
 

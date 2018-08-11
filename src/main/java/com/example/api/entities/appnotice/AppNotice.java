@@ -9,6 +9,7 @@ import org.apache.ibatis.type.Alias;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Slf4j
@@ -20,13 +21,13 @@ public class AppNotice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private boolean mobile_web;
-    private boolean sport_android;
-    private boolean sport_ios;
-    private boolean game_android;
-    private boolean game_ios;
+    private int mobile_web;
+    private int sport_android;
+    private int sport_ios;
+    private int game_android;
+    private int game_ios;
 
-    private List subSelectArray;
+    //private Map<String, String> subSelectArray;
 
     @Column(columnDefinition = "enum('NOTICE', 'EVENT', 'UPDATE')")
     @Enumerated(EnumType.STRING)
