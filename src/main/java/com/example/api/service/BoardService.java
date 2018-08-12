@@ -1,10 +1,10 @@
 package com.example.api.service;
 
-import com.example.api.entities.Board;
-import com.example.api.entities.BoardAndBoardList;
-import com.example.api.entities.BoardList;
-import com.example.api.repositories.BoardMapper;
-import com.example.api.repositories.BoardRepository;
+import com.example.api.entities.board.Board;
+import com.example.api.entities.board.BoardAndBoardList;
+import com.example.api.entities.board.BoardList;
+import com.example.api.repositories.board.BoardMapper;
+import com.example.api.repositories.board.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
@@ -17,7 +17,6 @@ import org.jsoup.select.Elements;
 import javax.transaction.Transactional;
 import java.net.InetAddress;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BoardService {

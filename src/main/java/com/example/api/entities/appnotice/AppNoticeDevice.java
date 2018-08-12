@@ -2,20 +2,24 @@ package com.example.api.entities.appnotice;
 
 
 import com.example.api.config.LocalDateTimeAttributeConverter;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Slf4j
-@Data
-public class AppNoticeDevice {
+@Getter
+@Setter
+@ToString(exclude = "appNotice")
+public class AppNoticeDevice extends Common {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "notice_id")
     private long noticeId;
 
     @Column(columnDefinition = "enum('MOBILE_WEB','SPORT_ANDROID','SPORT_IOS','GAME_ANDROID','GAME_IOS')")
@@ -34,9 +38,15 @@ public class AppNoticeDevice {
     @Convert(converter = LocalDateTimeAttributeConverter.class)
     private LocalDateTime popupEndDate;
 
-    @ManyToOne
-    @JoinColumn(name = "noticeId", insertable = false, updatable = false)
+
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "notice_id", insertable = false, updatable = false)
+    @JsonIgnore
     private AppNotice appNotice;
+
+/*    @ManyToOne
+    @JoinColumn(name = "noticeId", insertable = false, updatable = false)
+    private AppNotice appNotice;*/
 
     public enum Type {
         MOBILE_WEB("MOBILE_WEB"), SPORT_ANDROID("SPORT_ANDROID"), SPORT_IOS("SPORT_IOS"), GAME_ANDROID("GAME_ANDROID"), GAME_IOS("GAME_IOS");

@@ -1,4 +1,4 @@
-package com.example.api.repositories;
+package com.example.api.repositories.appnotice;
 
 import com.example.api.entities.appnotice.AppNotice;
 import org.apache.ibatis.annotations.Mapper;

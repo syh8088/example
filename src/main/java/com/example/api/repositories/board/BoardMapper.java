@@ -1,7 +1,7 @@
-package com.example.api.repositories;
+package com.example.api.repositories.board;
 
-import com.example.api.entities.Board;
-import com.example.api.entities.BoardList;
+import com.example.api.entities.board.Board;
+import com.example.api.entities.board.BoardList;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

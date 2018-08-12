@@ -1,8 +1,8 @@
 package com.example.api.service;
 
 import com.example.api.entities.appnotice.AppNotice;
-import com.example.api.entities.appnotice.SubSelectArray;
-import com.example.api.repositories.AppNoticeMapper;
+import com.example.api.repositories.appnotice.AppNoticeMapper;
+import com.example.api.repositories.appnotice.AppNoticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +12,7 @@ import java.util.*;
 public class AppNoticeService {
 
     private AppNoticeMapper appNoticeMapper;
+    private AppNoticeRepository appNoticeRepository;
     private static Map<String, List> subSelectArray = new HashMap<String, List>();
 
     static {
@@ -25,8 +26,9 @@ public class AppNoticeService {
     }
 
     @Autowired
-    public AppNoticeService(AppNoticeMapper appNoticeMapper) {
+    public AppNoticeService(AppNoticeMapper appNoticeMapper, AppNoticeRepository appNoticeRepository) {
         this.appNoticeMapper = appNoticeMapper;
+        this.appNoticeRepository = appNoticeRepository;
     }
 
     public AppNotice getAppNoticeList() {
@@ -61,6 +63,13 @@ public class AppNoticeService {
 
         AppNotice appNoticeList = appNoticeMapper.getAppNoticeList(list);
         return appNoticeList;
+    }
+
+    public AppNotice getAppNotice(long id) {
+        AppNotice appNotice = appNoticeRepository.findById(id);
+
+        System.out.println(appNotice);
+        return appNotice;
     }
 
 }

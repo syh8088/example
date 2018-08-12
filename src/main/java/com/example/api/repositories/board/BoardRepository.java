@@ -1,6 +1,6 @@
-package com.example.api.repositories;
+package com.example.api.repositories.board;
 
-import com.example.api.entities.Board;
+import com.example.api.entities.board.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BoardRepository extends JpaRepository<Board, String> {

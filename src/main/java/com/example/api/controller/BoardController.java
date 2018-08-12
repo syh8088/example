@@ -1,8 +1,8 @@
 package com.example.api.controller;
 
 
-import com.example.api.entities.BoardAndBoardList;
-import com.example.api.entities.BoardList;
+import com.example.api.entities.board.BoardAndBoardList;
+import com.example.api.entities.board.BoardList;
 import com.example.api.service.BoardService;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;

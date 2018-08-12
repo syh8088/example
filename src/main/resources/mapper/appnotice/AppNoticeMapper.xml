@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.api.repositories.AppNoticeMapper">
+<mapper namespace="com.example.api.repositories.appnotice.AppNoticeMapper">
 
     <select id="getAppNoticeList" resultType="AppNotice">
             SELECT N.id, N.category, N.title,
