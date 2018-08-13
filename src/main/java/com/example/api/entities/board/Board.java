@@ -1,5 +1,6 @@
 package com.example.api.entities.board;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @ToString
 @Alias("Board")
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Board {
 
     @Id
