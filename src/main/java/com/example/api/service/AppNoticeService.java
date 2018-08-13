@@ -13,8 +13,8 @@ public class AppNoticeService {
 
     private AppNoticeMapper appNoticeMapper;
     private AppNoticeRepository appNoticeRepository;
-    private static Map<String, List> subSelectArray = new HashMap<String, List>();
-
+    //private static Map<String, List> subSelectArray = new HashMap<String, List>();
+    private List<String> noticeName = Arrays.asList("mobile_web", "sport_android", "sport_ios", "game_android", "game_ios");
     static {
 
 
@@ -50,7 +50,7 @@ public class AppNoticeService {
         subSelectArray4.setSubTableName("game_android");
         subSelectArray5.setSubTableName("game_ios");*/
 
-        List<String> list = Arrays.asList("mobile_web", "sport_android", "sport_ios", "game_android", "game_ios");
+
        /* list.add(subSelectArray1);
         list.add(subSelectArray2);
         list.add(subSelectArray3);
@@ -61,7 +61,7 @@ public class AppNoticeService {
 
 //System.out.println(subSelectArray);
 
-        AppNotice appNoticeList = appNoticeMapper.getAppNoticeList(list);
+        AppNotice appNoticeList = appNoticeMapper.getAppNoticeList(noticeName);
         return appNoticeList;
     }
 
@@ -70,6 +70,16 @@ public class AppNoticeService {
 
         System.out.println(appNotice);
         return appNotice;
+    }
+
+    public void setAppNotice() {
+        System.out.println(noticeName);
+
+        for(int i=0; i<noticeName.size(); i++){
+            String val = noticeName.get(i);
+            System.out.println(val);
+        }
+
     }
 
 }

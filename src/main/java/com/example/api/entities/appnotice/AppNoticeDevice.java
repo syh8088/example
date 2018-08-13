@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@ToString(exclude = "appNotice")
+@ToString(exclude = "appNotice") // TODO exclude = "appNotice" 설정 안하면 에러문구 : java.lang.StackOverflowError: null
 public class AppNoticeDevice extends Common {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
