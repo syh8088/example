@@ -11,4 +11,8 @@ public class HelloRestController {
         return "write";
     }
 
+    @RequestMapping("/appNotice")
+    public String appNotice() {
+        return "appNotice";
+    }
 }

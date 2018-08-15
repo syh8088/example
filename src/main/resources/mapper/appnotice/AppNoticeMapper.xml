@@ -13,5 +13,22 @@
             ORDER BY N.id DESC
     </select>
 
+    <insert id="setAppNotice" parameterType="AppNotice" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO app_notice
+        SET title = #{title},
+        content = #{content}
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <insert id="setAppNoticeDevice" parameterType="java.util.Map">
+        INSERT INTO app_notice_device
+        (notice_id, notice_top_allowed, popup_allowed)
+        values
+        <foreach collection="list" item="item" separator=" , ">
+            (#{item.noticeId}, #{item.noticeTopAllowed}, #{item.popupAllowed})
+        </foreach>
+    </insert>
 
 </mapper>
