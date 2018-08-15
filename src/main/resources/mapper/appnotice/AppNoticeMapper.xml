@@ -16,7 +16,8 @@
     <insert id="setAppNotice" parameterType="AppNotice" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO app_notice
         SET title = #{title},
-        content = #{content}
+        content = #{content},
+        reserve_at = #{reserveAt}
         <selectKey resultType="int" keyProperty="id" order="AFTER">
             SELECT LAST_INSERT_ID()
         </selectKey>

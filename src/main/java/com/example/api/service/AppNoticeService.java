@@ -79,7 +79,7 @@ public class AppNoticeService {
         //appNotice.setCategory(request.category);
         appNotice.setTitle(request.title);
         appNotice.setContent(request.content);
-        //appNotice.setReserveAt(request.reserve_at);
+        appNotice.setReserveAt(request.reserve_at);
 
         appNoticeMapper.setAppNotice(appNotice);
         long insertId = appNotice.getId();
@@ -140,6 +140,7 @@ public class AppNoticeService {
         String type = mode.toLowerCase();
         AppNoticeDevice appNoticeDevice = new AppNoticeDevice();
         appNoticeDevice.setNoticeId(insertId);
+        //appNoticeDevice.setType(mode);
         //if(request.mobile_web_notice_top_allowed == "Y") {
 
         switch (type) {

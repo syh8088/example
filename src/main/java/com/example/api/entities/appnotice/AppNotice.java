@@ -2,8 +2,7 @@ package com.example.api.entities.appnotice;
 
 
 import com.example.api.config.LocalDateTimeAttributeConverter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

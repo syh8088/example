@@ -126,6 +126,7 @@
             <td>예약시간</td>
             <td>
                 <input type="text" class="datepick" name="reserve_at" id="reserve_at" placeholder="날짜을 입력해주세요" value="">
+                <input type="time" id="stime" name="stime" value="" step="2" placeholder="시간을 입력해주세요">
             </td>
         </tr>
 
@@ -191,7 +192,7 @@
                     GAME_ANDROID:document.getElementsByName('GAME_ANDROID')[0].checked,
                     GAME_IOS:document.getElementsByName('GAME_IOS')[0].checked,
                     category:$('#category').val(),
-                    reserve_at:$('#reserve_at').val(),
+                    reserve_at:$('#reserve_at').val() + " " + document.getElementById('stime').value,
                     title:$('#title').val(),
                     content:$('#content').val()
                 }
