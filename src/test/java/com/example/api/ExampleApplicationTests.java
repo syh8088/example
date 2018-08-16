@@ -18,6 +18,10 @@ public class ExampleApplicationTests {
     public void enumTest() {
         System.out.println(AppNotice.Category.EVENT.name());
         System.out.println(AppNotice.Category.valueOf("EVENT"));
+
+
+
+
     }
 
 }

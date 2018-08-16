@@ -73,9 +73,10 @@ public class AppNoticeService {
     }
 
     public AppNotice setAppNotice(AppNoticeController.CreatePostRequest request) {
-        System.out.println(request);
-
+        System.out.println(AppNotice.Category.valueOf(request.category.toUpperCase()).getClass());
+        System.out.println(request.category.toUpperCase().getClass());
         AppNotice appNotice = new AppNotice();
+
         appNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
         appNotice.setTitle(request.title);
         appNotice.setContent(request.content);
@@ -140,7 +141,7 @@ public class AppNoticeService {
         String type = mode.toLowerCase();
         AppNoticeDevice appNoticeDevice = new AppNoticeDevice();
         appNoticeDevice.setNoticeId(insertId);
-        //appNoticeDevice.setType(mode);
+        appNoticeDevice.setType(AppNoticeDevice.Type.valueOf(mode));
         //if(request.mobile_web_notice_top_allowed == "Y") {
 
         switch (type) {
