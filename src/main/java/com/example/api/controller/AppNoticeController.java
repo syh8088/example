@@ -69,7 +69,7 @@ public class AppNoticeController {
         public LocalDateTime reserve_at;
 
 
-        //private AppNotice.Category category;
+        public String category;
 
         public String title;
         public String content;

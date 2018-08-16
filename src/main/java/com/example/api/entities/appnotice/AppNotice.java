@@ -64,24 +64,6 @@ public class AppNotice extends Common{
 
 
     public enum Category {
-        NOTICE("NOTICE"), EVENT("EVENT"), UPDATE("UPDATE");
-
-        private String value;
-
-        Category(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
+        NOTICE, EVENT, UPDATE;
     }
-
-
-
-
-
-
-
 }

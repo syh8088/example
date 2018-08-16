@@ -76,7 +76,7 @@ public class AppNoticeService {
         System.out.println(request);
 
         AppNotice appNotice = new AppNotice();
-        //appNotice.setCategory(request.category);
+        appNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
         appNotice.setTitle(request.title);
         appNotice.setContent(request.content);
         appNotice.setReserveAt(request.reserve_at);
