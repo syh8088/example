@@ -5,9 +5,11 @@ import com.example.api.entities.appnotice.AppNotice;
 import com.example.api.entities.appnotice.AppNoticeDevice;
 import com.example.api.repositories.appnotice.AppNoticeMapper;
 import com.example.api.repositories.appnotice.AppNoticeRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.*;
 
 @Service
@@ -70,6 +72,26 @@ public class AppNoticeService {
     public AppNotice getAppNotice(long id) {
         AppNotice appNotice = appNoticeRepository.findById(id);
         return appNotice;
+    }
+
+    @Transactional
+    public void updateAppNotice(AppNoticeController.CreatePostRequest request) {
+
+
+        System.out.println(request);
+        AppNotice originAppNotice = appNoticeRepository.findById(request.getId());
+        AppNotice newAppNotice = new AppNotice();
+        newAppNotice.setReserveAt(request.reserve_at);
+        newAppNotice.setContent(request.content);
+        newAppNotice.setTitle(request.title);
+        newAppNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
+        newAppNotice.setId(request.getId());
+
+        System.out.println(originAppNotice);
+
+
+        BeanUtils.copyProperties(newAppNotice, originAppNotice);
+
     }
 
     public AppNotice setAppNotice(AppNoticeController.CreatePostRequest request) {

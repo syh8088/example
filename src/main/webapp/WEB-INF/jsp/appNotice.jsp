@@ -13,7 +13,10 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <table width="1000" cellpadding="0" cellspacing="0" border="1">
     <form action="/appnotice/create/" method="post">
-
+        <tr>
+            <td> 수정Id </td>
+            <td> <input type="text" id="id" name="id" size = "50"> </td>
+        </tr>
         <tr>
             <td>공지 타입 설정</td>
             <td>
@@ -176,6 +179,7 @@
         $("#json").click(function(){
             var sendData = JSON.stringify(
                 {
+                    id:document.getElementById("id").value,
                     mobile_web_notice_top_allowed:document.querySelector('input[name="mobile_web_notice_top_allowed"]:checked').value,
                     mobile_web_popup_allowed:document.querySelector('input[name="mobile_web_popup_allowed"]:checked').value,
                     sport_android_notice_top_allowed:document.querySelector('input[name="sport_android_notice_top_allowed"]:checked').value,

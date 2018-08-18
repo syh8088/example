@@ -35,11 +35,21 @@ public class AppNoticeController {
     }
 
     @PostMapping("/appnotice/create")
-    public ResponseEntity<AppNotice> setAppNotice (
-    //public void setAppNotice (
+    //public ResponseEntity<AppNotice> setAppNotice (
+    public void setAppNotice (
             @RequestBody CreatePostRequest request
     ) throws Exception {
-        return ResponseEntity.ok().body(appNoticeService.setAppNotice(request));
+
+        appNoticeService.updateAppNotice(request);
+
+       // return ResponseEntity.ok().body(appNoticeService.setAppNotice(request));
+    }
+
+    @PutMapping("/appnotice/update")
+    public void updateAppNotice (
+        @RequestBody CreatePostRequest request
+    ) throws Exception {
+        appNoticeService.updateAppNotice(request);
     }
 
     @NoArgsConstructor
@@ -47,6 +57,7 @@ public class AppNoticeController {
     @JsonPropertyOrder({"subject", "content"})
     public static class CreatePostRequest {
         @Convert(converter = BooleanToYNConverter.class)
+        public long id;
         public String mobile_web_notice_top_allowed;
         public String mobile_web_popup_allowed;
         public String sport_android_notice_top_allowed;
