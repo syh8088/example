@@ -3,6 +3,7 @@ package com.example.api.entities.appnotice;
 
 import com.example.api.config.LocalDateTimeAttributeConverter;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -26,18 +27,17 @@ public class AppNotice extends Common{
 
     // TODO com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'appnotice0_.game_android' in 'field list'
     // 살리면서 할수 있나?
-/*
-    @JsonIgnore
-    private boolean mobileWeb;
-    @JsonIgnore
-    private boolean sportAndroid;
-    @JsonIgnore
-    private boolean sportIos;
-    @JsonIgnore
-    private boolean gameAndroid;
-    @JsonIgnore
-    private boolean gameIos;*/
 
+    @Transient
+    private boolean mobileWeb;
+    @Transient
+    private boolean sportAndroid;
+    @Transient
+    private boolean sportIos;
+    @Transient
+    private boolean gameAndroid;
+    @Transient
+    private boolean gameIos;
 
     //private Map<String, String> subSelectArray;
 

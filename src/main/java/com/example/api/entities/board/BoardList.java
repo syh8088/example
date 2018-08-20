@@ -44,7 +44,6 @@ public class BoardList {
     private String updateBy;
     private String ip;
 
-    @Setter
     private boolean isPhoto;
     private boolean isBest;
 

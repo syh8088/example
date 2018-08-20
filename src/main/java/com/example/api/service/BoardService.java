@@ -5,14 +5,9 @@ import com.example.api.entities.board.BoardAndBoardList;
 import com.example.api.entities.board.BoardList;
 import com.example.api.repositories.board.BoardMapper;
 import com.example.api.repositories.board.BoardRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.apache.commons.lang3.StringUtils;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 
 import javax.transaction.Transactional;
 import java.net.InetAddress;
@@ -35,8 +30,15 @@ public class BoardService {
 
         BoardAndBoardList boardAndBoardLists = new BoardAndBoardList();
 
+        // 마이바티스
         //Board board = boardMapper.getBoard(boardList.getBoardId());
-        Board board = boardRepository.findById(boardList.getBoardId()).get();
+
+        // JPA
+        //Board board = boardRepository.findById(boardList.getBoardId()).get();
+
+        // queryDSL
+        Board board = boardRepository.getBoardById(boardList.getBoardId());
+
 /*
         Optional<Board> board1 = Optional.of(new Board());
         board1.orElse(new Board());
@@ -93,12 +95,12 @@ public class BoardService {
         //boardList.isPhoto();
         if(attachmentsCount > 0) boardList.setPhoto(true);
 
-        Elements imgs = Jsoup.parseBodyFragment(content).select("img");
+/*        Elements imgs = Jsoup.parseBodyFragment(content).select("img");
         System.out.println(imgs);
         for (Element img : imgs) {
             System.out.println(img);
 
-        }
+        }*/
 
         // ip 등록
         try {

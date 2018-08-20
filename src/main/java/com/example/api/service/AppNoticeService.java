@@ -17,17 +17,7 @@ public class AppNoticeService {
 
     private AppNoticeMapper appNoticeMapper;
     private AppNoticeRepository appNoticeRepository;
-    //private static Map<String, List> subSelectArray = new HashMap<String, List>();
     private List<String> noticeName = Arrays.asList("mobile_web", "sport_android", "sport_ios", "game_android", "game_ios");
-    static {
-
-
-       /* subSelectArray.put("모바일 웹", "mobile_web");
-        subSelectArray.put("스포츠 Android", "sport_android");
-        subSelectArray.put("스포츠 iOS", "sport_ios");
-        subSelectArray.put("오락실 Android", "game_android");
-        subSelectArray.put("오락실 iOS", "game_ios");*/
-    }
 
     @Autowired
     public AppNoticeService(AppNoticeMapper appNoticeMapper, AppNoticeRepository appNoticeRepository) {
@@ -35,37 +25,8 @@ public class AppNoticeService {
         this.appNoticeRepository = appNoticeRepository;
     }
 
-    public AppNotice getAppNoticeList() {
-       // System.out.println(subSelectArray);
-
-        //AppNotice appNotice = new AppNotice();
-        //appNotice.setSubSelectArray((List) subSelectArray);
-/*
-
-        SubSelectArray subSelectArray1 = new SubSelectArray();
-        SubSelectArray subSelectArray2 = new SubSelectArray();
-        SubSelectArray subSelectArray3 = new SubSelectArray();
-        SubSelectArray subSelectArray4 = new SubSelectArray();
-        SubSelectArray subSelectArray5 = new SubSelectArray();
-
-        subSelectArray1.setSubTableName("mobile_web");
-        subSelectArray2.setSubTableName("sport_android");
-        subSelectArray3.setSubTableName("sport_ios");
-        subSelectArray4.setSubTableName("game_android");
-        subSelectArray5.setSubTableName("game_ios");*/
-
-
-       /* list.add(subSelectArray1);
-        list.add(subSelectArray2);
-        list.add(subSelectArray3);
-        list.add(subSelectArray4);
-        list.add(subSelectArray5);*/
-
-       // subSelectArray.put("list", list);
-
-//System.out.println(subSelectArray);
-
-        AppNotice appNoticeList = appNoticeMapper.getAppNoticeList(noticeName);
+    public List<AppNotice> getAppNoticeList() {
+        List<AppNotice> appNoticeList = appNoticeMapper.getAppNoticeList(noticeName);
         return appNoticeList;
     }
 
@@ -77,9 +38,8 @@ public class AppNoticeService {
     @Transactional
     public void updateAppNotice(AppNoticeController.CreatePostRequest request) {
 
-
-        System.out.println(request);
         AppNotice originAppNotice = appNoticeRepository.findById(request.getId());
+
         AppNotice newAppNotice = new AppNotice();
         newAppNotice.setReserveAt(request.reserve_at);
         newAppNotice.setContent(request.content);
@@ -87,16 +47,14 @@ public class AppNoticeService {
         newAppNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
         newAppNotice.setId(request.getId());
 
-        System.out.println(originAppNotice);
-
-
         BeanUtils.copyProperties(newAppNotice, originAppNotice);
 
     }
 
     public AppNotice setAppNotice(AppNoticeController.CreatePostRequest request) {
-        System.out.println(AppNotice.Category.valueOf(request.category.toUpperCase()).getClass());
-        System.out.println(request.category.toUpperCase().getClass());
+        //System.out.println(AppNotice.Category.valueOf(request.category.toUpperCase()).getClass());
+        //System.out.println(request.category.toUpperCase().getClass());
+
         AppNotice appNotice = new AppNotice();
 
         appNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
@@ -106,13 +64,6 @@ public class AppNoticeService {
 
         appNoticeMapper.setAppNotice(appNotice);
         long insertId = appNotice.getId();
-
-        Map<String, Boolean> params = new HashMap<>();
-        params.put("MOBILE_WEB", request.MOBILE_WEB);
-        params.put("SPORT_ANDROID", request.SPORT_ANDROID);
-        params.put("SPORT_IOS", request.SPORT_IOS);
-        params.put("GAME_ANDROID", request.GAME_ANDROID);
-        params.put("GAME_IOS", request.GAME_IOS);
 
         List<AppNoticeDevice> list = new ArrayList<>();
         Map<String, Object> map1 = new HashMap<>();
@@ -146,10 +97,22 @@ public class AppNoticeService {
         appNoticeMapper.setAppNoticeDevice(map1);
         AppNotice newAppNotice = getAppNotice(insertId);
         return newAppNotice;
+
+
 /*
-        for(int i=0; i<noticeName.size(); i++){
+        Map<String, Boolean> params = new HashMap<>();
+        params.put("MOBILE_WEB", request.MOBILE_WEB);
+        params.put("SPORT_ANDROID", request.SPORT_ANDROID);
+        params.put("SPORT_IOS", request.SPORT_IOS);
+        params.put("GAME_ANDROID", request.GAME_ANDROID);
+        params.put("GAME_IOS", request.GAME_IOS);
+
+        for(int i=0; i<noticeName.size(); i++) {
             String val = noticeName.get(i);
-            if(params.get(val.toUpperCase())) {
+
+            }
+
+            if (params.get(val.toUpperCase())) {
 
                 System.out.println("여기오니?? " + val);
                 AppNoticeDevice appNoticeDevice = new AppNoticeDevice();
@@ -168,11 +131,12 @@ public class AppNoticeService {
 
         switch (type) {
             case "mobile_web":
-                if(request.mobile_web_notice_top_allowed.equals("Y")) {
-                    appNoticeDevice.setNoticeTopAllowed(true);
-                } else {
-                    appNoticeDevice.setNoticeTopAllowed(false);
-                }
+                appNoticeDevice.setNoticeTopAllowed(request.mobile_web_notice_top_allowed.equals("Y"));
+//                if(request.mobile_web_notice_top_allowed.equals("Y")) {
+//                    appNoticeDevice.setNoticeTopAllowed(true);
+//                } else {
+//                    appNoticeDevice.setNoticeTopAllowed(false);
+//                }
 
                 if(request.mobile_web_popup_allowed.equals("Y")) {
                     appNoticeDevice.setPopupAllowed(true);

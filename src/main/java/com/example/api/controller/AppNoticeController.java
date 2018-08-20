@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Convert;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 public class AppNoticeController {
@@ -25,7 +26,7 @@ public class AppNoticeController {
     }
 
     @GetMapping("/appnotice/getAppNoticeList/")
-    public ResponseEntity<AppNotice> getAppNoticeList() {
+    public ResponseEntity<List<AppNotice>> getAppNoticeList() {
         return ResponseEntity.ok().body(appNoticeService.getAppNoticeList());
     }
 
@@ -35,19 +36,25 @@ public class AppNoticeController {
     }
 
     @PostMapping("/appnotice/create")
-    //public ResponseEntity<AppNotice> setAppNotice (
-    public void setAppNotice (
+    public ResponseEntity<AppNotice> setAppNotice(
+            //public void setAppNotice (
             @RequestBody CreatePostRequest request
-    ) throws Exception {
+    ) {
 
-        appNoticeService.updateAppNotice(request);
+        if (1 == 1) {
+            // TODO 런타임 입셉션 공부
+            throw new RuntimeException();
 
-       // return ResponseEntity.ok().body(appNoticeService.setAppNotice(request));
+        }
+
+        //appNoticeService.updateAppNotice(request);
+
+        return ResponseEntity.ok().body(appNoticeService.setAppNotice(request));
     }
 
     @PutMapping("/appnotice/update")
-    public void updateAppNotice (
-        @RequestBody CreatePostRequest request
+    public void updateAppNotice(
+            @RequestBody CreatePostRequest request
     ) throws Exception {
         appNoticeService.updateAppNotice(request);
     }
@@ -69,6 +76,8 @@ public class AppNoticeController {
         public String game_ios_notice_top_allowed;
         public String game_ios_popup_allowed;
 
+
+        // String[] aa ={"MoBILE+WEB"}
 
         public Boolean MOBILE_WEB;
         public Boolean SPORT_ANDROID;
