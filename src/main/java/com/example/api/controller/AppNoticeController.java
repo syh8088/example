@@ -36,8 +36,7 @@ public class AppNoticeController {
     }
 
     @PostMapping("/appnotice/create")
-    //public ResponseEntity<AppNotice> setAppNotice(
-            public void setAppNotice (
+    public ResponseEntity<AppNotice> setAppNotice(
             @RequestBody CreatePostRequest request
     ) {
 /*
@@ -46,10 +45,7 @@ public class AppNoticeController {
             throw new RuntimeException();
 
         }*/
-
-        appNoticeService.setAppNotice(request);
-
-       // return ResponseEntity.ok().body(appNoticeService.setAppNotice(request));
+       return ResponseEntity.ok().body(appNoticeService.setAppNotice(request));
     }
 
     @PutMapping("/appnotice/update")

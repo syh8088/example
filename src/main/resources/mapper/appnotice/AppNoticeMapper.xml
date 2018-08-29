@@ -26,10 +26,10 @@
 
     <insert id="setAppNoticeDevice" parameterType="java.util.Map">
         INSERT INTO app_notice_device
-        (notice_id, type, notice_top_allowed, popup_allowed)
+        (notice_id, type, notice_top_allowed, popup_allowed, create_at)
         values
         <foreach collection="list" item="item" separator=" , ">
-            (#{item.noticeId}, #{item.type}, #{item.noticeTopAllowed}, #{item.popupAllowed})
+            (#{item.noticeId}, #{item.type}, #{item.noticeTopAllowed}, #{item.popupAllowed}, NOW())
         </foreach>
     </insert>
 

@@ -16,6 +16,6 @@ public interface AppNoticeMapper {
     List<AppNotice> getAppNoticeList(List<String> subSelectArray);
 
     int setAppNotice(AppNotice appNotice);
-    int setAppNoticeDevice(Map<String, AppNoticeDevice> map);
+    int setAppNoticeDevice(Map<String, Object> map);
 
 }

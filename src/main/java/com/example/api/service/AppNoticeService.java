@@ -52,7 +52,7 @@ public class AppNoticeService {
     }
 
     //public void setAppNotice(AppNoticeController.CreatePostRequest request) {
-    public AppNotice setAppNotice(final AppNoticeController.CreatePostRequest request) {
+    public AppNotice setAppNotice(AppNoticeController.CreatePostRequest request) {
         //System.out.println(AppNotice.Category.valueOf(request.category.toUpperCase()).getClass());
         //System.out.println(request.category.toUpperCase().getClass());
 
@@ -63,10 +63,15 @@ public class AppNoticeService {
         appNotice.setContent(request.content);
         appNotice.setReserveAt(request.reserve_at);
 
-        appNoticeMapper.setAppNotice(appNotice);
-        final long insertId = appNotice.getId();
+        // Mybatus
+        // appNoticeMapper.setAppNotice(appNotice);
 
-        final List<AppNoticeDevice> list = new ArrayList<>();
+        // JPA
+        appNoticeRepository.save(appNotice);
+
+        long insertId = appNotice.getId();
+
+        List<AppNoticeDevice> list = new ArrayList<>();
         Map<String, Boolean> appNoticeOptions = new HashMap<>();
 
         appNoticeOptions.put("MOBILE_WEB", request.MOBILE_WEB);
@@ -76,52 +81,13 @@ public class AppNoticeService {
         appNoticeOptions.put("GAME_IOS", request.GAME_IOS);
 
         appNoticeOptions.forEach((option, value) -> {
-            System.out.println(option);
-            System.out.println(value);
             if(value == true) {
                 AppNoticeDevice appNoticeDevice = setAppNoticeDeviceArray(option, insertId, request);
                 list.add(appNoticeDevice);
             }
         });
-/*
 
-
-        noticeName.forEach(
-                request.
-        );
-
-
-
-*/
-/*
-
-        if(request.MOBILE_WEB) {
-            AppNoticeDevice appNoticeDevice = setAppNoticeDeviceArray("MOBILE_WEB", insertId, request);
-            list.add(appNoticeDevice);
-        }
-
-        if(request.SPORT_ANDROID) {
-            AppNoticeDevice appNoticeDevice = setAppNoticeDeviceArray("SPORT_ANDROID", insertId, request);
-            list.add(appNoticeDevice);
-        }
-
-        if(request.SPORT_IOS) {
-            AppNoticeDevice appNoticeDevice = setAppNoticeDeviceArray("SPORT_IOS", insertId, request);
-            list.add(appNoticeDevice);
-        }
-
-        if(request.GAME_ANDROID) {
-            AppNoticeDevice appNoticeDevice = setAppNoticeDeviceArray("GAME_ANDROID", insertId, request);
-            list.add(appNoticeDevice);
-        }
-
-        if(request.GAME_IOS) {
-            AppNoticeDevice appNoticeDevice = setAppNoticeDeviceArray("GAME_IOS", insertId, request);
-            list.add(appNoticeDevice);
-        }
-*/
-
-        Map<String, AppNoticeDevice> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         map.put("list", list);
         appNoticeMapper.setAppNoticeDevice(map);
         AppNotice newAppNotice = getAppNotice(insertId);
@@ -134,77 +100,29 @@ public class AppNoticeService {
         AppNoticeDevice appNoticeDevice = new AppNoticeDevice();
         appNoticeDevice.setNoticeId(insertId);
         appNoticeDevice.setType(AppNoticeDevice.Type.valueOf(mode));
-        //if(request.mobile_web_notice_top_allowed == "Y") {
 
         switch (type) {
             case "mobile_web":
                 appNoticeDevice.setNoticeTopAllowed(request.mobile_web_notice_top_allowed.equals("Y"));
-//                if(request.mobile_web_notice_top_allowed.equals("Y")) {
-//                    appNoticeDevice.setNoticeTopAllowed(true);
-//                } else {
-//                    appNoticeDevice.setNoticeTopAllowed(false);
-//                }
-
-                if(request.mobile_web_popup_allowed.equals("Y")) {
-                    appNoticeDevice.setPopupAllowed(true);
-                } else {
-                    appNoticeDevice.setPopupAllowed(false);
-                }
+                appNoticeDevice.setPopupAllowed(request.mobile_web_popup_allowed.equals("Y"));
                 break;
             case "sport_android":
-                if(request.sport_android_notice_top_allowed.equals("Y")) {
-                    appNoticeDevice.setNoticeTopAllowed(true);
-                } else {
-                    appNoticeDevice.setNoticeTopAllowed(false);
-                }
-
-                if(request.sport_android_popup_allowed.equals("Y")) {
-                    appNoticeDevice.setPopupAllowed(true);
-                } else {
-                    appNoticeDevice.setPopupAllowed(false);
-                }
+                appNoticeDevice.setNoticeTopAllowed(request.sport_android_notice_top_allowed.equals("Y"));
+                appNoticeDevice.setPopupAllowed(request.sport_android_popup_allowed.equals("Y"));
                 break;
             case "sport_ios":
-                if(request.sport_ios_notice_top_allowed.equals("Y")) {
-                    appNoticeDevice.setNoticeTopAllowed(true);
-                } else {
-                    appNoticeDevice.setNoticeTopAllowed(false);
-                }
-
-                if(request.sport_ios_popup_allowed.equals("Y")) {
-                    appNoticeDevice.setPopupAllowed(true);
-                } else {
-                    appNoticeDevice.setPopupAllowed(false);
-                }
+                appNoticeDevice.setNoticeTopAllowed(request.sport_ios_notice_top_allowed.equals("Y"));
+                appNoticeDevice.setPopupAllowed(request.sport_ios_popup_allowed.equals("Y"));
                 break;
             case "game_android":
-                if(request.game_android_notice_top_allowed == "Y") {
-                    appNoticeDevice.setNoticeTopAllowed(true);
-                } else {
-                    appNoticeDevice.setNoticeTopAllowed(false);
-                }
-
-                if(request.game_android_popup_allowed.equals("Y")) {
-                    appNoticeDevice.setPopupAllowed(true);
-                } else {
-                    appNoticeDevice.setPopupAllowed(false);
-                }
+                appNoticeDevice.setNoticeTopAllowed(request.game_android_notice_top_allowed.equals("Y"));
+                appNoticeDevice.setPopupAllowed(request.game_android_popup_allowed.equals("Y"));
                 break;
             case "game_ios":
-                if(request.game_ios_notice_top_allowed.equals("Y")) {
-                    appNoticeDevice.setNoticeTopAllowed(true);
-                } else {
-                    appNoticeDevice.setNoticeTopAllowed(false);
-                }
-
-                if(request.game_ios_popup_allowed.equals("Y")) {
-                    appNoticeDevice.setPopupAllowed(true);
-                } else {
-                    appNoticeDevice.setPopupAllowed(false);
-                }
+                appNoticeDevice.setNoticeTopAllowed(request.game_ios_notice_top_allowed.equals("Y"));
+                appNoticeDevice.setPopupAllowed(request.game_ios_popup_allowed.equals("Y"));
                 break;
         }
-
 
         return appNoticeDevice;
     }

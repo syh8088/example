@@ -19,7 +19,7 @@ import java.util.Set;
 @Setter
 @ToString
 @Alias("AppNotice")
-public class AppNotice extends Common{
+public class AppNotice extends Common {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
