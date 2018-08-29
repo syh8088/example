@@ -51,7 +51,8 @@ public class AppNoticeService {
 
     }
 
-    public AppNotice setAppNotice(AppNoticeController.CreatePostRequest request) {
+    //public void setAppNotice(AppNoticeController.CreatePostRequest request) {
+    public AppNotice setAppNotice(final AppNoticeController.CreatePostRequest request) {
         //System.out.println(AppNotice.Category.valueOf(request.category.toUpperCase()).getClass());
         //System.out.println(request.category.toUpperCase().getClass());
 
@@ -63,10 +64,36 @@ public class AppNoticeService {
         appNotice.setReserveAt(request.reserve_at);
 
         appNoticeMapper.setAppNotice(appNotice);
-        long insertId = appNotice.getId();
+        final long insertId = appNotice.getId();
 
-        List<AppNoticeDevice> list = new ArrayList<>();
-        Map<String, Object> map1 = new HashMap<>();
+        final List<AppNoticeDevice> list = new ArrayList<>();
+        Map<String, Boolean> appNoticeOptions = new HashMap<>();
+
+        appNoticeOptions.put("MOBILE_WEB", request.MOBILE_WEB);
+        appNoticeOptions.put("SPORT_ANDROID", request.SPORT_ANDROID);
+        appNoticeOptions.put("SPORT_IOS", request.SPORT_IOS);
+        appNoticeOptions.put("GAME_ANDROID", request.GAME_ANDROID);
+        appNoticeOptions.put("GAME_IOS", request.GAME_IOS);
+
+        appNoticeOptions.forEach((option, value) -> {
+            System.out.println(option);
+            System.out.println(value);
+            if(value == true) {
+                AppNoticeDevice appNoticeDevice = setAppNoticeDeviceArray(option, insertId, request);
+                list.add(appNoticeDevice);
+            }
+        });
+/*
+
+
+        noticeName.forEach(
+                request.
+        );
+
+
+
+*/
+/*
 
         if(request.MOBILE_WEB) {
             AppNoticeDevice appNoticeDevice = setAppNoticeDeviceArray("MOBILE_WEB", insertId, request);
@@ -92,36 +119,16 @@ public class AppNoticeService {
             AppNoticeDevice appNoticeDevice = setAppNoticeDeviceArray("GAME_IOS", insertId, request);
             list.add(appNoticeDevice);
         }
+*/
 
-        map1.put("list", list);
-        appNoticeMapper.setAppNoticeDevice(map1);
+        Map<String, AppNoticeDevice> map = new HashMap<>();
+        map.put("list", list);
+        appNoticeMapper.setAppNoticeDevice(map);
         AppNotice newAppNotice = getAppNotice(insertId);
         return newAppNotice;
 
-
-/*
-        Map<String, Boolean> params = new HashMap<>();
-        params.put("MOBILE_WEB", request.MOBILE_WEB);
-        params.put("SPORT_ANDROID", request.SPORT_ANDROID);
-        params.put("SPORT_IOS", request.SPORT_IOS);
-        params.put("GAME_ANDROID", request.GAME_ANDROID);
-        params.put("GAME_IOS", request.GAME_IOS);
-
-        for(int i=0; i<noticeName.size(); i++) {
-            String val = noticeName.get(i);
-
-            }
-
-            if (params.get(val.toUpperCase())) {
-
-                System.out.println("여기오니?? " + val);
-                AppNoticeDevice appNoticeDevice = new AppNoticeDevice();
-                new AppNoticeDevice().
-            }
-        }*/
-
-
     }
+
     private AppNoticeDevice setAppNoticeDeviceArray(String mode, long insertId, AppNoticeController.CreatePostRequest request) {
         String type = mode.toLowerCase();
         AppNoticeDevice appNoticeDevice = new AppNoticeDevice();

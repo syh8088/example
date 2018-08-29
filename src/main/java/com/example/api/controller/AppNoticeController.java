@@ -36,20 +36,20 @@ public class AppNoticeController {
     }
 
     @PostMapping("/appnotice/create")
-    public ResponseEntity<AppNotice> setAppNotice(
-            //public void setAppNotice (
+    //public ResponseEntity<AppNotice> setAppNotice(
+            public void setAppNotice (
             @RequestBody CreatePostRequest request
     ) {
-
+/*
         if (1 == 1) {
             // TODO 런타임 입셉션 공부
             throw new RuntimeException();
 
-        }
+        }*/
 
-        //appNoticeService.updateAppNotice(request);
+        appNoticeService.setAppNotice(request);
 
-        return ResponseEntity.ok().body(appNoticeService.setAppNotice(request));
+       // return ResponseEntity.ok().body(appNoticeService.setAppNotice(request));
     }
 
     @PutMapping("/appnotice/update")
