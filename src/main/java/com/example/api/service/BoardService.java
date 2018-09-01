@@ -30,13 +30,13 @@ public class BoardService {
         BoardAndBoardList boardAndBoardLists = new BoardAndBoardList();
 
         // 마이바티스
-        Board board = boardMapper.getBoard(boardList.getBoardId());
+        //Board board = boardMapper.getBoard(boardList.getBoardId());
 
         // JPA
         //Board board = boardRepository.findById(boardList.getBoardId()).get();
 
         // queryDSL
-        //Board board = boardRepository.getBoardById(boardList.getBoardId());
+        Board board = boardRepository.getBoardById(boardList.getBoardId());
 
 /*
         Optional<Board> board1 = Optional.of(new Board());

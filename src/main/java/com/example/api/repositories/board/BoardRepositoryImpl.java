@@ -1,4 +1,3 @@
-/*
 package com.example.api.repositories.board;
 import com.example.api.entities.board.Board;
 import com.example.api.entities.board.QBoard;
@@ -8,12 +7,12 @@ public class BoardRepositoryImpl extends QuerydslRepositorySupport implements Bo
 
     QBoard board = QBoard.board;
 
-    */
-/**
+
+    /**
      * Creates a new {@link QuerydslRepositorySupport} instance for the given domain type.
      *
      * @param //domainClass must not be {@literal null}.
-     *//*
+     */
 
     public BoardRepositoryImpl() {
         super(Board.class);
@@ -26,4 +25,4 @@ public class BoardRepositoryImpl extends QuerydslRepositorySupport implements Bo
                 .fetchOne();
     }
 }
-*/
+
