@@ -30,3 +30,5 @@ src/querydsl/java/com/example/api/entities/appnotice/QCommon.java
 src/querydsl/java/com/example/api/entities/board/QBoard.java
 src/querydsl/java/com/example/api/entities/board/QBoardList.java
 *.java
+gradle/wrapper/gradle-wrapper.properties
+gradlew
