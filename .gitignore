@@ -32,3 +32,4 @@ src/querydsl/java/com/example/api/entities/board/QBoardList.java
 *.java
 gradle/wrapper/gradle-wrapper.properties
 gradlew
+gradlew
