@@ -33,3 +33,5 @@ src/querydsl/java/com/example/api/entities/board/QBoardList.java
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew
+gradle/wrapper/gradle-wrapper.properties
+gradlew
