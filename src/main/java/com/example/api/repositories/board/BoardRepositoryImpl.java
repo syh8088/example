@@ -1,9 +1,10 @@
 package com.example.api.repositories.board;
+
 import com.example.api.entities.board.Board;
 import com.example.api.entities.board.QBoard;
-import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
+import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
 
-public class BoardRepositoryImpl extends QuerydslRepositorySupport implements BoardRepositoryCustom {
+public class BoardRepositoryImpl extends QueryDslRepositorySupport implements BoardRepositoryCustom {
 
     QBoard board = QBoard.board;
 
