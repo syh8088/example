@@ -3,6 +3,7 @@ package com.example.api.entities.cast;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.apache.ibatis.type.Alias;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-@NamedNativeQuery(
+/*@NamedNativeQuery(
         name = "Person.methodNameInRepository",
         query = "SELECT id, post_id, board_id, description, title, thumbnail_path, hit_count, created_date_time FROM cast_contents",
         resultSetMapping = "personProfileMapper"
@@ -34,7 +35,8 @@ import java.time.LocalDateTime;
                 )
 
 
-@Table(name = "cast_contents")
+@Table(name = "cast_contents")*/
+@Alias("Cast")
 public class CastContents {
 
     @Id
@@ -42,6 +44,7 @@ public class CastContents {
     private long id;
 
     private long postId;
+    private long order_priority;
 
     private String boardId;
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.api.repositories.cast.CastMapper">
+
+    <select id="getCastLists" resultType="Cast">
+            SELECT *,
+            IF(NOW() > DATE_ADD(created_date_time, INTERVAL 10 MINUTE), created_date_time, NULL ) AS datetime,
+            ROUND(hit_count / FLOOR((UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(created_date_time)) /60), 2) AS clickRate
+            FROM cast_contents
+            ORDER BY IF(ISNULL(order_priority), 11, order_priority), clickRate DESC, datetime IS NULL ASC
+    </select>
+
+
+</mapper>
