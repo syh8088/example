@@ -58,12 +58,16 @@ public class CastService {
         //System.out.println(castLists);
 
         int lastCastLists = castLists.size();
-        //System.out.println(lastCastLists);
+        System.out.println(castLists);
         List<String> boardIdNameStorage = new ArrayList<>();
         castLists.forEach((key, value) -> {
 
             value.forEach((childrenKey, childrenValue) -> {
-                if(key != lastCastLists) {
+
+                if(key != lastCastLists - 1) {
+                    System.out.println(key);
+                    System.out.println(lastCastLists);
+                    System.out.println("##########################");
 
                     String boardIdName = childrenValue.getBoardId();
                     boardIdNameStorage.add(boardIdName);
@@ -76,8 +80,8 @@ public class CastService {
                         HashMap<Integer, CastContents> nextCastLists = castLists.get(key+1);
                         //HashMap<Integer, CastContents> replaceCastLists = duplicateValidator(nextCastLists, breachCategoriesData, countBoardIdName);
 
-
-                        //List<CastContents> replaceCastLists = duplicateValidator(nextCastLists, breachCategoriesData, countBoardIdName);
+                        //HashMap<Integer, CastContents> replaceCastLists = duplicateValidator(nextCastLists, breachCategoriesData, countBoardIdName);
+                        int replaceCastLists = duplicateValidator(nextCastLists, breachCategoriesData, countBoardIdName);
 
                         //System.out.println(childrenValue);
                         //System.out.println(replaceCastLists);
@@ -86,17 +90,22 @@ public class CastService {
 
 
 
-                        List cloneReplaceCastLists = new ArrayList();
-                        List cloneReplaceCastLists2 = new ArrayList();
-                        //cloneReplaceCastLists.add(replaceCastLists);
-                        //cloneReplaceCastLists2.add(childrenValue);
+                       // List cloneReplaceCastLists = new ArrayList();
+                       // List cloneReplaceCastLists2 = new ArrayList();
+                       // cloneReplaceCastLists.add(replaceCastLists);
+                       // cloneReplaceCastLists2.add(childrenValue);
 
-                        //castLists.get(key).remove(childrenValue);
-                        //castLists.get(key+1).remove(replaceCastLists);
+                        HashMap<Integer, CastContents> cloneReplaceCastLists2 = (HashMap<Integer, CastContents>) castLists.get(key+1).clone();
+
+                        castLists.get(key).remove(childrenKey);
+                        castLists.get(key+1).remove(replaceCastLists);
+
+                        Integer nextKeyValue = castLists.get(key+1).size()+1;
+                        castLists.get(key+1).put(nextKeyValue.intValue(), childrenValue);
+                        castLists.get(key).put(childrenKey.intValue(), cloneReplaceCastLists2.get(replaceCastLists));
 
 
-                        //castLists.get(key+1).put((int) castLists.get(key+1).size()+1, childrenValue);
-                        //castLists.get(key).put((int) childrenKey, replaceCastLists.get(0));
+
 
                         boardIdNameStorage.remove(childrenValue.getBoardId());
                     }
@@ -115,13 +124,12 @@ public class CastService {
         System.out.println(castLists);
     }
 
-    private List<CastContents> duplicateValidator(HashMap<Integer, CastContents> nextCastLists,
+    private int duplicateValidator(HashMap<Integer, CastContents> nextCastLists,
                                     HashMap<String, Integer> breachCategoriesData,
                                     HashMap<String, Integer> countBoardIdName) {
         //HashMap<Integer, CastContents> returnList = new HashMap<>();
-        List<CastContents> returnList = new ArrayList<>();
-
-
+        //List<CastContents> returnList = new ArrayList<>();
+        int getKey = 0;
 
         //System.out.println(nextCastLists);
         Set<Map.Entry<Integer, CastContents>> entries = nextCastLists.entrySet();
@@ -132,12 +140,15 @@ public class CastService {
             if(!breachCategoriesData.containsKey(entry.getValue().getBoardId()) && (!countBoardIdName.containsKey(entry.getValue().getBoardId()) || countBoardIdName.get(entry.getValue().getBoardId()) < 3 )) {
                 //  System.out.println(value.getBoardId());
 
-                //returnList.put(entry.getKey(), entry.getValue());
-                returnList.add(entry.getValue());
+                //returnList.put("key", entry.getKey());
+                //returnList.put("value", entry.getValue());
+                //returnList.add(entry.getValue());
+                getKey = entry.getKey();
                 break;
             }
         }
-        return returnList;
+        //return returnList;
+        return getKey;
 /*
         nextCastLists.forEach((key, value) -> {
             //System.out.println(countBoardIdName);
