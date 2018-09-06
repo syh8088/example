@@ -1,6 +1,7 @@
 package com.example.api.service.member;
 
 import com.example.api.entities.member.Member;
+import com.example.api.entities.member.MemberGroup;
 import com.example.api.repositories.member.MemberMapper;
 import com.example.api.repositories.member.MemberRepository;
 import com.example.api.util.Constants;
@@ -57,4 +58,6 @@ public class MemberService {
         BeanUtils.copyProperties(member, originMember, IGNORE_FIELD_WHEN_MODIFY);
         return member;
     }
+
+
 }

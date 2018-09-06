@@ -1,6 +1,7 @@
 package com.example.api.controller.member;
 
 import com.example.api.entities.member.Member;
+import com.example.api.entities.member.MemberGroup;
 import com.example.api.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("members")
-public class MemberRestController {
+public class MemberController {
 
     private final MemberService memberService;
 
     @Autowired
-    public MemberRestController(MemberService memberService) {
+    public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
 
@@ -32,5 +33,4 @@ public class MemberRestController {
     public ResponseEntity<Member> modifyMember(@RequestBody Member member) {
         return ResponseEntity.ok().body(memberService.modifyNameByName(member));
     }
-
 }
