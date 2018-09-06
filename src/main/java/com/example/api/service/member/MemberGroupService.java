@@ -33,7 +33,7 @@ public class MemberGroupService {
                 memberGroup = memberGroupRepository.findOne(no);
         }
 
-        // NOTE #4-14 이곳에서 lazy와 eager의 차이를 확인해 보세요.
+        // lazy와 eager의 차이를 확인
         memberGroup.getMembers().forEach(member -> log.info("something"));
 
         return memberGroup;
