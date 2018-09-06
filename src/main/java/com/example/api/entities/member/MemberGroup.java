@@ -13,7 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-public class MemberGroup extends Common {
+public class MemberGroup extends MemeberCommon {
     @Id
     private long memberGroupNo;
     private String name;

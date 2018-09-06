@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-abstract class Common {
+abstract class AppNoticeCommon {
 
     @CreatedDate
     private LocalDateTime createAt;

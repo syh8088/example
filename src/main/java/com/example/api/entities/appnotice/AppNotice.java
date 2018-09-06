@@ -2,8 +2,6 @@ package com.example.api.entities.appnotice;
 
 
 import com.example.api.config.LocalDateTimeAttributeConverter;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,7 +17,7 @@ import java.util.Set;
 @Setter
 @ToString
 @Alias("AppNotice")
-public class AppNotice extends Common {
+public class AppNotice extends AppNoticeCommon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
