@@ -55,7 +55,7 @@ public class BoardController {
     }
 
     // 글수정
-    @GetMapping("/members/update/{boardId}/{postId}/{subject}/{content}")
+    @PutMapping("/members/update/{boardId}/{postId}/{subject}/{content}")
     public ResponseEntity<BoardAndBoardList> updateMember(
             @PathVariable("boardId") String boardId,
             @PathVariable("postId") int postId,

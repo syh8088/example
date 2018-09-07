@@ -1,5 +1,6 @@
 package com.example.api.service;
 
+import com.example.api.ApiException;
 import com.example.api.entities.board.Board;
 import com.example.api.entities.board.BoardAndBoardList;
 import com.example.api.entities.board.BoardList;
@@ -65,7 +66,7 @@ public class BoardService {
         return newBoardList;
     }
 
-    public BoardList setBoard(BoardList boardList) throws Exception {
+    public BoardList setBoard(BoardList boardList) throws ApiException {
 
         String subject = boardList.getSubject();
         String content = boardList.getContent();
@@ -78,16 +79,15 @@ public class BoardService {
         if(limitWrite > 0) {
             int limitWriteCount = boardMapper.getBoardLimitWriteCount(boardId);
             if(limitWriteCount > limitWrite) {
-                // TODO 하루 글쓰기 초과
-
+                throw new ApiException("PostPermissionDeniedError", "게시판은 하루 " + limitWrite + "회 글쓰기가 가능합니다.");
             }
         }
 
         // 내용 최소 글수 제한
         if(content.length() < board.getWriteMin()) {
-
+            throw new ApiException("WriteMinError", "내용 글수 최저 글수 제한");
         } else if(content.length() > board.getWriteMax()) {  // 내용 최대 글수 제한
-
+            throw new ApiException("WriteMaxError", "내용 글수 최대 글수 제한");
         }
 
         int attachmentsCount = StringUtils.countMatches(content, "<img");
