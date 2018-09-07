@@ -41,6 +41,7 @@ public class Board {
 
     private long writeMin;
     private long writeMax;
+    private long writePoint;
     private long commentMin;
     private long commentMax;
 

@@ -41,7 +41,6 @@ public class BoardController {
     }
 
     // 글쓰기
-    //@GetMapping("/members/create/{boardId}/{subject}/{content}")
     @PostMapping("/members/create/{boardId}")
     public ResponseEntity<BoardList> setMember (
             @PathVariable("boardId") String boardId,

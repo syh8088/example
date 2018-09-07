@@ -3,8 +3,10 @@ package com.example.api.service;
 import com.example.api.entities.board.Board;
 import com.example.api.entities.board.BoardAndBoardList;
 import com.example.api.entities.board.BoardList;
+import com.example.api.entities.point.Point;
 import com.example.api.repositories.board.BoardMapper;
 import com.example.api.repositories.board.BoardRepository;
+import com.example.api.repositories.point.PointRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,11 +20,13 @@ public class BoardService {
 
     private BoardMapper boardMapper;
     private BoardRepository boardRepository; // JPA
+    private PointRepository pointRepository; // JPA
 
     @Autowired
-    public BoardService(BoardMapper boardMapper, BoardRepository boardRepository) {
+    public BoardService(BoardMapper boardMapper, BoardRepository boardRepository, PointRepository pointRepository) {
         this.boardMapper = boardMapper;
         this.boardRepository = boardRepository;
+        this.pointRepository = pointRepository;
     }
 
     public BoardAndBoardList getBoard(BoardList boardList) {
@@ -43,8 +47,6 @@ public class BoardService {
         board1.orElse(new Board());
         */
 
-        System.out.println(board);
-
         List<BoardList> newBoardList = boardMapper.getBoardList(boardList.getBoardId());
 
         boardAndBoardLists.setBoard(board);
@@ -63,7 +65,7 @@ public class BoardService {
         return newBoardList;
     }
 
-    public BoardList setBoard(BoardList boardList) throws Exception{
+    public BoardList setBoard(BoardList boardList) throws Exception {
 
         String subject = boardList.getSubject();
         String content = boardList.getContent();
@@ -106,17 +108,23 @@ public class BoardService {
             InetAddress local = InetAddress.getLocalHost();
             String ip = local.getHostAddress();
             boardList.setIp(ip);
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("InetAddress ERROR");
         }
 
         // TODO 리턴값이 CREATE 한 id값으로 오는게 아니라 도메인 boardList에 자동 저장되는가??
-        System.out.println(boardList.getId());
-        int postId = boardMapper.setBoard(boardList);
+        boardMapper.setBoard(boardList);
         boardMapper.updateBoardParentId(boardList);
-        System.out.println(boardList.getId());
 
-        //boardList.setBoardId(boardId);
+        // 게시물 등록시 포인트 지급
+        if(board.getWritePoint() > 0) {
+            Point point = new Point();
+            point.setPoint(board.getWritePoint());
+            point.setType("board_create");
+            point.setMemberId(boardList.getId());
+            pointRepository.save(point);
+        }
+
         return getOneBoard(boardList);
     }
 
@@ -157,9 +165,6 @@ public class BoardService {
     public void delBoard(String boardId, int postId) {
 
         Board board = boardMapper.getBoard(boardId);
-
-
-
 
         int countDelete = board.getCountDelete();
         System.out.println(countDelete);
