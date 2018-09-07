@@ -61,7 +61,7 @@ public class BoardController {
             @PathVariable("postId") int postId,
             @PathVariable("subject") String subject,
             @PathVariable("content") String content
-    ) {
+    ) throws Exception {
         BoardList boardList = new BoardList();
         boardList.setBoardId(boardId);
         boardList.setId(postId);

@@ -128,7 +128,7 @@ public class BoardService {
         return getOneBoard(boardList);
     }
 
-    public BoardAndBoardList updateBoard(BoardList boardList) {
+    public BoardAndBoardList updateBoard(BoardList boardList) throws ApiException {
 
 
         String boardId = boardList.getBoardId();
@@ -145,7 +145,6 @@ public class BoardService {
         }
 
         int countModify = board.getCountModify();
-        System.out.println(countModify);
         if(countModify == 1) {
 
             // TODO 글수정 불가능 조건 처리
@@ -153,9 +152,9 @@ public class BoardService {
 
         // 내용 최소 글수 제한
         if(content.length() < board.getWriteMin()) {
-
+            throw new ApiException("WriteMinError", "내용 글수 최저 글수 제한");
         } else if(content.length() > board.getWriteMax()) {  // 내용 최대 글수 제한
-
+            throw new ApiException("WriteMaxError", "내용 글수 최대 글수 제한");
         }
 
         boardMapper.updateBoard(boardList);
