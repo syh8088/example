@@ -24,14 +24,13 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("api.controller.restController"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.api.controller.member"))
                 .paths(PathSelectors.any())
                 .build() // 여기까지가 기본적인 세팅
                 .apiInfo(apiInfo())
                 .securitySchemes(singletonList(apiKey()))
                 .securityContexts(singletonList(securityContext()))
-                .tags(  // 각 컨트롤러에서 사용하는 TAGS
-                        new Tag("Member", "Member Management APIs"),
+                .tags(new Tag("Member", "Member Management APIs"),
                         new Tag("MemberGroup", "Member Group Management APIs"));
     }
 

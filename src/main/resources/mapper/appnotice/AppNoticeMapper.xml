@@ -13,6 +13,17 @@
             ORDER BY N.id DESC
     </select>
 
+    <select id="getAppNoticeDeviceExists" resultType="AppNoticeDeviceExists">
+        SELECT
+        <foreach collection="noticeName" item="item" separator=",">
+            (SELECT EXISTS (SELECT * FROM app_notice_device AS D WHERE D.type=#{item} AND D.notice_id=N.id)) AS #{item}
+        </foreach>
+        FROM app_notice AS N
+        WHERE N.id=#{id}
+    </select>
+
+
+
     <insert id="setAppNotice" parameterType="AppNotice" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO app_notice
         SET title = #{title},

@@ -3,6 +3,7 @@ package com.example.api.service;
 import com.example.api.controller.AppNoticeController;
 import com.example.api.entities.appnotice.AppNotice;
 import com.example.api.entities.appnotice.AppNoticeDevice;
+import com.example.api.entities.appnotice.AppNoticeDeviceExists;
 import com.example.api.repositories.appnotice.AppNoticeMapper;
 import com.example.api.repositories.appnotice.AppNoticeRepository;
 import org.springframework.beans.BeanUtils;
@@ -41,13 +42,34 @@ public class AppNoticeService {
         AppNotice originAppNotice = appNoticeRepository.findById(request.getId());
 
         AppNotice newAppNotice = new AppNotice();
-        newAppNotice.setReserveAt(request.reserve_at);
+        //newAppNotice.setReserveAt(request.reserve_at);
         newAppNotice.setContent(request.content);
         newAppNotice.setTitle(request.title);
         newAppNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
         newAppNotice.setId(request.getId());
 
-        BeanUtils.copyProperties(newAppNotice, originAppNotice);
+       // BeanUtils.copyProperties(newAppNotice, originAppNotice);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("noticeName", noticeName);
+        map.put("id", request.getId());
+
+        AppNoticeDeviceExists appNoticeDeviceExists = appNoticeMapper.getAppNoticeDeviceExists(map);
+        // List<AppNotice> appNoticeDeviceExists = appNoticeMapper.getAppNoticeDeviceExists(noticeName, (int) request.getId());
+        // org.apache.ibatis.binding.BindingException: Parameter 'list' not found. Available parameters are [arg1, id, param1, param2]
+System.out.println(appNoticeDeviceExists);
+// AppNoticeDeviceExists(mobileWeb=false, sportAndroid=false, sportIos=false, gameAndroid=false, gameIos=true)
+
+
+        Map<String, Boolean> appNoticeOptions = new HashMap<>();
+
+        appNoticeOptions.put("MOBILE_WEB", request.MOBILE_WEB);
+        appNoticeOptions.put("SPORT_ANDROID", request.SPORT_ANDROID);
+        appNoticeOptions.put("SPORT_IOS", request.SPORT_IOS);
+        appNoticeOptions.put("GAME_ANDROID", request.GAME_ANDROID);
+        appNoticeOptions.put("GAME_IOS", request.GAME_IOS);
+
+
 
     }
 
@@ -61,7 +83,7 @@ public class AppNoticeService {
         appNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
         appNotice.setTitle(request.title);
         appNotice.setContent(request.content);
-        appNotice.setReserveAt(request.reserve_at);
+        //appNotice.setReserveAt(request.reserve_at);
 
         // Mybatus
         // appNoticeMapper.setAppNotice(appNotice);

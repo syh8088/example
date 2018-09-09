@@ -1,6 +1,6 @@
 package com.example.api.service;
 
-import com.example.api.ApiException;
+import com.example.api.exception.ApiException;
 import com.example.api.entities.board.Board;
 import com.example.api.entities.board.BoardAndBoardList;
 import com.example.api.entities.board.BoardList;
@@ -12,7 +12,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.net.InetAddress;
 import java.util.List;
 
@@ -121,7 +120,7 @@ public class BoardService {
             Point point = new Point();
             point.setPoint(board.getWritePoint());
             point.setType("board_create");
-            point.setMemberId(boardList.getId());
+            point.setMemberNo(boardList.getId());
             pointRepository.save(point);
         }
 
@@ -141,13 +140,12 @@ public class BoardService {
             String ip = local.getHostAddress();
             boardList.setIp(ip);
         }catch (Exception e) {
-            System.out.println("InetAddress ERROR");
+            throw new ApiException("InetAddressError", "IP 등록 에러");
         }
 
         int countModify = board.getCountModify();
         if(countModify == 1) {
-
-            // TODO 글수정 불가능 조건 처리
+            throw new ApiException("WongeulNotCrystalError", "원글 수정 불가능");
         }
 
         // 내용 최소 글수 제한

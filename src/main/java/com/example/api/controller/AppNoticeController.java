@@ -48,10 +48,13 @@ public class AppNoticeController {
        return ResponseEntity.ok().body(appNoticeService.setAppNotice(request));
     }
 
-    @PutMapping("/appnotice/update")
+    @PostMapping("/appnotice/update")
     public void updateAppNotice(
             @RequestBody CreatePostRequest request
     ) throws Exception {
+
+
+
         appNoticeService.updateAppNotice(request);
     }
 
@@ -59,8 +62,9 @@ public class AppNoticeController {
     @Data
     @JsonPropertyOrder({"subject", "content"})
     public static class CreatePostRequest {
-        @Convert(converter = BooleanToYNConverter.class)
+
         public long id;
+        @Convert(converter = BooleanToYNConverter.class)
         public String mobile_web_notice_top_allowed;
         public String mobile_web_popup_allowed;
         public String sport_android_notice_top_allowed;
@@ -72,9 +76,6 @@ public class AppNoticeController {
         public String game_ios_notice_top_allowed;
         public String game_ios_popup_allowed;
 
-
-        // String[] aa ={"MoBILE+WEB"}
-
         public Boolean MOBILE_WEB;
         public Boolean SPORT_ANDROID;
         public Boolean SPORT_IOS;
@@ -83,7 +84,6 @@ public class AppNoticeController {
 
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         public LocalDateTime reserve_at;
-
 
         public String category;
 

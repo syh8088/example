@@ -3,6 +3,9 @@ package com.example.api.controller.member;
 import com.example.api.entities.member.MemberGroup;
 import com.example.api.entities.member.MemberGroupViewModel;
 import com.example.api.service.member.MemberGroupService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("memberGroups")
+@Api(tags = "MemberGroup")
 public class MemberGroupController {
     private final MemberGroupService memberGroupService;
 
@@ -21,13 +25,15 @@ public class MemberGroupController {
     }
 
     @GetMapping("{no}/types/{type}")
-    public ResponseEntity<MemberGroup> getMemberGroup(@PathVariable("no") long no,
-                                                      @PathVariable("type") String type) {
+    @ApiOperation(value = "Get group into type", notes = "Returns the group and each member of the type.")
+    public ResponseEntity<MemberGroup> getMemberGroup(@PathVariable("no") @ApiParam(value = "Group no", defaultValue = "1") long no,
+                                                      @PathVariable("type") @ApiParam(value = "Fetching type", defaultValue = "queryDSL") String type) {
         return ResponseEntity.ok().body(memberGroupService.getMemberGroup(no, type));
     }
 
     @GetMapping("{no}/MemberGroupViewModel")
-    public ResponseEntity<MemberGroupViewModel> getMemberGroupViewModel(@PathVariable("no") long no) {
+    @ApiOperation(value = "Get group(front-only)", notes = "Returns front-only group model.")
+    public ResponseEntity<MemberGroupViewModel> getMemberGroupViewModel(@PathVariable("no") @ApiParam(value = "Group no", defaultValue = "1") long no) {
         return ResponseEntity.ok().body(memberGroupService.getMemberGroupViewModel(no));
     }
 }

@@ -20,7 +20,7 @@ public class Point {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long no;
 
-    private Long memberId;
+    private Long memberNo;
 
     @CreatedDate
     private LocalDateTime create_at;
