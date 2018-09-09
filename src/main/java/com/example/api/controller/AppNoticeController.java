@@ -60,11 +60,9 @@ public class AppNoticeController {
 
     @NoArgsConstructor
     @Data
-    @JsonPropertyOrder({"subject", "content"})
     public static class CreatePostRequest {
 
         public long id;
-        @Convert(converter = BooleanToYNConverter.class)
         public String mobile_web_notice_top_allowed;
         public String mobile_web_popup_allowed;
         public String sport_android_notice_top_allowed;

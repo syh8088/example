@@ -42,23 +42,18 @@ public class AppNoticeService {
         AppNotice originAppNotice = appNoticeRepository.findById(request.getId());
 
         AppNotice newAppNotice = new AppNotice();
-        //newAppNotice.setReserveAt(request.reserve_at);
+        newAppNotice.setReserveAt(request.reserve_at);
         newAppNotice.setContent(request.content);
         newAppNotice.setTitle(request.title);
         newAppNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
         newAppNotice.setId(request.getId());
 
-       // BeanUtils.copyProperties(newAppNotice, originAppNotice);
+        BeanUtils.copyProperties(newAppNotice, originAppNotice);
 
-        Map<String, Object> map = new HashMap<>();
-        map.put("noticeName", noticeName);
-        map.put("id", request.getId());
+        AppNoticeDeviceExists appNoticeDeviceExists = appNoticeMapper.getAppNoticeDeviceExists(noticeName, (int) request.getId());
 
-        AppNoticeDeviceExists appNoticeDeviceExists = appNoticeMapper.getAppNoticeDeviceExists(map);
-        // List<AppNotice> appNoticeDeviceExists = appNoticeMapper.getAppNoticeDeviceExists(noticeName, (int) request.getId());
-        // org.apache.ibatis.binding.BindingException: Parameter 'list' not found. Available parameters are [arg1, id, param1, param2]
-System.out.println(appNoticeDeviceExists);
-// AppNoticeDeviceExists(mobileWeb=false, sportAndroid=false, sportIos=false, gameAndroid=false, gameIos=true)
+        System.out.println(appNoticeDeviceExists);
+        // AppNoticeDeviceExists(mobileWeb=false, sportAndroid=false, sportIos=false, gameAndroid=false, gameIos=true)
 
 
         Map<String, Boolean> appNoticeOptions = new HashMap<>();
@@ -73,17 +68,13 @@ System.out.println(appNoticeDeviceExists);
 
     }
 
-    //public void setAppNotice(AppNoticeController.CreatePostRequest request) {
     public AppNotice setAppNotice(AppNoticeController.CreatePostRequest request) {
-        //System.out.println(AppNotice.Category.valueOf(request.category.toUpperCase()).getClass());
-        //System.out.println(request.category.toUpperCase().getClass());
-
         AppNotice appNotice = new AppNotice();
 
         appNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
         appNotice.setTitle(request.title);
         appNotice.setContent(request.content);
-        //appNotice.setReserveAt(request.reserve_at);
+        appNotice.setReserveAt(request.reserve_at);
 
         // Mybatus
         // appNoticeMapper.setAppNotice(appNotice);
