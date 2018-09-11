@@ -203,7 +203,7 @@
             );
             console.log(sendData);
 
-            var ajaxUrl = (document.getElementById("id").value) ? "/appnotice/update" : "/appnotice/create";
+            var ajaxUrl = (document.getElementById("id").value) ? "/appnotices/update" : "/appnotices/create";
             $.ajax({
                 type: "POST",
                 url : "<c:url value='" + ajaxUrl + "' />",

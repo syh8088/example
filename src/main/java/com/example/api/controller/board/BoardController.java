@@ -39,6 +39,7 @@ public class BoardController {
 
     // 해당 글읽기
     @GetMapping("boards/{boardId}/posts/{postId}")
+    @ApiOperation(value = "Get board into type", notes = "Returns the board of the type")
     public ResponseEntity<BoardList> getOneMember(@PathVariable("boardId") String boardId, @PathVariable("postId") int postId) {
         BoardList boardList = new BoardList();
         boardList.setBoardId(boardId);
@@ -49,7 +50,7 @@ public class BoardController {
 
     // 글쓰기
     @PostMapping("create/boards/{boardId}")
-    public ResponseEntity<BoardList> setMember (
+    public ResponseEntity<BoardList> setMember(
             @PathVariable("boardId") String boardId,
             @RequestBody CreatePostRequest request
     ) throws Exception {
@@ -63,7 +64,7 @@ public class BoardController {
 
     // 글수정
     @PutMapping("update/boards/{boardId}/posts/{postId}/subject/{subject}/content/{content}")
-    public ResponseEntity<BoardAndBoardList> updateMember (
+    public ResponseEntity<BoardAndBoardList> updateMember(
             @PathVariable("boardId") String boardId,
             @PathVariable("postId") int postId,
             @PathVariable("subject") String subject,
@@ -80,7 +81,7 @@ public class BoardController {
 
     // 글삭제
     @DeleteMapping("delete/boards/{boardId}/posts/{postId}")
-    public ResponseEntity<?> delMember (
+    public ResponseEntity<?> delMember(
             @PathVariable("boardId") String boardId,
             @PathVariable("postId") int postId
     ) throws Exception {

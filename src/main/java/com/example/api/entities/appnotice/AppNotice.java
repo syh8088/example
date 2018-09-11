@@ -37,8 +37,6 @@ public class AppNotice extends AppNoticeCommon {
     @Transient
     private boolean gameIos;
 
-    //private Map<String, String> subSelectArray;
-
     @Column(columnDefinition = "enum('NOTICE', 'EVENT', 'UPDATE')")
     @Enumerated(EnumType.STRING)
     private Category category;
@@ -55,10 +53,6 @@ public class AppNotice extends AppNoticeCommon {
 
     @OneToMany(mappedBy = "appNotice", fetch = FetchType.EAGER)
     private Set<AppNoticeDevice> appNoticeDevice = new HashSet<>();
-/*    @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "app_notice_device",
-                joinColumns = @JoinColumn(name = "noticeId"))
-    private List<AppNoticeDevice> appNoticeDevices = new ArrayList<>();*/
 
 
     public enum Category {

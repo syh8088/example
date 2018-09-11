@@ -32,7 +32,8 @@ public class SwaggerConfig {
                 .securityContexts(singletonList(securityContext()))
                 .tags(new Tag("Member", "Member Management APIs"),
                         new Tag("MemberGroup", "Member Group Management APIs"),
-                        new Tag("Board", "Board Management APIs"));
+                        new Tag("Board", "Board Management APIs"),
+                        new Tag("AppNotice", "AppNotice Management APIs"));
     }
 
     @Bean

@@ -1,21 +1,21 @@
-package com.example.api.controller;
+package com.example.api.controller.appnotice;
 
-import com.example.api.config.BooleanToYNConverter;
 import com.example.api.entities.appnotice.AppNotice;
 import com.example.api.service.AppNoticeService;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Convert;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
+@RequestMapping("appnotices")
 public class AppNoticeController {
 
     private AppNoticeService appNoticeService;
@@ -25,31 +25,32 @@ public class AppNoticeController {
         this.appNoticeService = appNoticeService;
     }
 
-    @GetMapping("/appnotice/getAppNoticeList/")
+    @GetMapping("getAppNoticeList/")
+    @ApiOperation(value = "Get appnotice into type", notes = "Returns the appNotice and each appNoticeDevice of the type.")
     public ResponseEntity<List<AppNotice>> getAppNoticeList() {
         return ResponseEntity.ok().body(appNoticeService.getAppNoticeList());
     }
 
-    @GetMapping("/appnotice/getAppNotice/{id}")
-    public ResponseEntity<AppNotice> getAppNotice(@PathVariable("id") long id) {
+    @GetMapping("getAppNotice/{id}")
+    @ApiOperation(value = "Get appnotice into type", notes = "Returns the appNotice and each appNoticeDevice of the type.")
+    public ResponseEntity<AppNotice> getAppNotice(@PathVariable("id") @ApiParam(value = "id") long id) {
         return ResponseEntity.ok().body(appNoticeService.getAppNotice(id));
     }
 
-    @PostMapping("/appnotice/create")
+    @PostMapping("create")
+    @ApiOperation(value = "Create appNotice", notes = "Creates a appNotice and returns the entity.")
     public ResponseEntity<AppNotice> setAppNotice(
             @RequestBody CreatePostRequest request
     ) {
        return ResponseEntity.ok().body(appNoticeService.setAppNotice(request));
     }
 
-    @PostMapping("/appnotice/update")
-    public void updateAppNotice(
+    @PostMapping("update")
+    @ApiOperation(value = "Update appNotice", notes = "Updates a appNotice and returns the entity.")
+    public ResponseEntity<AppNotice> updateAppNotice(
             @RequestBody CreatePostRequest request
     ) throws Exception {
-
-
-
-        appNoticeService.updateAppNotice(request);
+        return ResponseEntity.ok().body(appNoticeService.updateAppNotice(request));
     }
 
     @NoArgsConstructor

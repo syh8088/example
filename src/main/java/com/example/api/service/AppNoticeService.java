@@ -1,12 +1,14 @@
 package com.example.api.service;
 
-import com.example.api.controller.AppNoticeController;
+import com.example.api.controller.appnotice.AppNoticeController;
 import com.example.api.entities.appnotice.AppNotice;
 import com.example.api.entities.appnotice.AppNoticeDevice;
 import com.example.api.entities.appnotice.AppNoticeDeviceExists;
+import com.example.api.exception.ApiException;
+import com.example.api.repositories.appnotice.AppNoticeDeviceRepository;
 import com.example.api.repositories.appnotice.AppNoticeMapper;
 import com.example.api.repositories.appnotice.AppNoticeRepository;
-import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +21,14 @@ public class AppNoticeService {
 
     private AppNoticeMapper appNoticeMapper;
     private AppNoticeRepository appNoticeRepository;
+    private AppNoticeDeviceRepository appNoticeDeviceRepository;
     private List<String> noticeName = Arrays.asList("mobile_web", "sport_android", "sport_ios", "game_android", "game_ios");
 
     @Autowired
-    public AppNoticeService(AppNoticeMapper appNoticeMapper, AppNoticeRepository appNoticeRepository) {
+    public AppNoticeService(AppNoticeMapper appNoticeMapper, AppNoticeRepository appNoticeRepository, AppNoticeDeviceRepository appNoticeDeviceRepository) {
         this.appNoticeMapper = appNoticeMapper;
         this.appNoticeRepository = appNoticeRepository;
+        this.appNoticeDeviceRepository = appNoticeDeviceRepository;
     }
 
     public List<AppNotice> getAppNoticeList() {
@@ -38,7 +42,7 @@ public class AppNoticeService {
     }
 
     @Transactional
-    public void updateAppNotice(AppNoticeController.CreatePostRequest request) {
+    public AppNotice updateAppNotice(AppNoticeController.CreatePostRequest request) throws ApiException {
 
         AppNotice originAppNotice = appNoticeRepository.findById(request.getId());
 
@@ -49,21 +53,56 @@ public class AppNoticeService {
         newAppNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
         newAppNotice.setId(request.getId());
 
-        //BeanUtils.copyProperties(newAppNotice, originAppNotice);
+        BeanUtils.copyProperties(newAppNotice, originAppNotice);
 
         AppNoticeDeviceExists appNoticeDeviceExists = appNoticeMapper.getAppNoticeDeviceExists(noticeName, (int) request.getId());
 
         System.out.println(appNoticeDeviceExists);
         // AppNoticeDeviceExists(mobileWeb=false, sportAndroid=false, sportIos=false, gameAndroid=false, gameIos=true)
 
+        Map<String, Boolean> appNoticeOptions1 = new HashMap<>();
+        appNoticeOptions1.put("mobile_web", appNoticeDeviceExists.isMobileWeb());
+        appNoticeOptions1.put("sport_android", appNoticeDeviceExists.isSportAndroid());
+        appNoticeOptions1.put("sport_ios", appNoticeDeviceExists.isSportIos());
+        appNoticeOptions1.put("game_android", appNoticeDeviceExists.isGameAndroid());
+        appNoticeOptions1.put("game_ios", appNoticeDeviceExists.isGameIos());
+
+
         Map<String, Boolean> appNoticeOptions = new HashMap<>();
 
-        appNoticeOptions.put("mobileWeb", request.MOBILE_WEB);
-        appNoticeOptions.put("sportAndroid", request.SPORT_ANDROID);
-        appNoticeOptions.put("sportIos", request.SPORT_IOS);
-        appNoticeOptions.put("gameAndroid", request.GAME_ANDROID);
-        appNoticeOptions.put("gameIos", request.GAME_IOS);
+        appNoticeOptions.put("mobile_web", request.MOBILE_WEB);
+        appNoticeOptions.put("sport_android", request.SPORT_ANDROID);
+        appNoticeOptions.put("sport_ios", request.SPORT_IOS);
+        appNoticeOptions.put("game_android", request.GAME_ANDROID);
+        appNoticeOptions.put("game_ios", request.GAME_IOS);
 
+        appNoticeOptions1.forEach((key, value) -> {
+
+            if(value && BooleanUtils.isTrue(appNoticeOptions.get(key))) {
+
+                AppNoticeDevice newAppNoticeDevice = null;
+                newAppNoticeDevice = setAppNoticeDeviceArray(key.toUpperCase(), (int) request.getId(), request);
+                appNoticeMapper.updateAppNoticeDevice(newAppNoticeDevice);
+
+                //AppNoticeDevice originNewAppNoticeDevice = appNoticeDeviceRepository.findByNoticeIdAndType(request.getId(), AppNoticeDevice.Type.valueOf(key.toUpperCase()));
+                //BeanUtils.copyProperties(newAppNoticeDevice, originNewAppNoticeDevice);
+            } else if(value && !BooleanUtils.isTrue(appNoticeOptions.get(key))) {
+                //appNoticeDeviceRepository.deleteAllByIdAndType(request.getId(), AppNoticeDevice.Type.valueOf(key.toUpperCase()));
+                appNoticeMapper.deleteAppNoticeDevice(request.getId(), AppNoticeDevice.Type.valueOf(key.toUpperCase()));
+            } else if(!value && BooleanUtils.isTrue(appNoticeOptions.get(key))) {
+                AppNoticeDevice newAppNoticeDevice = setAppNoticeDeviceArray(key.toUpperCase(), (int) request.getId(), request);
+                //appNoticeDeviceRepository.save(newAppNoticeDevice);
+
+                List<AppNoticeDevice> list = new ArrayList<>();
+                Map<String, Object> map = new HashMap<>();
+                list.add(newAppNoticeDevice);
+                map.put("list", list);
+                appNoticeMapper.setAppNoticeDevice(map);
+
+            }
+        });
+
+        return newAppNotice;
     }
 
     public AppNotice setAppNotice(AppNoticeController.CreatePostRequest request) {

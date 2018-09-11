@@ -22,7 +22,20 @@
         WHERE N.id=#{id}
     </select>
 
+    <update id="updateAppNoticeDevice" parameterType="AppNoticeDevice">
+        UPDATE app_notice_device
+        SET
+        popup_allowed = #{popupAllowed},
+        notice_top_allowed = #{noticeTopAllowed},
+        update_at = NOW()
+        WHERE notice_id = #{noticeId} AND type = #{type}
+    </update>
 
+    <delete id="deleteAppNoticeDevice">
+        DELETE
+        FROM app_notice_device
+        WHERE notice_id = #{noticeId} AND type = #{type}
+    </delete>
 
     <insert id="setAppNotice" parameterType="AppNotice" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO app_notice
