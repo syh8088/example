@@ -9,6 +9,8 @@ public interface MemberRepository extends JpaRepository<Member, Long>, MemberRep
 
     Member findByNo(long no);
 
+    Member findByIdOrAndEmail(String id, String email);
+
     @Query(value = "select m from Member m where m.no = :no", nativeQuery = false)
     Member selectByNo(@Param("no") long no);
 }

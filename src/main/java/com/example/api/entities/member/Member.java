@@ -1,6 +1,7 @@
 package com.example.api.entities.member;
 
 
+import com.example.api.annotation.Encrypt;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,7 @@ public class Member extends MemeberCommon {
 
     private String id;
 
+    @Encrypt
     private String password;
 
     private String name;

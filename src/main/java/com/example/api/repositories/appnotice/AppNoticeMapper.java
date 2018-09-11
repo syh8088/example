@@ -16,7 +16,6 @@ public interface AppNoticeMapper {
     List<AppNotice> getAppNoticeList(List<String> subSelectArray);
 
     AppNoticeDeviceExists getAppNoticeDeviceExists(@Param("noticeName") List<String> subSelectArray, @Param("id") int id);
-    //AppNoticeDeviceExists getAppNoticeDeviceExists(Map<String, Object> map);
 
     int setAppNotice(AppNotice appNotice);
     int setAppNoticeDevice(Map<String, Object> map);

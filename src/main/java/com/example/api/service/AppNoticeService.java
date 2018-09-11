@@ -6,6 +6,7 @@ import com.example.api.entities.appnotice.AppNoticeDevice;
 import com.example.api.entities.appnotice.AppNoticeDeviceExists;
 import com.example.api.repositories.appnotice.AppNoticeMapper;
 import com.example.api.repositories.appnotice.AppNoticeRepository;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,23 +49,20 @@ public class AppNoticeService {
         newAppNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
         newAppNotice.setId(request.getId());
 
-        BeanUtils.copyProperties(newAppNotice, originAppNotice);
+        //BeanUtils.copyProperties(newAppNotice, originAppNotice);
 
         AppNoticeDeviceExists appNoticeDeviceExists = appNoticeMapper.getAppNoticeDeviceExists(noticeName, (int) request.getId());
 
         System.out.println(appNoticeDeviceExists);
         // AppNoticeDeviceExists(mobileWeb=false, sportAndroid=false, sportIos=false, gameAndroid=false, gameIos=true)
 
-
         Map<String, Boolean> appNoticeOptions = new HashMap<>();
 
-        appNoticeOptions.put("MOBILE_WEB", request.MOBILE_WEB);
-        appNoticeOptions.put("SPORT_ANDROID", request.SPORT_ANDROID);
-        appNoticeOptions.put("SPORT_IOS", request.SPORT_IOS);
-        appNoticeOptions.put("GAME_ANDROID", request.GAME_ANDROID);
-        appNoticeOptions.put("GAME_IOS", request.GAME_IOS);
-
-
+        appNoticeOptions.put("mobileWeb", request.MOBILE_WEB);
+        appNoticeOptions.put("sportAndroid", request.SPORT_ANDROID);
+        appNoticeOptions.put("sportIos", request.SPORT_IOS);
+        appNoticeOptions.put("gameAndroid", request.GAME_ANDROID);
+        appNoticeOptions.put("gameIos", request.GAME_IOS);
 
     }
 

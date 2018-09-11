@@ -39,12 +39,6 @@ public class AppNoticeController {
     public ResponseEntity<AppNotice> setAppNotice(
             @RequestBody CreatePostRequest request
     ) {
-/*
-        if (1 == 1) {
-            // TODO 런타임 입셉션 공부
-            throw new RuntimeException();
-
-        }*/
        return ResponseEntity.ok().body(appNoticeService.setAppNotice(request));
     }
 

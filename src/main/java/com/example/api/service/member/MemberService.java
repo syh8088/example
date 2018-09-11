@@ -2,9 +2,11 @@ package com.example.api.service.member;
 
 import com.example.api.entities.member.Member;
 import com.example.api.entities.member.MemberGroup;
+import com.example.api.exception.ApiException;
 import com.example.api.repositories.member.MemberMapper;
 import com.example.api.repositories.member.MemberRepository;
 import com.example.api.util.Constants;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 @Service
+@Slf4j
 public class MemberService {
 
     private final MemberMapper memberMapper;
@@ -47,7 +50,17 @@ public class MemberService {
         return member;
     }
 
-    public Member saveSomethingMember(Member member) {
+    public Member saveSomethingMember(Member member) throws ApiException {
+
+        // id, email 중복 유효성 검사
+        String postId = member.getId();
+        String postEmail = member.getEmail();
+
+        Member verificationMember = memberRepository.findByIdOrAndEmail(postId, postEmail);
+        if(verificationMember.getId().equals(postId) || verificationMember.getEmail().equals(postEmail)) {
+            throw new ApiException("PostMultipleError", "id 및 email 중복 에러");
+        }
+
         return memberRepository.save(member);
     }
 

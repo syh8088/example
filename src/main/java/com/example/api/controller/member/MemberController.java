@@ -30,7 +30,7 @@ public class MemberController {
 
     @PostMapping
     @ApiOperation(value = "Create member", notes = "Creates a member and returns the entity.")
-    public ResponseEntity<Member> saveMember(@RequestBody @ApiParam(value = "Member") Member member) {
+    public ResponseEntity<Member> saveMember(@RequestBody @ApiParam(value = "Member") Member member) throws Exception {
         return ResponseEntity.ok().body(memberService.saveSomethingMember(member));
     }
 
