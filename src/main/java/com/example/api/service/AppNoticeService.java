@@ -57,28 +57,24 @@ public class AppNoticeService {
 
         AppNoticeDeviceExists appNoticeDeviceExists = appNoticeMapper.getAppNoticeDeviceExists(noticeName, (int) request.getId());
 
-        System.out.println(appNoticeDeviceExists);
-        // AppNoticeDeviceExists(mobileWeb=false, sportAndroid=false, sportIos=false, gameAndroid=false, gameIos=true)
-
-        Map<String, Boolean> appNoticeOptions1 = new HashMap<>();
-        appNoticeOptions1.put("mobile_web", appNoticeDeviceExists.isMobileWeb());
-        appNoticeOptions1.put("sport_android", appNoticeDeviceExists.isSportAndroid());
-        appNoticeOptions1.put("sport_ios", appNoticeDeviceExists.isSportIos());
-        appNoticeOptions1.put("game_android", appNoticeDeviceExists.isGameAndroid());
-        appNoticeOptions1.put("game_ios", appNoticeDeviceExists.isGameIos());
-
-
         Map<String, Boolean> appNoticeOptions = new HashMap<>();
+        appNoticeOptions.put("mobile_web", appNoticeDeviceExists.isMobileWeb());
+        appNoticeOptions.put("sport_android", appNoticeDeviceExists.isSportAndroid());
+        appNoticeOptions.put("sport_ios", appNoticeDeviceExists.isSportIos());
+        appNoticeOptions.put("game_android", appNoticeDeviceExists.isGameAndroid());
+        appNoticeOptions.put("game_ios", appNoticeDeviceExists.isGameIos());
 
-        appNoticeOptions.put("mobile_web", request.MOBILE_WEB);
-        appNoticeOptions.put("sport_android", request.SPORT_ANDROID);
-        appNoticeOptions.put("sport_ios", request.SPORT_IOS);
-        appNoticeOptions.put("game_android", request.GAME_ANDROID);
-        appNoticeOptions.put("game_ios", request.GAME_IOS);
+        Map<String, Boolean> requestAppNoticeOptions = new HashMap<>();
 
-        appNoticeOptions1.forEach((key, value) -> {
+        requestAppNoticeOptions.put("mobile_web", request.MOBILE_WEB);
+        requestAppNoticeOptions.put("sport_android", request.SPORT_ANDROID);
+        requestAppNoticeOptions.put("sport_ios", request.SPORT_IOS);
+        requestAppNoticeOptions.put("game_android", request.GAME_ANDROID);
+        requestAppNoticeOptions.put("game_ios", request.GAME_IOS);
 
-            if(value && BooleanUtils.isTrue(appNoticeOptions.get(key))) {
+        appNoticeOptions.forEach((key, value) -> {
+
+            if(value && BooleanUtils.isTrue(requestAppNoticeOptions.get(key))) {
 
                 AppNoticeDevice newAppNoticeDevice = null;
                 newAppNoticeDevice = setAppNoticeDeviceArray(key.toUpperCase(), (int) request.getId(), request);
@@ -86,10 +82,10 @@ public class AppNoticeService {
 
                 //AppNoticeDevice originNewAppNoticeDevice = appNoticeDeviceRepository.findByNoticeIdAndType(request.getId(), AppNoticeDevice.Type.valueOf(key.toUpperCase()));
                 //BeanUtils.copyProperties(newAppNoticeDevice, originNewAppNoticeDevice);
-            } else if(value && !BooleanUtils.isTrue(appNoticeOptions.get(key))) {
+            } else if(value && !BooleanUtils.isTrue(requestAppNoticeOptions.get(key))) {
                 //appNoticeDeviceRepository.deleteAllByIdAndType(request.getId(), AppNoticeDevice.Type.valueOf(key.toUpperCase()));
                 appNoticeMapper.deleteAppNoticeDevice(request.getId(), AppNoticeDevice.Type.valueOf(key.toUpperCase()));
-            } else if(!value && BooleanUtils.isTrue(appNoticeOptions.get(key))) {
+            } else if(!value && BooleanUtils.isTrue(requestAppNoticeOptions.get(key))) {
                 AppNoticeDevice newAppNoticeDevice = setAppNoticeDeviceArray(key.toUpperCase(), (int) request.getId(), request);
                 //appNoticeDeviceRepository.save(newAppNoticeDevice);
 
