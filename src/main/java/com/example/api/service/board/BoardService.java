@@ -1,4 +1,4 @@
-package com.example.api.service;
+package com.example.api.service.board;
 
 import com.example.api.exception.ApiException;
 import com.example.api.entities.board.Board;
@@ -41,11 +41,6 @@ public class BoardService {
 
         // queryDSL
         Board board = boardRepository.getBoardById(boardList.getBoardId());
-
-/*
-        Optional<Board> board1 = Optional.of(new Board());
-        board1.orElse(new Board());
-        */
 
         List<BoardList> newBoardList = boardMapper.getBoardList(boardList.getBoardId());
 
@@ -95,13 +90,6 @@ public class BoardService {
         //boardList.isPhoto();
         if(attachmentsCount > 0) boardList.setPhoto(true);
 
-/*        Elements imgs = Jsoup.parseBodyFragment(content).select("img");
-        System.out.println(imgs);
-        for (Element img : imgs) {
-            System.out.println(img);
-
-        }*/
-
         // ip 등록
         try {
             InetAddress local = InetAddress.getLocalHost();
@@ -128,7 +116,6 @@ public class BoardService {
     }
 
     public BoardAndBoardList updateBoard(BoardList boardList) throws ApiException {
-
 
         String boardId = boardList.getBoardId();
         String content = boardList.getContent();
@@ -159,18 +146,16 @@ public class BoardService {
         return this.getBoard(boardList);
     }
 
-    public void delBoard(String boardId, int postId) {
+    public void delBoard(String boardId, int postId) throws ApiException {
 
         Board board = boardMapper.getBoard(boardId);
 
         int countDelete = board.getCountDelete();
-        System.out.println(countDelete);
         if(countDelete == 1) {
             // TODO 글삭제 불가능 조건 처리
-
+            throw new ApiException("CountDeleteError", "원글 삭제 불가능");
         }
 
-        // TODO 성공 및 실패시 리턴값을 어떻게 받지??
         boardMapper.delBoard(boardId, postId);
     }
 

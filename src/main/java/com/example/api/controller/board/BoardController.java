@@ -1,17 +1,23 @@
-package com.example.api.controller;
+package com.example.api.controller.board;
 
 
 import com.example.api.entities.board.BoardAndBoardList;
 import com.example.api.entities.board.BoardList;
-import com.example.api.service.BoardService;
+import com.example.api.service.board.BoardService;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("boards")
+@Api(tags = "Board")
 public class BoardController {
     private BoardService boardService;
 
@@ -21,8 +27,9 @@ public class BoardController {
     }
 
     // 글읽기
-    @GetMapping("/members/{boardId}")
-    public ResponseEntity<BoardAndBoardList> getMember(@PathVariable("boardId") String boardId) {
+    @GetMapping("{boardId}")
+    @ApiOperation(value = "Get board into type", notes = "Returns the board of the type")
+    public ResponseEntity<BoardAndBoardList> getMember(@PathVariable("boardId") @ApiParam(value = "Board id") String boardId) {
 
         BoardList boardList = new BoardList();
         boardList.setBoardId(boardId);
@@ -31,7 +38,7 @@ public class BoardController {
     }
 
     // 해당 글읽기
-    @GetMapping("/members/{boardId}/{postId}")
+    @GetMapping("boards/{boardId}/posts/{postId}")
     public ResponseEntity<BoardList> getOneMember(@PathVariable("boardId") String boardId, @PathVariable("postId") int postId) {
         BoardList boardList = new BoardList();
         boardList.setBoardId(boardId);
@@ -41,7 +48,7 @@ public class BoardController {
     }
 
     // 글쓰기
-    @PostMapping("/members/create/{boardId}")
+    @PostMapping("create/boards/{boardId}")
     public ResponseEntity<BoardList> setMember (
             @PathVariable("boardId") String boardId,
             @RequestBody CreatePostRequest request
@@ -55,8 +62,8 @@ public class BoardController {
     }
 
     // 글수정
-    @PutMapping("/members/update/{boardId}/{postId}/{subject}/{content}")
-    public ResponseEntity<BoardAndBoardList> updateMember(
+    @PutMapping("update/boards/{boardId}/posts/{postId}/subject/{subject}/content/{content}")
+    public ResponseEntity<BoardAndBoardList> updateMember (
             @PathVariable("boardId") String boardId,
             @PathVariable("postId") int postId,
             @PathVariable("subject") String subject,
@@ -72,17 +79,17 @@ public class BoardController {
     }
 
     // 글삭제
-    @GetMapping("/members/delete/{boardId}/{postId}")
-    public void delMember(
+    @DeleteMapping("delete/boards/{boardId}/posts/{postId}")
+    public ResponseEntity<?> delMember (
             @PathVariable("boardId") String boardId,
             @PathVariable("postId") int postId
-    ) {
+    ) throws Exception {
         boardService.delBoard(boardId, postId);
-        //return ResponseEntity.ok().body(boardService.delBoard(boardId, postId));
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // 댓글 쓰기
-    @GetMapping("/members/create/comment/{boardId}/{postId}/{content}")
+    @GetMapping("create/comment/boards/{boardId}/posts/{postId}/content/{content}")
     public ResponseEntity<BoardList> setMemberComment(
             @PathVariable("boardId") String boardId,
             @PathVariable("postId") int postId,
