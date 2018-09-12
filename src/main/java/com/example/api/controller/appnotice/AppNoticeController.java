@@ -60,25 +60,25 @@ public class AppNoticeController {
     @Data
     public static class AppNoticePostRequest {
 
-        public String mobile_web_notice_top_allowed;
-        public String mobile_web_popup_allowed;
-        public String sport_android_notice_top_allowed;
-        public String sport_android_popup_allowed;
-        public String sport_ios_notice_top_allowed;
-        public String sport_ios_popup_allowed;
-        public String game_android_notice_top_allowed;
-        public String game_android_popup_allowed;
-        public String game_ios_notice_top_allowed;
-        public String game_ios_popup_allowed;
+        public String mobileWebNoticeTopAllowed;
+        public String mobileWebPopupAllowed;
+        public String sportAndroidNoticeTopAllowed;
+        public String sportAndroidPopupAllowed;
+        public String sportIosNoticeTopAllowed;
+        public String sportIosPopupAllowed;
+        public String gameAndroidNoticeTopAllowed;
+        public String gameAndroidPopupAllowed;
+        public String gameIosNoticeTopAllowed;
+        public String gameIosPopupAllowed;
 
-        public Boolean MOBILE_WEB;
-        public Boolean SPORT_ANDROID;
-        public Boolean SPORT_IOS;
-        public Boolean GAME_ANDROID;
-        public Boolean GAME_IOS;
+        public Boolean mobileWeb;
+        public Boolean sportAndroid;
+        public Boolean sportIos;
+        public Boolean gameAndroid;
+        public Boolean gameIos;
 
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-        public LocalDateTime reserve_at;
+        public LocalDateTime reserveAt;
 
         public String category;
 

@@ -1,6 +1,7 @@
 package com.example.api;
 
 import com.example.api.entities.appnotice.AppNotice;
+import com.example.api.entities.appnotice.AppNoticeDevice;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -100,6 +101,7 @@ public class ExampleApplicationTests {
     }
     @Test
     public void enumTest() {
+
         //System.out.println(AppNotice.Category.EVENT.name());
         //System.out.println(AppNotice.Category.valueOf("EVENT"));
 

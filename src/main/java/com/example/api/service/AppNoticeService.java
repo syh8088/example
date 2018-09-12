@@ -22,7 +22,7 @@ public class AppNoticeService {
     private AppNoticeMapper appNoticeMapper;
     private AppNoticeRepository appNoticeRepository;
     private AppNoticeDeviceRepository appNoticeDeviceRepository;
-    private List<String> noticeTypes = Arrays.asList("mobile_web", "sport_android", "sport_ios", "game_android", "game_ios");
+    private List<String> noticeTypes = Arrays.asList("mobileWeb", "sportAndroid", "sportIos", "gameAndroid", "gameIos");
 
     @Autowired
     public AppNoticeService(AppNoticeMapper appNoticeMapper, AppNoticeRepository appNoticeRepository, AppNoticeDeviceRepository appNoticeDeviceRepository) {
@@ -47,7 +47,7 @@ public class AppNoticeService {
         AppNotice originAppNotice = appNoticeRepository.findById(id);
 
         AppNotice newAppNotice = new AppNotice();
-        newAppNotice.setReserveAt(request.reserve_at);
+        newAppNotice.setReserveAt(request.reserveAt);
         newAppNotice.setContent(request.content);
         newAppNotice.setTitle(request.title);
         newAppNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
@@ -55,38 +55,43 @@ public class AppNoticeService {
 
         BeanUtils.copyProperties(newAppNotice, originAppNotice);
 
-        AppNoticeDeviceExists appNoticeDeviceExists = appNoticeMapper.getAppNoticeDeviceExists(noticeTypes, id);
+        List<String> newNoticeTypes = new ArrayList<>();
+        noticeTypes.stream().forEach(type -> {
+            newNoticeTypes.add(camelToDbStyle(type));
+        });
+
+        AppNoticeDeviceExists appNoticeDeviceExists = appNoticeMapper.getAppNoticeDeviceExists(newNoticeTypes, id);
 
         Map<String, Boolean> appNoticeOptions = new HashMap<>();
-        appNoticeOptions.put("mobile_web", appNoticeDeviceExists.isMobileWeb());
-        appNoticeOptions.put("sport_android", appNoticeDeviceExists.isSportAndroid());
-        appNoticeOptions.put("sport_ios", appNoticeDeviceExists.isSportIos());
-        appNoticeOptions.put("game_android", appNoticeDeviceExists.isGameAndroid());
-        appNoticeOptions.put("game_ios", appNoticeDeviceExists.isGameIos());
+        appNoticeOptions.put("mobileWeb", appNoticeDeviceExists.isMobileWeb());
+        appNoticeOptions.put("sportAndroid", appNoticeDeviceExists.isSportAndroid());
+        appNoticeOptions.put("sportIos", appNoticeDeviceExists.isSportIos());
+        appNoticeOptions.put("gameAndroid", appNoticeDeviceExists.isGameAndroid());
+        appNoticeOptions.put("gameIos", appNoticeDeviceExists.isGameIos());
 
         Map<String, Boolean> requestAppNoticeOptions = new HashMap<>();
 
-        requestAppNoticeOptions.put("mobile_web", request.MOBILE_WEB);
-        requestAppNoticeOptions.put("sport_android", request.SPORT_ANDROID);
-        requestAppNoticeOptions.put("sport_ios", request.SPORT_IOS);
-        requestAppNoticeOptions.put("game_android", request.GAME_ANDROID);
-        requestAppNoticeOptions.put("game_ios", request.GAME_IOS);
+        requestAppNoticeOptions.put("mobileWeb", request.mobileWeb);
+        requestAppNoticeOptions.put("sportAndroid", request.sportAndroid);
+        requestAppNoticeOptions.put("sportIos", request.sportIos);
+        requestAppNoticeOptions.put("gameAndroid", request.gameAndroid);
+        requestAppNoticeOptions.put("gameIos", request.gameIos);
 
         appNoticeOptions.forEach((key, value) -> {
 
             if(value && BooleanUtils.isTrue(requestAppNoticeOptions.get(key))) {
 
                 AppNoticeDevice newAppNoticeDevice = null;
-                newAppNoticeDevice = setAppNoticeDeviceArray(key.toUpperCase(), id, request);
+                newAppNoticeDevice = setAppNoticeDeviceArray(key, id, request);
                 appNoticeMapper.updateAppNoticeDevice(newAppNoticeDevice);
 
                 //AppNoticeDevice originNewAppNoticeDevice = appNoticeDeviceRepository.findByNoticeIdAndType(request.getId(), AppNoticeDevice.Type.valueOf(key.toUpperCase()));
                 //BeanUtils.copyProperties(newAppNoticeDevice, originNewAppNoticeDevice);
             } else if(value && !BooleanUtils.isTrue(requestAppNoticeOptions.get(key))) {
                 //appNoticeDeviceRepository.deleteAllByIdAndType(request.getId(), AppNoticeDevice.Type.valueOf(key.toUpperCase()));
-                appNoticeMapper.deleteAppNoticeDevice(id, AppNoticeDevice.Type.valueOf(key.toUpperCase()));
+                appNoticeMapper.deleteAppNoticeDevice(id, AppNoticeDevice.Type.valueOf(camelToDbStyle(key)));
             } else if(!value && BooleanUtils.isTrue(requestAppNoticeOptions.get(key))) {
-                AppNoticeDevice newAppNoticeDevice = setAppNoticeDeviceArray(key.toUpperCase(), id, request);
+                AppNoticeDevice newAppNoticeDevice = setAppNoticeDeviceArray(key, id, request);
                 //appNoticeDeviceRepository.save(newAppNoticeDevice);
 
                 List<AppNoticeDevice> list = new ArrayList<>();
@@ -107,8 +112,7 @@ public class AppNoticeService {
         appNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
         appNotice.setTitle(request.title);
         appNotice.setContent(request.content);
-        appNotice.setReserveAt(request.reserve_at);
-
+        appNotice.setReserveAt(request.reserveAt);
         // Mybatus
         // appNoticeMapper.setAppNotice(appNotice);
 
@@ -120,11 +124,11 @@ public class AppNoticeService {
         List<AppNoticeDevice> list = new ArrayList<>();
         Map<String, Boolean> appNoticeOptions = new HashMap<>();
 
-        appNoticeOptions.put("MOBILE_WEB", request.MOBILE_WEB);
-        appNoticeOptions.put("SPORT_ANDROID", request.SPORT_ANDROID);
-        appNoticeOptions.put("SPORT_IOS", request.SPORT_IOS);
-        appNoticeOptions.put("GAME_ANDROID", request.GAME_ANDROID);
-        appNoticeOptions.put("GAME_IOS", request.GAME_IOS);
+        appNoticeOptions.put("mobileWeb", request.mobileWeb);
+        appNoticeOptions.put("sportAndroid", request.sportAndroid);
+        appNoticeOptions.put("sportIos", request.sportIos);
+        appNoticeOptions.put("gameAndroid", request.gameAndroid);
+        appNoticeOptions.put("gameIos", request.gameIos);
 
         appNoticeOptions.forEach((option, value) -> {
             if(value == true) {
@@ -141,36 +145,43 @@ public class AppNoticeService {
 
     }
 
-    private AppNoticeDevice setAppNoticeDeviceArray(String mode, long insertId, AppNoticeController.AppNoticePostRequest request) {
-        String type = mode.toLowerCase();
+    private AppNoticeDevice setAppNoticeDeviceArray(String type, long insertId, AppNoticeController.AppNoticePostRequest request) {
+        //String type = mode.toLowerCase();
         AppNoticeDevice appNoticeDevice = new AppNoticeDevice();
         appNoticeDevice.setNoticeId(insertId);
-        appNoticeDevice.setType(AppNoticeDevice.Type.valueOf(mode));
+        appNoticeDevice.setType(AppNoticeDevice.Type.valueOf(camelToDbStyle(type)));
 
         switch (type) {
-            case "mobile_web":
-                appNoticeDevice.setNoticeTopAllowed(request.mobile_web_notice_top_allowed.equals("Y"));
-                appNoticeDevice.setPopupAllowed(request.mobile_web_popup_allowed.equals("Y"));
+            case "mobileWeb":
+                appNoticeDevice.setNoticeTopAllowed(request.mobileWebNoticeTopAllowed.equals("Y"));
+                appNoticeDevice.setPopupAllowed(request.mobileWebPopupAllowed.equals("Y"));
                 break;
-            case "sport_android":
-                appNoticeDevice.setNoticeTopAllowed(request.sport_android_notice_top_allowed.equals("Y"));
-                appNoticeDevice.setPopupAllowed(request.sport_android_popup_allowed.equals("Y"));
+            case "sportAndroid":
+                appNoticeDevice.setNoticeTopAllowed(request.sportAndroidNoticeTopAllowed.equals("Y"));
+                appNoticeDevice.setPopupAllowed(request.sportAndroidPopupAllowed.equals("Y"));
                 break;
-            case "sport_ios":
-                appNoticeDevice.setNoticeTopAllowed(request.sport_ios_notice_top_allowed.equals("Y"));
-                appNoticeDevice.setPopupAllowed(request.sport_ios_popup_allowed.equals("Y"));
+            case "sportIos":
+                appNoticeDevice.setNoticeTopAllowed(request.sportIosNoticeTopAllowed.equals("Y"));
+                appNoticeDevice.setPopupAllowed(request.sportIosPopupAllowed.equals("Y"));
                 break;
-            case "game_android":
-                appNoticeDevice.setNoticeTopAllowed(request.game_android_notice_top_allowed.equals("Y"));
-                appNoticeDevice.setPopupAllowed(request.game_android_popup_allowed.equals("Y"));
+            case "gameAndroid":
+                appNoticeDevice.setNoticeTopAllowed(request.gameAndroidNoticeTopAllowed.equals("Y"));
+                appNoticeDevice.setPopupAllowed(request.gameAndroidPopupAllowed.equals("Y"));
                 break;
-            case "game_ios":
-                appNoticeDevice.setNoticeTopAllowed(request.game_ios_notice_top_allowed.equals("Y"));
-                appNoticeDevice.setPopupAllowed(request.game_ios_popup_allowed.equals("Y"));
+            case "gameIos":
+                appNoticeDevice.setNoticeTopAllowed(request.gameIosNoticeTopAllowed.equals("Y"));
+                appNoticeDevice.setPopupAllowed(request.gameIosPopupAllowed.equals("Y"));
                 break;
         }
 
         return appNoticeDevice;
+    }
+
+    private String camelToDbStyle(String value) {
+        String regex = "([a-z])([A-Z])";
+        String replacement = "$1_$2";
+        String replaceValue = value.replaceAll(regex, replacement).toUpperCase();
+        return replaceValue;
     }
 
 }
