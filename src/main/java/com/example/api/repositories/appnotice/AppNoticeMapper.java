@@ -14,12 +14,12 @@ import java.util.Map;
 @Repository
 public interface AppNoticeMapper {
 
-    List<AppNotice> getAppNoticeList(List<String> subSelectArray);
+    List<AppNotice> getAppNoticeList(List<String> noticeTypes);
 
-    AppNoticeDeviceExists getAppNoticeDeviceExists(@Param("noticeName") List<String> subSelectArray, @Param("id") int id);
+    AppNoticeDeviceExists getAppNoticeDeviceExists(@Param("noticeTypes") List<String> noticeTypes, @Param("id") long id);
 
     int updateAppNoticeDevice(AppNoticeDevice appNoticeDevice);
-    int deleteAppNoticeDevice(@Param("noticeId") Long noticeId, @Param("type") AppNoticeDevice.Type type);
+    int deleteAppNoticeDevice(@Param("noticeId") long noticeId, @Param("type") AppNoticeDevice.Type type);
 
     int setAppNotice(AppNotice appNotice);
     int setAppNoticeDevice(Map<String, Object> map);

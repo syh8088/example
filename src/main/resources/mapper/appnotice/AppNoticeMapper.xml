@@ -15,7 +15,7 @@
 
     <select id="getAppNoticeDeviceExists" resultType="AppNoticeDeviceExists">
         SELECT
-        <foreach collection="noticeName" item="item" separator=",">
+        <foreach collection="noticeTypes" item="item" separator=",">
             (SELECT EXISTS (SELECT * FROM app_notice_device AS D WHERE D.type=#{item} AND D.notice_id=N.id)) AS #{item}
         </foreach>
         FROM app_notice AS N

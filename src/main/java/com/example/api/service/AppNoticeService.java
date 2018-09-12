@@ -22,7 +22,7 @@ public class AppNoticeService {
     private AppNoticeMapper appNoticeMapper;
     private AppNoticeRepository appNoticeRepository;
     private AppNoticeDeviceRepository appNoticeDeviceRepository;
-    private List<String> noticeName = Arrays.asList("mobile_web", "sport_android", "sport_ios", "game_android", "game_ios");
+    private List<String> noticeTypes = Arrays.asList("mobile_web", "sport_android", "sport_ios", "game_android", "game_ios");
 
     @Autowired
     public AppNoticeService(AppNoticeMapper appNoticeMapper, AppNoticeRepository appNoticeRepository, AppNoticeDeviceRepository appNoticeDeviceRepository) {
@@ -32,7 +32,7 @@ public class AppNoticeService {
     }
 
     public List<AppNotice> getAppNoticeList() {
-        List<AppNotice> appNoticeList = appNoticeMapper.getAppNoticeList(noticeName);
+        List<AppNotice> appNoticeList = appNoticeMapper.getAppNoticeList(noticeTypes);
         return appNoticeList;
     }
 
@@ -42,20 +42,20 @@ public class AppNoticeService {
     }
 
     @Transactional
-    public AppNotice updateAppNotice(AppNoticeController.CreatePostRequest request) throws ApiException {
+    public AppNotice updateAppNotice(long id, AppNoticeController.AppNoticePostRequest request) throws ApiException {
 
-        AppNotice originAppNotice = appNoticeRepository.findById(request.getId());
+        AppNotice originAppNotice = appNoticeRepository.findById(id);
 
         AppNotice newAppNotice = new AppNotice();
         newAppNotice.setReserveAt(request.reserve_at);
         newAppNotice.setContent(request.content);
         newAppNotice.setTitle(request.title);
         newAppNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
-        newAppNotice.setId(request.getId());
+        newAppNotice.setId(id);
 
         BeanUtils.copyProperties(newAppNotice, originAppNotice);
 
-        AppNoticeDeviceExists appNoticeDeviceExists = appNoticeMapper.getAppNoticeDeviceExists(noticeName, (int) request.getId());
+        AppNoticeDeviceExists appNoticeDeviceExists = appNoticeMapper.getAppNoticeDeviceExists(noticeTypes, id);
 
         Map<String, Boolean> appNoticeOptions = new HashMap<>();
         appNoticeOptions.put("mobile_web", appNoticeDeviceExists.isMobileWeb());
@@ -77,16 +77,16 @@ public class AppNoticeService {
             if(value && BooleanUtils.isTrue(requestAppNoticeOptions.get(key))) {
 
                 AppNoticeDevice newAppNoticeDevice = null;
-                newAppNoticeDevice = setAppNoticeDeviceArray(key.toUpperCase(), (int) request.getId(), request);
+                newAppNoticeDevice = setAppNoticeDeviceArray(key.toUpperCase(), id, request);
                 appNoticeMapper.updateAppNoticeDevice(newAppNoticeDevice);
 
                 //AppNoticeDevice originNewAppNoticeDevice = appNoticeDeviceRepository.findByNoticeIdAndType(request.getId(), AppNoticeDevice.Type.valueOf(key.toUpperCase()));
                 //BeanUtils.copyProperties(newAppNoticeDevice, originNewAppNoticeDevice);
             } else if(value && !BooleanUtils.isTrue(requestAppNoticeOptions.get(key))) {
                 //appNoticeDeviceRepository.deleteAllByIdAndType(request.getId(), AppNoticeDevice.Type.valueOf(key.toUpperCase()));
-                appNoticeMapper.deleteAppNoticeDevice(request.getId(), AppNoticeDevice.Type.valueOf(key.toUpperCase()));
+                appNoticeMapper.deleteAppNoticeDevice(id, AppNoticeDevice.Type.valueOf(key.toUpperCase()));
             } else if(!value && BooleanUtils.isTrue(requestAppNoticeOptions.get(key))) {
-                AppNoticeDevice newAppNoticeDevice = setAppNoticeDeviceArray(key.toUpperCase(), (int) request.getId(), request);
+                AppNoticeDevice newAppNoticeDevice = setAppNoticeDeviceArray(key.toUpperCase(), id, request);
                 //appNoticeDeviceRepository.save(newAppNoticeDevice);
 
                 List<AppNoticeDevice> list = new ArrayList<>();
@@ -101,7 +101,7 @@ public class AppNoticeService {
         return newAppNotice;
     }
 
-    public AppNotice setAppNotice(AppNoticeController.CreatePostRequest request) {
+    public AppNotice setAppNotice(AppNoticeController.AppNoticePostRequest request) {
         AppNotice appNotice = new AppNotice();
 
         appNotice.setCategory(AppNotice.Category.valueOf(request.category.toUpperCase()));
@@ -141,7 +141,7 @@ public class AppNoticeService {
 
     }
 
-    private AppNoticeDevice setAppNoticeDeviceArray(String mode, long insertId, AppNoticeController.CreatePostRequest request) {
+    private AppNoticeDevice setAppNoticeDeviceArray(String mode, long insertId, AppNoticeController.AppNoticePostRequest request) {
         String type = mode.toLowerCase();
         AppNoticeDevice appNoticeDevice = new AppNoticeDevice();
         appNoticeDevice.setNoticeId(insertId);

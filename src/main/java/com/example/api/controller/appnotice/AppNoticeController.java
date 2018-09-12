@@ -3,6 +3,7 @@ package com.example.api.controller.appnotice;
 import com.example.api.entities.appnotice.AppNotice;
 import com.example.api.service.AppNoticeService;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.Data;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("appnotices")
+@Api(tags = "AppNotice")
 public class AppNoticeController {
 
     private AppNoticeService appNoticeService;
@@ -40,24 +42,24 @@ public class AppNoticeController {
     @PostMapping("create")
     @ApiOperation(value = "Create appNotice", notes = "Creates a appNotice and returns the entity.")
     public ResponseEntity<AppNotice> setAppNotice(
-            @RequestBody CreatePostRequest request
+            @RequestBody AppNoticePostRequest request
     ) {
        return ResponseEntity.ok().body(appNoticeService.setAppNotice(request));
     }
 
-    @PostMapping("update")
+    @PutMapping("update/{id}")
     @ApiOperation(value = "Update appNotice", notes = "Updates a appNotice and returns the entity.")
     public ResponseEntity<AppNotice> updateAppNotice(
-            @RequestBody CreatePostRequest request
+            @PathVariable("id") @ApiParam(value = "AppNotice id") long id,
+            @RequestBody AppNoticePostRequest request
     ) throws Exception {
-        return ResponseEntity.ok().body(appNoticeService.updateAppNotice(request));
+        return ResponseEntity.ok().body(appNoticeService.updateAppNotice(id, request));
     }
 
     @NoArgsConstructor
     @Data
-    public static class CreatePostRequest {
+    public static class AppNoticePostRequest {
 
-        public long id;
         public String mobile_web_notice_top_allowed;
         public String mobile_web_popup_allowed;
         public String sport_android_notice_top_allowed;
