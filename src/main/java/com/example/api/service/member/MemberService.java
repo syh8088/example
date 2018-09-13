@@ -57,8 +57,10 @@ public class MemberService {
         String postEmail = member.getEmail();
 
         Member verificationMember = memberRepository.findByIdOrAndEmail(postId, postEmail);
-        if(verificationMember.getId().equals(postId) || verificationMember.getEmail().equals(postEmail)) {
-            throw new ApiException("PostMultipleError", "id 및 email 중복 에러");
+        if(verificationMember != null ) {
+            if(verificationMember.getId().equals(postId) || verificationMember.getEmail().equals(postEmail)) {
+                throw new ApiException("PostMultipleError", "id 및 email 중복 에러");
+            }
         }
 
         return memberRepository.save(member);
