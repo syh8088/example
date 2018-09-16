@@ -52,6 +52,10 @@ dependencies {
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.3')
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
 
+    compile "org.springframework.boot:spring-boot-starter-security"
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    compile "org.thymeleaf.extras:thymeleaf-extras-springsecurity4"
+
     testCompile("org.springframework.boot:spring-boot-starter-test")
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop'

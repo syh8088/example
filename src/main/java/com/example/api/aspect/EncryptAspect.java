@@ -1,7 +1,7 @@
 package com.example.api.aspect;
 
 import com.example.api.annotation.Encrypt;
-import com.example.api.util.AuthUtil;
+import com.example.api.util.security.CustomPasswordEncoder;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -50,7 +50,10 @@ public class EncryptAspect {
         switch (field.getAnnotation(Encrypt.class).type()) {
             case PASSWORD:
                 String value = (String) field.get(arg);
-                field.set(arg, AuthUtil.encode(value));
+
+                CustomPasswordEncoder customPasswordEncoder = new CustomPasswordEncoder();
+
+                field.set(arg, customPasswordEncoder.encode(value));
             default:
                 //nothing
         }

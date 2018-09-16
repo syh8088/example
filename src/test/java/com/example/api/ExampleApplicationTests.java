@@ -2,9 +2,13 @@ package com.example.api;
 
 import com.example.api.entities.appnotice.AppNotice;
 import com.example.api.entities.appnotice.AppNoticeDevice;
+import com.example.api.util.security.PasswordEncoding;
+import com.example.api.util.security.SHAPasswordEncoder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.*;
@@ -58,6 +62,18 @@ public class ExampleApplicationTests {
 
     @Test
     public void array2() {
+String pw = "as";
+
+        String password = "1234";
+        SHAPasswordEncoder shaPasswordEncoder = new SHAPasswordEncoder(512);
+        shaPasswordEncoder.setEncodeHashAsBase64(true);
+        PasswordEncoding passwordEncoding = new PasswordEncoding(shaPasswordEncoder);
+        System.out.println("SHA 암호화: " + passwordEncoding.encode(password));
+
+
+      // PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+      //  String hashedPassword = passwordEncoder.encode(pw);
+
         int[][] array4 = new int[3][4];
         array4[0][1] = 10;
 
@@ -66,7 +82,7 @@ public class ExampleApplicationTests {
         array5[0][0] = 10;
 
         int[][] array6 = {{1}, {1,2}, {1,2,3}};
-        System.out.println(array6[0][0]);
+     //   System.out.println(array6[0][0]);
 
     }
 

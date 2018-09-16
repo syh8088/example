@@ -2,12 +2,14 @@ package com.example.api.entities.member;
 
 
 import com.example.api.annotation.Encrypt;
+import com.example.api.config.LocalDateTimeAttributeConverter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,9 @@ public class Member extends MemeberCommon {
     private String email;
 
     private Long point;
+
+    @Convert(converter = LocalDateTimeAttributeConverter.class)
+    private LocalDateTime todayLogin;
 
     // ManyToOne
     @ManyToOne
