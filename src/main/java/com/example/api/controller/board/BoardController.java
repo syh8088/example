@@ -71,7 +71,8 @@ public class BoardController {
             @PathVariable("boardId") String boardId,
             @PathVariable("postId") int postId,
             @PathVariable("subject") String subject,
-            @PathVariable("content") String content
+            @PathVariable("content") String content,
+            HttpServletRequest httpServletRequestequest
     ) throws Exception {
         BoardList boardList = new BoardList();
         boardList.setBoardId(boardId);
@@ -79,7 +80,7 @@ public class BoardController {
         boardList.setSubject(subject);
         boardList.setContent(content);
 
-        return ResponseEntity.ok().body(boardService.updateBoard(boardList));
+        return ResponseEntity.ok().body(boardService.updateBoard(boardList, httpServletRequestequest));
     }
 
     // 글삭제

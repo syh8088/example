@@ -51,9 +51,9 @@
     </select>
 
     <insert id="setBoard" parameterType="BoardList">
-        INSERT INTO board_${boardId}(
-        num, is_comment, subject, content, create_at, ip
-        ) SELECT (SELECT IFNULL(MIN(num), 0)-1 FROM board_${boardId}), 0, #{subject}, #{content}, NOW(), #{ip}
+        INSERT INTO board_${boardId}
+        (num, is_comment, subject, content, create_by, create_at, ip)
+        SELECT (SELECT IFNULL(MIN(num), 0)-1 FROM board_${boardId}), 0, #{subject}, #{content}, #{createBy}, NOW(), #{ip}
     <selectKey resultType="int" keyProperty="id" order="AFTER">
         SELECT LAST_INSERT_ID()
     </selectKey>
@@ -72,6 +72,7 @@
         <if test="subject != null">subject = #{subject},</if>
         <if test="content != null">content = #{content},</if>
         <if test="ip != null">ip = #{ip},</if>
+        update_by = #{updateBy}
         update_at = NOW()
         WHERE id = #{id}
     </update>

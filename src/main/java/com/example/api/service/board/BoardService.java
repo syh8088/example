@@ -107,6 +107,7 @@ public class BoardService {
         }
 
         // TODO 리턴값이 CREATE 한 id값으로 오는게 아니라 도메인 boardList에 자동 저장되는가??
+        boardList.setCreateBy((String) httpServletRequestequest.getSession().getAttribute("userId"));
         boardMapper.setBoard(boardList);
         boardMapper.updateBoardParentId(boardList);
 
@@ -124,7 +125,7 @@ public class BoardService {
         return getOneBoard(boardList);
     }
 
-    public BoardAndBoardList updateBoard(BoardList boardList) throws ApiException {
+    public BoardAndBoardList updateBoard(BoardList boardList, HttpServletRequest httpServletRequestequest) throws ApiException {
 
         String boardId = boardList.getBoardId();
         String content = boardList.getContent();
@@ -151,6 +152,7 @@ public class BoardService {
             throw new ApiException("WriteMaxError", "내용 글수 최대 글수 제한");
         }
 
+        boardList.setUpdateBy((String) httpServletRequestequest.getSession().getAttribute("userId"));
         boardMapper.updateBoard(boardList);
         return this.getBoard(boardList);
     }
