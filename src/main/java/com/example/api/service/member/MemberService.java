@@ -5,16 +5,12 @@ import com.example.api.entities.point.Point;
 import com.example.api.exception.ApiException;
 import com.example.api.repositories.member.MemberMapper;
 import com.example.api.repositories.member.MemberRepository;
-import com.example.api.repositories.point.PointMapper;
-import com.example.api.repositories.point.PointRepository;
 import com.example.api.util.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.time.LocalDateTime;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
@@ -22,17 +18,13 @@ public class MemberService {
 
     private final MemberMapper memberMapper;
     private final MemberRepository memberRepository;
-    private final PointMapper pointMapper;
-    private final PointRepository pointRepository;
 
     private static final String IGNORE_FIELD_WHEN_MODIFY[] = {Constants.DELETE_YN, Constants.REGISTER_YMDT, Constants.UPDATE_YMDT, Constants.EMAIL, Constants.ID, Constants.NO};
 
     @Autowired
-    public MemberService(MemberMapper memberMapper, MemberRepository memberRepository, PointRepository pointRepository, PointMapper pointMapper) {
+    public MemberService(MemberMapper memberMapper, MemberRepository memberRepository) {
         this.memberMapper = memberMapper;
         this.memberRepository = memberRepository;
-        this.pointRepository = pointRepository;
-        this.pointMapper = pointMapper;
     }
 
     public Member getMember(long no, String type) {
@@ -57,6 +49,10 @@ public class MemberService {
         return member;
     }
 
+    public Member getMemberById(String userId) {
+        return memberRepository.getMemberById(userId);
+    }
+
     public Member saveSomethingMember(Member member) throws ApiException {
 
         // id, email 중복 유효성 검사
@@ -73,7 +69,7 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
-    @Transactional
+   @Transactional
     public Member modifyNameByName(Member member) {
         Member originMember = memberRepository.findOne(member.getNo());
 
@@ -81,31 +77,14 @@ public class MemberService {
         return member;
     }
 
-    @Transactional
-    public Member modifyAuthenticationSuccess(String userId) {
-
-        Member originMember = memberRepository.getMemberById(userId);
+    public void modifyAuthenticationSuccess(Member originMember) {
 
         Point point = new Point();
         point.setPoint((long) 10);
         point.setType("member_login");
         point.setMemberNo(originMember.getNo());
-        pointRepository.save(point);
 
-        Long sumPoint = pointMapper.getSumPoint(originMember.getNo());
-
-        Member newMember = new Member();
-
-        LocalDateTime dateTime = LocalDateTime.now();
-        newMember.setTodayLogin(dateTime);
-        newMember.setMemberGroup(originMember.getMemberGroup());
-        newMember.setName(originMember.getName());
-        newMember.setPassword(originMember.getPassword());
-        newMember.setPoint(sumPoint);
-
-        BeanUtils.copyProperties(newMember, originMember, IGNORE_FIELD_WHEN_MODIFY);
-
-        return newMember;
+        memberMapper.updateMemberPoint(point);
     }
 
 }

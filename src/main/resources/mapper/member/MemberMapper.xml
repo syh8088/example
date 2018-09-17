@@ -8,4 +8,10 @@
         FROM member
         WHERE no = #{no}
     </select>
+
+    <update id="updateMemberPoint" parameterType="int">
+        UPDATE member
+        SET point = (SELECT SUM(point) FROM point WHERE member_no=${memberNo})
+        WHERE no=${memberNo}
+    </update>
 </mapper>

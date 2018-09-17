@@ -3,6 +3,7 @@ package com.example.api.entities.point;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.apache.ibatis.type.Alias;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.Entity;
@@ -15,16 +16,17 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 @Entity
+@Alias("Point")
 public class Point {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long no;
+    private long no;
 
-    private Long memberNo;
+    private long memberNo;
 
     @CreatedDate
     private LocalDateTime create_at;
     private String content;
-    private Long point;
+    private long point;
     private String type;
 }

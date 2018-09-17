@@ -1,17 +1,21 @@
 package com.example.api.service.board;
 
-import com.example.api.exception.ApiException;
 import com.example.api.entities.board.Board;
 import com.example.api.entities.board.BoardAndBoardList;
 import com.example.api.entities.board.BoardList;
+import com.example.api.entities.member.Member;
 import com.example.api.entities.point.Point;
+import com.example.api.exception.ApiException;
 import com.example.api.repositories.board.BoardMapper;
 import com.example.api.repositories.board.BoardRepository;
-import com.example.api.repositories.point.PointRepository;
+import com.example.api.repositories.member.MemberMapper;
+import com.example.api.repositories.member.MemberRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.util.List;
 
@@ -20,13 +24,15 @@ public class BoardService {
 
     private BoardMapper boardMapper;
     private BoardRepository boardRepository; // JPA
-    private PointRepository pointRepository; // JPA
+    private MemberRepository memberRepository;
+    private MemberMapper memberMapper;
 
     @Autowired
-    public BoardService(BoardMapper boardMapper, BoardRepository boardRepository, PointRepository pointRepository) {
+    public BoardService(BoardMapper boardMapper, BoardRepository boardRepository, MemberRepository memberRepository, MemberMapper memberMapper) {
         this.boardMapper = boardMapper;
         this.boardRepository = boardRepository;
-        this.pointRepository = pointRepository;
+        this.memberRepository = memberRepository;
+        this.memberMapper = memberMapper;
     }
 
     public BoardAndBoardList getBoard(BoardList boardList) {
@@ -60,7 +66,8 @@ public class BoardService {
         return newBoardList;
     }
 
-    public BoardList setBoard(BoardList boardList) throws ApiException {
+    @Transactional
+    public BoardList setBoard(BoardList boardList, HttpServletRequest httpServletRequestequest) throws ApiException {
 
         String subject = boardList.getSubject();
         String content = boardList.getContent();
@@ -105,11 +112,13 @@ public class BoardService {
 
         // 게시물 등록시 포인트 지급
         if(board.getWritePoint() > 0) {
+            Member member = memberRepository.getMemberById((String) httpServletRequestequest.getSession().getAttribute("userId"));
+
             Point point = new Point();
             point.setPoint(board.getWritePoint());
             point.setType("board_create");
-            point.setMemberNo(boardList.getId());
-            pointRepository.save(point);
+            point.setMemberNo(member.getNo());
+            memberMapper.updateMemberPoint(point);
         }
 
         return getOneBoard(boardList);

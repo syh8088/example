@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("boards")
 @Api(tags = "Board")
@@ -52,14 +54,15 @@ public class BoardController {
     @PostMapping("create/boards/{boardId}")
     public ResponseEntity<BoardList> setMember(
             @PathVariable("boardId") String boardId,
-            @RequestBody CreatePostRequest request
+            @RequestBody CreatePostRequest request,
+            HttpServletRequest httpServletRequestequest
     ) throws Exception {
         BoardList boardList = new BoardList();
         boardList.setBoardId(boardId);
         boardList.setSubject(request.subject);
         boardList.setContent(request.content);
 
-        return ResponseEntity.ok().body(boardService.setBoard(boardList));
+        return ResponseEntity.ok().body(boardService.setBoard(boardList, httpServletRequestequest));
     }
 
     // 글수정

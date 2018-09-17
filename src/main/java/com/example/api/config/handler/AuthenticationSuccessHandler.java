@@ -1,5 +1,6 @@
 package com.example.api.config.handler;
 
+import com.example.api.entities.member.Member;
 import com.example.api.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -25,9 +26,13 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
+
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String userId = userDetails.getUsername();
-        memberService.modifyAuthenticationSuccess(userId);
+        request.getSession().setAttribute("userId", userId);
+
+        Member member = memberService.getMemberById(userId);
+        memberService.modifyAuthenticationSuccess(member);
 
         response.sendRedirect("/main");
       //  super.onAuthenticationSuccess(request, response, authentication);
