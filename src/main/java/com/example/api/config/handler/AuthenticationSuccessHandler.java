@@ -23,7 +23,6 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
         this.memberService = memberService;
     }
 
-
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
 
@@ -35,6 +34,6 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
         memberService.modifyAuthenticationSuccess(member);
 
         response.sendRedirect("/main");
-      //  super.onAuthenticationSuccess(request, response, authentication);
+        //super.onAuthenticationSuccess(request, response, authentication);
     }
 }

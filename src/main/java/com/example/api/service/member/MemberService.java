@@ -69,7 +69,12 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
-   @Transactional
+    @Transactional
+    public Member saveTransactionPropagationTest(Member member) {
+        return memberRepository.save(member);
+    }
+
+    @Transactional
     public Member modifyNameByName(Member member) {
         Member originMember = memberRepository.findOne(member.getNo());
 
@@ -77,12 +82,12 @@ public class MemberService {
         return member;
     }
 
-    public void modifyAuthenticationSuccess(Member originMember) {
+    public void modifyAuthenticationSuccess(Member member) {
 
         Point point = new Point();
         point.setPoint((long) 10);
         point.setType("member_login");
-        point.setMemberNo(originMember.getNo());
+        point.setMemberNo(member.getNo());
 
         memberMapper.updateMemberPoint(point);
     }

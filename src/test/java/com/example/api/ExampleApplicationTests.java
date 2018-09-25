@@ -12,11 +12,90 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.stream.IntStream;
 
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
 public class ExampleApplicationTests {
+
+    @Test
+    public void Thread() {
+
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                System.out.printf("efefef");
+            }
+        };
+        //Thread thread = new Thread(task);
+        //thread.start();
+        Future future = executorService.submit(task);
+        System.out.printf(Thread.currentThread().getName());
+
+        System.out.println(future);
+    }
+
+    @Test
+    public void ExecuteExam() throws InterruptedException {
+
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+
+        for (int i = 0; i < 10; i++) {
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) executorService;
+
+                    int poolSize = threadPoolExecutor.getPoolSize();
+                    String threadName = Thread.currentThread().getName();
+                    System.out.println  ("[총 스레드 개수: " + poolSize + "] 작업 스레드 이름: " + threadName);
+
+                    int value = Integer.parseInt("숫자");
+                }
+            };
+
+            //executorService.execute(runnable);
+             executorService.submit(runnable);
+
+            Thread.sleep(10);
+        }
+        executorService.shutdown();
+    }
+
+
+    @Test
+    public void kako() {
+        int n = 5;
+        int[] arr1 = {9, 20, 28, 18, 11};
+        int[] arr2 = {30, 1, 21, 17, 28};
+
+        String[] result = new String[n];
+
+        for(int i = 0; i < n; i++) {
+            int arr = arr1[i] | arr2[i];
+            //System.out.println(arr);
+            int targetBit = 1;
+            String resultString = "";
+            System.out.println("" + Integer.toBinaryString(arr));
+                for(int j = 0; j < n; j++) {
+                    resultString = ((arr & targetBit) > 0 ? "#" : " ") + resultString;
+                    targetBit = targetBit << 1;
+                }
+            result[i] = resultString;
+                System.out.println(result[i]);
+
+
+
+
+        }
+    }
+
     @Test
     public void doubleArray() {
 

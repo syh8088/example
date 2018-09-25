@@ -1,4 +1,4 @@
-package com.example.api.config;
+package com.example.api.config.security;
 
 import com.example.api.config.handler.AuthenticationSuccessHandler;
 import com.example.api.config.handler.UserServiceHandler;
@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers(homeUrl, "/v2/api-docs", "/swagger-resources/configuration/ui", "/swagger-resources", "/swagger-resources/configuration/security", "/swagger-ui.html", "/webjars/**").permitAll()
+                .antMatchers(homeUrl, homeUrl + "/facebook/**",homeUrl + "/social_login", "/social_login.html", "/connect/facebook", "/webjars/**", "/v2/api-docs", "/swagger-resources/configuration/ui", "/swagger-resources", "/swagger-resources/configuration/security", "/swagger-ui.html", "/webjars/**").permitAll()
                 .antMatchers(homeUrl + "/admin/**").hasAnyAuthority("ADMIN")
                 .antMatchers(homeUrl + "/writer/**").hasAuthority("WRITER")
                 .anyRequest().authenticated()
