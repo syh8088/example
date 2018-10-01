@@ -1,4 +1,4 @@
-package com.example.api.entities.board;
+package com.example.api.model.entities.board;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

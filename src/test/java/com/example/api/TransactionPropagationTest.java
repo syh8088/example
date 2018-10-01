@@ -1,6 +1,6 @@
 package com.example.api;
 
-import com.example.api.entities.member.Member;
+import com.example.api.model.entities.member.Member;
 import com.example.api.service.member.MemberService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,12 +10,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class transactionPropagationTest {
+public class TransactionPropagationTest {
 
     private final MemberService memberService;
 
     @Autowired
-    public transactionPropagationTest(MemberService memberService) {
+    public TransactionPropagationTest(MemberService memberService) {
         this.memberService = memberService;
     }
 

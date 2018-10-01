@@ -1,4 +1,4 @@
-package com.example.api.entities.member;
+package com.example.api.model.entities.member;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,8 +1,9 @@
-package com.example.api.entities.member;
+package com.example.api.model.entities.member;
 
 
 import com.example.api.annotation.Encrypt;
 import com.example.api.config.LocalDateTimeAttributeConverter;
+import com.example.api.model.enums.OauthType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,6 +36,13 @@ public class Member extends MemeberCommon {
 
     @Convert(converter = LocalDateTimeAttributeConverter.class)
     private LocalDateTime todayLogin;
+
+    @Enumerated(EnumType.STRING)
+    private OauthType oauthType;
+
+    private String oauthId;
+
+    private String snsYn;
 
     // ManyToOne
     @ManyToOne

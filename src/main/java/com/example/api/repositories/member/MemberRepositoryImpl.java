@@ -1,7 +1,7 @@
 package com.example.api.repositories.member;
 
-import com.example.api.entities.member.Member;
-import com.example.api.entities.member.QMember;
+import com.example.api.model.entities.member.Member;
+import com.example.api.model.entities.member.QMember;
 import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
 
 public class MemberRepositoryImpl extends QueryDslRepositorySupport implements MemberRepositoryCustom {

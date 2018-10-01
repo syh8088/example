@@ -1,4 +1,4 @@
-package com.example.api.entities.appnotice;
+package com.example.api.model.entities.appnotice;
 
 
 import com.example.api.config.LocalDateTimeAttributeConverter;

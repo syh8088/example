@@ -1,4 +1,4 @@
-package com.example.api.entities.point;
+package com.example.api.model.entities.point;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.example.api.entities.cast;
+package com.example.api.model.entities.cast;
 
 import lombok.Getter;
 import lombok.Setter;

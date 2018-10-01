@@ -1,6 +1,6 @@
 package com.example.api.service;
 
-import com.example.api.entities.cast.CastContents;
+import com.example.api.model.entities.cast.CastContents;
 import com.example.api.repositories.cast.CastMapper;
 import com.example.api.repositories.cast.CastRepository;
 import org.springframework.beans.factory.annotation.Autowired;

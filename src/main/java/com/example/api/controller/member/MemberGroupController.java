@@ -1,7 +1,7 @@
 package com.example.api.controller.member;
 
-import com.example.api.entities.member.MemberGroup;
-import com.example.api.entities.member.MemberGroupViewModel;
+import com.example.api.model.entities.member.MemberGroup;
+import com.example.api.model.entities.member.MemberGroupViewModel;
 import com.example.api.service.member.MemberGroupService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

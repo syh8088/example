@@ -1,4 +1,4 @@
-package com.example.api.entities.board;
+package com.example.api.model.entities.board;
 
 import lombok.Getter;
 import lombok.Setter;

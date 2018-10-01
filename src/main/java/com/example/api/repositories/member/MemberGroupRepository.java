@@ -1,6 +1,6 @@
 package com.example.api.repositories.member;
 
-import com.example.api.entities.member.MemberGroup;
+import com.example.api.model.entities.member.MemberGroup;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

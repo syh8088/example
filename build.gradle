@@ -42,7 +42,6 @@ dependencies {
     compile('org.apache.tomcat.embed:tomcat-embed-jasper')
     compile('javax.servlet:jstl:1.2')
     compile('org.apache.commons:commons-lang3:3.0')
-    compile('osecurity-oauth2-clientg.apache.commons:commons-lang3:3.0')
 
     // swagger
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.+'
@@ -57,7 +56,6 @@ dependencies {
     compile "org.thymeleaf.extras:thymeleaf-extras-springsecurity4"
     compile "org.springframework.social:spring-social-facebook"
     compile "org.springframework.security.oauth:spring-security-oauth2"
-
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 

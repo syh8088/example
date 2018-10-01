@@ -1,4 +1,4 @@
-package com.example.api.entities.member;
+package com.example.api.model.entities.member;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,15 +10,12 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Entity
-public class MemberRoleMapping extends MemeberCommon {
-
+@Table(name = "role")
+public class Role extends MemeberCommon {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int memberRoleMappingNo;
+    private long roleNo;
 
     @Column(nullable = false)
-    private int memberNo;
-
-    @Column(nullable = false)
-    private int roleNo;
+    private String name;
 }

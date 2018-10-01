@@ -1,6 +1,6 @@
 package com.example.api.controller.member;
 
-import com.example.api.entities.member.Member;
+import com.example.api.model.entities.member.Member;
 import com.example.api.service.member.MemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

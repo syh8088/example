@@ -1,6 +1,6 @@
 package com.example.api.annotation;
 
-import com.example.api.entities.enums.EncryptType;
+import com.example.api.model.enums.EncryptType;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,10 +1,10 @@
 package com.example.api.service.board;
 
-import com.example.api.entities.board.Board;
-import com.example.api.entities.board.BoardAndBoardList;
-import com.example.api.entities.board.BoardList;
-import com.example.api.entities.member.Member;
-import com.example.api.entities.point.Point;
+import com.example.api.model.entities.board.Board;
+import com.example.api.model.entities.board.BoardAndBoardList;
+import com.example.api.model.entities.board.BoardList;
+import com.example.api.model.entities.member.Member;
+import com.example.api.model.entities.point.Point;
 import com.example.api.exception.ApiException;
 import com.example.api.repositories.board.BoardMapper;
 import com.example.api.repositories.board.BoardRepository;

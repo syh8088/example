@@ -1,6 +1,6 @@
 package com.example.api.controller.appnotice;
 
-import com.example.api.entities.appnotice.AppNotice;
+import com.example.api.model.entities.appnotice.AppNotice;
 import com.example.api.service.AppNoticeService;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.Api;

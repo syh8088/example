@@ -1,6 +1,6 @@
 package com.example.api.repositories.board;
 
-import com.example.api.entities.board.Board;
+import com.example.api.model.entities.board.Board;
 
 public interface BoardRepositoryCustom {
 

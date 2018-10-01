@@ -1,0 +1,43 @@
+server:
+  port: 8084
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+  datasource:
+    url: jdbc:mysql://syh80882.cafe24.com/syh80882
+    driverClassName: com.mysql.jdbc.Driver
+    username: syh80882
+    password: abc123!@
+
+mybatis:
+  type-aliases-package: com.example.api
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+naver:
+  client:
+    clientId: ZYywOLuKwRvc5jHguZy4
+    clientSecret: 9I1vFrLO9R
+    accessTokenUri: https://nid.naver.com/oauth2.0/token
+    userAuthorizationUri: https://nid.naver.com/oauth2.0/authorize
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://openapi.naver.com/v1/nid/me
+
+google:
+  client:
+    clientId: 475081898784-lg5r1loci4q9o2s5n8o7avcql3qedais.apps.googleusercontent.com
+    clientSecret: PR4nO3yFKHzeUVVVF75A2zPB
+    accessTokenUri: https://accounts.google.com/o/oauth2/token
+    userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+    clientAuthenticationScheme: form
+    scope: email, profile
+  resource:
+    userInfoUri: https://www.googleapis.com/oauth2/v2/userinfo

@@ -1,7 +1,7 @@
 package com.example.api;
 
-import com.example.api.entities.appnotice.AppNotice;
-import com.example.api.entities.appnotice.AppNoticeDevice;
+import com.example.api.model.entities.appnotice.AppNotice;
+import com.example.api.model.entities.appnotice.AppNoticeDevice;
 import com.example.api.util.security.PasswordEncoding;
 import com.example.api.util.security.SHAPasswordEncoder;
 import org.junit.Test;
@@ -24,7 +24,6 @@ public class ExampleApplicationTests {
 
     @Test
     public void Thread() {
-
         ExecutorService executorService = Executors.newFixedThreadPool(2);
 
         Runnable task = new Runnable() {

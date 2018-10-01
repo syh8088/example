@@ -1,8 +1,8 @@
 package com.example.api.controller.board;
 
 
-import com.example.api.entities.board.BoardAndBoardList;
-import com.example.api.entities.board.BoardList;
+import com.example.api.model.entities.board.BoardAndBoardList;
+import com.example.api.model.entities.board.BoardList;
 import com.example.api.service.board.BoardService;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.Api;

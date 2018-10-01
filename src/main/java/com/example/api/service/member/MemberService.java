@@ -1,8 +1,9 @@
 package com.example.api.service.member;
 
-import com.example.api.entities.member.Member;
-import com.example.api.entities.point.Point;
+import com.example.api.model.entities.member.Member;
+import com.example.api.model.entities.point.Point;
 import com.example.api.exception.ApiException;
+import com.example.api.model.enums.OauthType;
 import com.example.api.repositories.member.MemberMapper;
 import com.example.api.repositories.member.MemberRepository;
 import com.example.api.util.Constants;
@@ -82,14 +83,19 @@ public class MemberService {
         return member;
     }
 
-    public void modifyAuthenticationSuccess(Member member) {
+    @Transactional
+    public void savePoint(int point, String type, long memberNo) {
+        Point newPoint = new Point();
+        newPoint.setPoint(point);
+        newPoint.setType(type);
+        newPoint.setMemberNo(memberNo);
 
-        Point point = new Point();
-        point.setPoint((long) 10);
-        point.setType("member_login");
-        point.setMemberNo(member.getNo());
-
-        memberMapper.updateMemberPoint(point);
+        memberMapper.updateMemberPoint(newPoint);
     }
 
+    @Transactional
+    public Member getMemberByOauthTypeAndId(OauthType type, String id) {
+        Member member = memberRepository.findByOauthTypeAndOauthId(type, id);
+        return member;
+    }
 }

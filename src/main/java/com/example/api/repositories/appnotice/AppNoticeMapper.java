@@ -1,8 +1,8 @@
 package com.example.api.repositories.appnotice;
 
-import com.example.api.entities.appnotice.AppNotice;
-import com.example.api.entities.appnotice.AppNoticeDevice;
-import com.example.api.entities.appnotice.AppNoticeDeviceExists;
+import com.example.api.model.entities.appnotice.AppNotice;
+import com.example.api.model.entities.appnotice.AppNoticeDevice;
+import com.example.api.model.entities.appnotice.AppNoticeDeviceExists;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

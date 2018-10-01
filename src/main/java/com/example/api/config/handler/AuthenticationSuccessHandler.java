@@ -1,6 +1,6 @@
 package com.example.api.config.handler;
 
-import com.example.api.entities.member.Member;
+import com.example.api.model.entities.member.Member;
 import com.example.api.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +31,7 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
         request.getSession().setAttribute("userId", userId);
 
         Member member = memberService.getMemberById(userId);
-        memberService.modifyAuthenticationSuccess(member);
+        memberService.savePoint(10, "member_login", member.getNo());
 
         response.sendRedirect("/main");
         //super.onAuthenticationSuccess(request, response, authentication);

@@ -1,6 +1,6 @@
 package com.example.api.repositories.member;
 
-import com.example.api.entities.member.Member;
+import com.example.api.model.entities.member.Member;
 
 public interface MemberRepositoryCustom {
     Member getMemberByNo(long no);

@@ -1,4 +1,4 @@
-package com.example.api.entities.appnotice;
+package com.example.api.model.entities.appnotice;
 
 import lombok.Getter;
 import lombok.Setter;

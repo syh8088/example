@@ -1,4 +1,4 @@
-package com.example.api.entities.enums;
+package com.example.api.model.enums;
 
 public enum EncryptType {
     PASSWORD("PASSWORD");

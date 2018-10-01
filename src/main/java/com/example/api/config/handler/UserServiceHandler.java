@@ -1,6 +1,6 @@
 package com.example.api.config.handler;
 
-import com.example.api.entities.member.Member;
+import com.example.api.model.entities.member.Member;
 import com.example.api.repositories.member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

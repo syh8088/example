@@ -1,6 +1,6 @@
 package com.example.api.aspect;
 
-import com.example.api.entities.point.Point;
+import com.example.api.model.entities.point.Point;
 import com.example.api.repositories.point.PointRepository;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

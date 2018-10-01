@@ -1,6 +1,6 @@
 package com.example.api.repositories.point;
 
-import com.example.api.entities.point.Point;
+import com.example.api.model.entities.point.Point;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
