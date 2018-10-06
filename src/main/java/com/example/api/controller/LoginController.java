@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
+import java.security.Principal;
 import java.util.Base64;
 
 @Controller
@@ -25,7 +26,7 @@ public class LoginController {
 
 
     @GetMapping
-    public String getMainPage() {
+    public String getMainPage(Principal principal) {
         return "main";
     }
 
