@@ -1,13 +1,20 @@
 package com.example.api.controller.member;
 
 import com.example.api.model.entities.member.Member;
+import com.example.api.model.request.MemberRequest;
 import com.example.api.service.member.MemberService;
+import com.example.api.util.validator.Validator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("members")
@@ -15,10 +22,12 @@ import org.springframework.web.bind.annotation.*;
 public class MemberController {
 
     private final MemberService memberService;
+    private final Validator validator;
 
     @Autowired
-    public MemberController(MemberService memberService) {
+    public MemberController(MemberService memberService, Validator validator) {
         this.memberService = memberService;
+        this.validator = validator;
     }
 
     @GetMapping("{no}/types/{type}")
@@ -30,7 +39,20 @@ public class MemberController {
 
     @PostMapping
     @ApiOperation(value = "Create member", notes = "Creates a member and returns the entity.")
-    public ResponseEntity<Member> saveMember(@RequestBody @ApiParam(value = "Member") Member member) throws Exception {
+    public ResponseEntity<?> saveMember(@RequestBody @ApiParam(value = "Member") @Valid MemberRequest memberRequest, BindingResult bindingResult, Model model) throws Exception {
+
+        // NOTE #10 단순 검증
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity.ok(bindingResult.getAllErrors());
+        }
+
+        // NOTE #10 데이터 유효성 검증
+        validator.member(memberRequest);
+
+        Member member = new Member();
+        BeanUtils.copyProperties(memberRequest, member);
+
+
         return ResponseEntity.ok().body(memberService.saveSomethingMember(member));
     }
 

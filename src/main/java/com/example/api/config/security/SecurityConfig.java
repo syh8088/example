@@ -6,6 +6,7 @@ import com.example.api.config.handler.OAuthSuccessHandler;
 import com.example.api.config.handler.UserServiceHandler;
 import com.example.api.model.enums.OauthType;
 import com.example.api.model.wrappper.ClientResources;
+import com.example.api.service.CustomPersistentTokenService;
 import com.example.api.service.member.MemberService;
 import com.example.api.util.security.CustomPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and().formLogin().successHandler(authenticationSuccessHandler)
                 .and().logout().logoutSuccessUrl(homeUrl)
+                .and().rememberMe()
+                .key("hoon")
+                .rememberMeParameter("remember-me")
+                .rememberMeCookieName("syh-cookie")
+                .tokenValiditySeconds(10000)
+                .tokenRepository(rememberMeTokenService())
                 .and().csrf().disable();
 
         http.addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
@@ -123,5 +130,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         registration.setFilter(filter);
         registration.setOrder(-100);
         return registration;
+    }
+
+    @Bean
+    public CustomPersistentTokenService rememberMeTokenService() {
+        return new CustomPersistentTokenService();
     }
 }

@@ -20,7 +20,6 @@ public class MemberGroupService {
         this.memberGroupRepository = memberGroupRepository;
     }
 
-
     @Transactional
     public MemberGroup getMemberGroup(long no, String type) {
 

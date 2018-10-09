@@ -44,6 +44,10 @@ public class MemberService {
             case "queryDSL":
                 member = memberRepository.getMemberByNo(no);
                 break;
+            case "All":
+                member = (Member) memberRepository.findAll();
+                System.out.println(member);
+                break;
             default:
                 member = memberMapper.selectById(no);
         }
@@ -97,5 +101,9 @@ public class MemberService {
     public Member getMemberByOauthTypeAndId(OauthType type, String id) {
         Member member = memberRepository.findByOauthTypeAndOauthId(type, id);
         return member;
+    }
+
+    public boolean isAlreadyRegisteredId(String id) {
+        return memberRepository.findById(id) != null;
     }
 }

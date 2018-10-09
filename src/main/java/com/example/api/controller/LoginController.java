@@ -1,20 +1,17 @@
 package com.example.api.controller;
 
-import org.springframework.social.connect.ConnectionRepository;
-import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.inject.Inject;
 import java.security.Principal;
 import java.util.Base64;
 
 @Controller
 @RequestMapping("/main")
 public class LoginController {
-
+/*
     private Facebook facebook;
     private ConnectionRepository connectionRepository;
 
@@ -22,7 +19,7 @@ public class LoginController {
     public LoginController(Facebook facebook, ConnectionRepository connectionRepository) {
         this.facebook = facebook;
         this.connectionRepository = connectionRepository;
-    }
+    }*/
 
 
     @GetMapping
@@ -45,11 +42,12 @@ public class LoginController {
         return "social_login";
     }
 
-
+/*
     @GetMapping("/facebook/login")
     public String login1() {
         return "connect/facebookConnect";
     }
+
 
     @GetMapping("/facebook")
     public ModelAndView facebookController() {
@@ -61,5 +59,6 @@ public class LoginController {
         model.setViewName("connect/facebookProfile");
         return model;
     }
+*/
 
 }

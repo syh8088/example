@@ -12,6 +12,9 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     username: syh80882
     password: abc123!@
+    sql-script-encoding: utf-8
+  messages:
+    basename: messages/messages, messages/error
 
 mybatis:
   type-aliases-package: com.example.api

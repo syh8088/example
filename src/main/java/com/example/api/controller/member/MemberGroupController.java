@@ -3,6 +3,7 @@ package com.example.api.controller.member;
 import com.example.api.model.entities.member.MemberGroup;
 import com.example.api.model.entities.member.MemberGroupViewModel;
 import com.example.api.service.member.MemberGroupService;
+import com.example.api.util.Constants;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -26,6 +27,13 @@ public class MemberGroupController {
     @Autowired
     public MemberGroupController(MemberGroupService memberGroupService) {
         this.memberGroupService = memberGroupService;
+    }
+
+    @GetMapping("{no}")
+    @ApiOperation(value = "Get group", notes = "Returns the group and each member.")
+    public ResponseEntity<MemberGroup> getMemberGroup(@PathVariable("no") @ApiParam(value = "Group no", defaultValue = "1") long no, HttpServletRequest request) {
+        log.info("api-key header : " + request.getHeader("api_key"));
+        return ResponseEntity.ok().body(memberGroupService.getMemberGroup(no, Constants.EMPTY));
     }
 
     @GetMapping("{no}/types/{type}")
