@@ -41,17 +41,16 @@ public class MemberController {
     @ApiOperation(value = "Create member", notes = "Creates a member and returns the entity.")
     public ResponseEntity<?> saveMember(@RequestBody @ApiParam(value = "Member") @Valid MemberRequest memberRequest, BindingResult bindingResult, Model model) throws Exception {
 
-        // NOTE #10 단순 검증
+        // 단순 검증
         if (bindingResult.hasErrors()) {
             return ResponseEntity.ok(bindingResult.getAllErrors());
         }
 
-        // NOTE #10 데이터 유효성 검증
+        // 데이터 유효성 검증
         validator.member(memberRequest);
 
         Member member = new Member();
         BeanUtils.copyProperties(memberRequest, member);
-
 
         return ResponseEntity.ok().body(memberService.saveSomethingMember(member));
     }

@@ -4,6 +4,7 @@ import com.example.api.model.entities.member.Member;
 import com.example.api.model.entities.point.Point;
 import com.example.api.exception.ApiException;
 import com.example.api.model.enums.OauthType;
+import com.example.api.repositories.member.MemberCrudRepository;
 import com.example.api.repositories.member.MemberMapper;
 import com.example.api.repositories.member.MemberRepository;
 import com.example.api.util.Constants;
@@ -19,13 +20,15 @@ public class MemberService {
 
     private final MemberMapper memberMapper;
     private final MemberRepository memberRepository;
+    private final MemberCrudRepository memberCrudRepository;
 
     private static final String IGNORE_FIELD_WHEN_MODIFY[] = {Constants.DELETE_YN, Constants.REGISTER_YMDT, Constants.UPDATE_YMDT, Constants.EMAIL, Constants.ID, Constants.NO};
 
     @Autowired
-    public MemberService(MemberMapper memberMapper, MemberRepository memberRepository) {
+    public MemberService(MemberMapper memberMapper, MemberRepository memberRepository, MemberCrudRepository memberCrudRepository) {
         this.memberMapper = memberMapper;
         this.memberRepository = memberRepository;
+        this.memberCrudRepository = memberCrudRepository;
     }
 
     public Member getMember(long no, String type) {
@@ -49,7 +52,9 @@ public class MemberService {
                 System.out.println(member);
                 break;
             default:
-                member = memberMapper.selectById(no);
+                member = memberCrudRepository.findOne(no);
+                System.out.println(member);
+               // member = memberMapper.selectById(no);
         }
         return member;
     }
@@ -58,7 +63,8 @@ public class MemberService {
         return memberRepository.getMemberById(userId);
     }
 
-    public Member saveSomethingMember(Member member) throws ApiException {
+    public Member saveSomethingMember(Member member) {
+/*
 
         // id, email 중복 유효성 검사
         String postId = member.getId();
@@ -70,6 +76,7 @@ public class MemberService {
                 throw new ApiException("PostMultipleError", "id 및 email 중복 에러");
             }
         }
+*/
 
         return memberRepository.save(member);
     }

@@ -9,8 +9,12 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class MemberRequest {
     @NotNull
+    private String email;
+    @NotNull
     private String id;
     @NotNull
     private String password;
+    @NotNull
+    private String snsYn;
     private String name;
 }
