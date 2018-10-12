@@ -9,6 +9,8 @@ import com.example.api.repositories.member.MemberMapper;
 import com.example.api.repositories.member.MemberRepository;
 import com.example.api.util.Constants;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,14 +23,16 @@ public class MemberService {
     private final MemberMapper memberMapper;
     private final MemberRepository memberRepository;
     private final MemberCrudRepository memberCrudRepository;
+    private final SessionFactory sessionFactory;
 
     private static final String IGNORE_FIELD_WHEN_MODIFY[] = {Constants.DELETE_YN, Constants.REGISTER_YMDT, Constants.UPDATE_YMDT, Constants.EMAIL, Constants.ID, Constants.NO};
 
     @Autowired
-    public MemberService(MemberMapper memberMapper, MemberRepository memberRepository, MemberCrudRepository memberCrudRepository) {
+    public MemberService(MemberMapper memberMapper, MemberRepository memberRepository, MemberCrudRepository memberCrudRepository, SessionFactory sessionFactory) {
         this.memberMapper = memberMapper;
         this.memberRepository = memberRepository;
         this.memberCrudRepository = memberCrudRepository;
+        this.sessionFactory = sessionFactory;
     }
 
     public Member getMember(long no, String type) {
@@ -52,9 +56,21 @@ public class MemberService {
                 System.out.println(member);
                 break;
             default:
-                member = memberCrudRepository.findOne(no);
-                System.out.println(member);
-               // member = memberMapper.selectById(no);
+                //member = memberCrudRepository.findOne(no);
+
+                Point point = new Point();
+                point.setPoint(100);
+                point.setType("test");
+                point.setMemberNo(1);
+
+                Session session = sessionFactory.openSession();
+                session.beginTransaction();
+                session.save(point);
+                session.getTransaction().commit();
+
+
+                //System.out.println(member);
+                member = memberMapper.selectById(no);
         }
         return member;
     }
