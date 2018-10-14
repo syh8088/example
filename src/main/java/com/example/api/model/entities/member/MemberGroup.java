@@ -20,6 +20,6 @@ public class MemberGroup extends MemeberCommon {
     private String description;
 
     //OneToMany
-    @OneToMany(mappedBy = "memberGroup", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "memberGroup", fetch = FetchType.EAGER)
     Set<Member> members = new HashSet<>();
 }

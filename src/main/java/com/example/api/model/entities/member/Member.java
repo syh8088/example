@@ -51,7 +51,7 @@ public class Member extends MemeberCommon {
     private MemberGroup memberGroup;
 
     // ManyToMany
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "member_role_mapping",
                 joinColumns = @JoinColumn(name = "memberNo"),
                 inverseJoinColumns = @JoinColumn(name = "roleNo"))

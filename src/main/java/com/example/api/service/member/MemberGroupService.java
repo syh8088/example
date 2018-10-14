@@ -33,7 +33,7 @@ public class MemberGroupService {
         }
 
         // lazy와 eager의 차이를 확인
-        memberGroup.getMembers().forEach(member -> log.info("something"));
+       memberGroup.getMembers().forEach(member -> log.info("something"));
 
         return memberGroup;
     }
