@@ -1,5 +1,7 @@
 package com.example.api.controller;
 
+import com.example.api.error.errorCode.MemberErrorCode;
+import com.example.api.error.exception.MemberException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +42,14 @@ public class LoginController {
     @GetMapping("/social_login")
     public String login() {
         return "social_login";
+    }
+
+    @GetMapping("/error")
+    public String memberError() {
+
+        if (1 == 1)
+            throw new MemberException(MemberErrorCode.NOT_FOUND_MEMBER);
+        return "writer";
     }
 
 /*
