@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class GlobalExceptionController {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(value = MemberException.class) // NOTE #11 클래스 단위로도 사용 가능(필요한 컨트롤러 내에 선언)
+    @ExceptionHandler(value = MemberException.class) // 클래스 단위로도 사용 가능(필요한 컨트롤러 내에 선언)
     @ResponseBody
     public String handleBaseException(MemberException e) {
         return e.getMessage();
