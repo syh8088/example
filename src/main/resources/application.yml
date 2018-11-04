@@ -24,6 +24,19 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+healthCheckMessage: default
+
+management:
+  port: 18081
+  security:
+    roles: ADMIN
+
+---
+
+spring:
+  profiles: real
+healthCheckMessage: real
+
 naver:
   client:
     clientId: ZYywOLuKwRvc5jHguZy4
