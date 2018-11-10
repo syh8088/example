@@ -18,11 +18,23 @@ spring:
   jpa:
     show-sql: true
 
+  redis:
+    host: localhost
+    port: 6379
+  profiles:
+    active: local
+
+
 mybatis:
   type-aliases-package: com.example.api
   mapper-locations: classpath*:/mapper/**/*.xml
   configuration:
     map-underscore-to-camel-case: true
+debug: true
+logging:
+  level:
+    org.springframework: debug
+
 
 healthCheckMessage: default
 

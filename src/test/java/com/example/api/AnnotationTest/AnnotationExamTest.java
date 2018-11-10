@@ -1,5 +1,6 @@
-package com.example.api;
+package com.example.api.AnnotationTest;
 
+import com.example.api.ExampleApplication;
 import com.example.api.annotation.InsertIntData;
 import com.example.api.annotation.InsertStringData;
 import lombok.extern.slf4j.Slf4j;

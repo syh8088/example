@@ -1,4 +1,4 @@
-package com.example.api;
+package com.example.api.AnnotationTest;
 
 import com.example.api.annotation.InsertIntData;
 import com.example.api.annotation.InsertStringData;

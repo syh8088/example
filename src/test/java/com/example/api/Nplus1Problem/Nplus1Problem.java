@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class Nplus1Problem {
+/*
 
     private MemberService memberService;
     private MemberRepository memberRepository;
@@ -28,6 +29,7 @@ public class Nplus1Problem {
         memberService.getMember(1, "All");
 
     }
+*/
 
 
 }

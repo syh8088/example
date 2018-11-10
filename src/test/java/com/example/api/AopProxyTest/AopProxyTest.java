@@ -1,5 +1,6 @@
-package com.example.api;
+package com.example.api.AopProxyTest;
 
+import com.example.api.ExampleApplication;
 import com.example.api.config.AsyncConfig;
 import com.example.api.repositories.member.MemberGroupRepository;
 import com.example.api.service.member.MemberService;

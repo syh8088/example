@@ -62,5 +62,9 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-actuator"
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
+
+    // spring-data-redis
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
+    compile('redis.clients:jedis:2.9.0')
 }
 

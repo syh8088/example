@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class TransactionPropagationTest {
 
-    private final MemberService memberService;
+  /*  private final MemberService memberService;
 
     @Autowired
     public TransactionPropagationTest(MemberService memberService) {
@@ -29,6 +29,6 @@ public class TransactionPropagationTest {
 
         Member save = memberService.saveTransactionPropagationTest(member);
         System.out.println(save);
-    }
+    }*/
 
 }
