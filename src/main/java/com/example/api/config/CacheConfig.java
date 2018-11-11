@@ -17,6 +17,11 @@ public class CacheConfig {
         // 로컬 캐시 & 힙 메모리 & 가비지 컬렉션과의 관계 생각해보자 (GC와 STW 관계)
         SimpleCacheManager cacheManager = new SimpleCacheManager();
         cacheManager.setCaches(generateCacheName());
+
+        /*cacheManager.setCaches(Arrays.asList(
+                new ConcurrentMapCache("directory"),
+                new ConcurrentMapCache("addresses")));*/
+
         return cacheManager;
     }
 
