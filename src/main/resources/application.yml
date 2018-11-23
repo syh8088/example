@@ -49,6 +49,10 @@ spring:
   profiles: real
 healthCheckMessage: real
 
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+
 naver:
   client:
     clientId: ZYywOLuKwRvc5jHguZy4

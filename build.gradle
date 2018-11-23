@@ -66,5 +66,8 @@ dependencies {
     // spring-data-redis
     compile('org.springframework.boot:spring-boot-starter-data-redis')
     compile('redis.clients:jedis:2.9.0')
+
+    // jasypt
+    compile "com.github.ulisesbocchio:jasypt-spring-boot-starter:1.17"
 }
 
