@@ -67,8 +67,8 @@ naver:
 
 google:
   client:
-    clientId: 475081898784-lg5r1loci4q9o2s5n8o7avcql3qedais.apps.googleusercontent.com
-    clientSecret: PR4nO3yFKHzeUVVVF75A2zPB
+    clientId: 475081898784-vu924jjrnnfcn2tm7n9v9fla529rvr2q.apps.googleusercontent.com
+    clientSecret: pH0pOP8rBI2oBT2YoZY9_v6K
     accessTokenUri: https://accounts.google.com/o/oauth2/token
     userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
     clientAuthenticationScheme: form
