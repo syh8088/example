@@ -1,14 +1,14 @@
 package com.example.api.config;
 
-import org.jasypt.encryption.StringEncryptor;
+/*import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Configuration;*/
 
-@Configuration
+//@Configuration
 public class JasyptConfig {
-    @Bean("jasyptStringEncryptor")
+ /*   @Bean("jasyptStringEncryptor")
     public StringEncryptor stringEncryptor() {
 
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
@@ -23,5 +23,5 @@ public class JasyptConfig {
         encryptor.setConfig(config);
 
         return encryptor;
-    }
+    }*/
 }

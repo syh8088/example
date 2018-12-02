@@ -45,9 +45,9 @@ management:
 
 ---
 
-spring:
-  profiles: real
-healthCheckMessage: real
+#spring:
+#  profiles: real
+#healthCheckMessage: real
 
 jasypt:
   encryptor:
