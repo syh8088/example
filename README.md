@@ -2,14 +2,17 @@
 ### syh8088 포토폴리오
 
 적용된 기술
+Gradle
 AOP
 MySql
 Mybatis
 JPA
 QueryDSL
 Swagger
+Spring Security
 OAuth2(google, naver)
-
+Local Cache
+Redis
 1. member(회원)
     1. Spring Security 이용한 회원 로그인
     2. 로그인 성공시 Point 추가
