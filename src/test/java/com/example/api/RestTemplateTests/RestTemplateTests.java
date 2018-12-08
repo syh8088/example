@@ -24,14 +24,14 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import java.util.Arrays;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
+/*@RunWith(SpringRunner.class)
 @SpringBootTest(classes = ExampleApplication.class)
-@Slf4j
+@Slf4j*/
 public class RestTemplateTests {
-    Logger logger = Logger.getLogger(this.getClass());
+ /*   Logger logger = Logger.getLogger(this.getClass());
 
     //@Value("${local.server.port}")
-    int port = 8084;
+    int port = 8085;
 
     @Autowired
     MemberService memberService;
@@ -73,5 +73,5 @@ public class RestTemplateTests {
 //        assertThat(responseString, is(equalTo(jsonString)));
         assertThat(resultArticles.getEmail(), is(equalTo(members.getEmail())));
         assertThat(resultArticles.getId(), is(equalTo(members.getId())));
-    }
+    }*/
 }

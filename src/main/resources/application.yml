@@ -1,12 +1,12 @@
 server:
   port: 8084
-
 spring:
+  profiles:
+    active: real
   mvc:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
-
   datasource:
     url: jdbc:mysql://syh80882.cafe24.com/syh80882
     driverClassName: com.mysql.jdbc.Driver
@@ -21,8 +21,8 @@ spring:
   redis:
     host: localhost
     port: 6379
-  profiles:
-    active: local
+  #profiles:
+  #  active: local
 
 
 mybatis:
@@ -43,15 +43,9 @@ management:
   security:
     roles: ADMIN
 
----
-
-#spring:
-#  profiles: real
-#healthCheckMessage: real
-
-jasypt:
-  encryptor:
-    bean: jasyptStringEncryptor
+#jasypt:
+#  encryptor:
+#    bean: jasyptStringEncryptor
 
 naver:
   client:
@@ -75,3 +69,10 @@ google:
     scope: email, profile
   resource:
     userInfoUri: https://www.googleapis.com/oauth2/v2/userinfo
+
+
+---
+
+spring:
+  profiles: real
+healthCheckMessage: real
