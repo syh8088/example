@@ -4,6 +4,7 @@ package com.example.api.controller.board;
 import com.example.api.model.entities.board.BoardAndBoardList;
 import com.example.api.model.entities.board.BoardList;
 import com.example.api.service.board.BoardService;
+import com.example.api.util.validator.Validator;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,11 +22,14 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("boards")
 @Api(tags = "Board")
 public class BoardController {
+
     private BoardService boardService;
+    private final Validator validator;
 
     @Autowired
-    public BoardController(BoardService boardService) {
+    public BoardController(BoardService boardService, Validator validator) {
         this.boardService = boardService;
+        this.validator = validator;
     }
 
     // 글읽기
@@ -62,6 +66,9 @@ public class BoardController {
         boardList.setSubject(request.subject);
         boardList.setContent(request.content);
 
+        // 데이터 유효성 검증
+        validator.isRegisteredBoardId(boardId);
+        validator.setBaord(boardList);
         return ResponseEntity.ok().body(boardService.setBoard(boardList, httpServletRequestequest));
     }
 

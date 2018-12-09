@@ -1,10 +1,10 @@
 package com.example.api.service;
 
 import com.example.api.controller.appnotice.AppNoticeController;
+import com.example.api.exception.BaseException;
 import com.example.api.model.entities.appnotice.AppNotice;
 import com.example.api.model.entities.appnotice.AppNoticeDevice;
 import com.example.api.model.entities.appnotice.AppNoticeDeviceExists;
-import com.example.api.exception.ApiException;
 import com.example.api.repositories.appnotice.AppNoticeDeviceRepository;
 import com.example.api.repositories.appnotice.AppNoticeMapper;
 import com.example.api.repositories.appnotice.AppNoticeRepository;
@@ -42,7 +42,7 @@ public class AppNoticeService {
     }
 
     @Transactional
-    public AppNotice updateAppNotice(long id, AppNoticeController.AppNoticePostRequest request) throws ApiException {
+    public AppNotice updateAppNotice(long id, AppNoticeController.AppNoticePostRequest request) throws BaseException {
 
         AppNotice originAppNotice = appNoticeRepository.findById(id);
 

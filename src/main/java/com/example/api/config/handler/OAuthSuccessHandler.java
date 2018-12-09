@@ -1,6 +1,6 @@
 package com.example.api.config.handler;
 
-import com.example.api.exception.ApiException;
+import com.example.api.exception.BaseException;
 import com.example.api.model.entities.member.Member;
 import com.example.api.model.enums.OauthType;
 import com.example.api.model.wrappper.OauthIDAndName;
@@ -21,7 +21,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class OAuthSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -42,7 +41,7 @@ public class OAuthSuccessHandler implements AuthenticationSuccessHandler {
             try {
                 member = makeNewMemberByType(authentication, type);
                 memberService.savePoint(200, "member_register", member.getNo());
-            } catch (ApiException e) {
+            } catch (BaseException e) {
                 e.printStackTrace();
             }
         } else {
@@ -68,7 +67,7 @@ public class OAuthSuccessHandler implements AuthenticationSuccessHandler {
         return Collections.singletonList(new SimpleGrantedAuthority("ADMIN"));
     }
 
-    private Member makeNewMemberByType(Authentication authentication, OauthType type) throws ApiException {
+    private Member makeNewMemberByType(Authentication authentication, OauthType type) throws BaseException {
 
         Member member = new Member();
         member.setPassword(UUID.randomUUID().toString());

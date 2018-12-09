@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.HashMap;
 
 @Getter
-public class ApiException extends Exception {
+public class BaseException extends Exception {
 
     private final String code;
     private final HashMap data;
@@ -16,7 +16,7 @@ public class ApiException extends Exception {
      * @param code
      * @param message
      */
-    public ApiException(String code, String message) {
+    public BaseException(String code, String message) {
 
         super(message);
         this.code = code;

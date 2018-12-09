@@ -2,7 +2,6 @@ package com.example.api.service.member;
 
 import com.example.api.model.entities.member.Member;
 import com.example.api.model.entities.point.Point;
-import com.example.api.exception.ApiException;
 import com.example.api.model.enums.OauthType;
 import com.example.api.repositories.member.MemberCrudRepository;
 import com.example.api.repositories.member.MemberMapper;
@@ -89,7 +88,7 @@ public class MemberService {
         Member verificationMember = memberRepository.findByIdOrAndEmail(postId, postEmail);
         if(verificationMember != null ) {
             if(verificationMember.getId().equals(postId) || verificationMember.getEmail().equals(postEmail)) {
-                throw new ApiException("PostMultipleError", "id 및 email 중복 에러");
+                throw new BaseException("PostMultipleError", "id 및 email 중복 에러");
             }
         }
 */

@@ -1,11 +1,11 @@
 package com.example.api.service.board;
 
+import com.example.api.exception.BaseException;
 import com.example.api.model.entities.board.Board;
 import com.example.api.model.entities.board.BoardAndBoardList;
 import com.example.api.model.entities.board.BoardList;
 import com.example.api.model.entities.member.Member;
 import com.example.api.model.entities.point.Point;
-import com.example.api.exception.ApiException;
 import com.example.api.repositories.board.BoardMapper;
 import com.example.api.repositories.board.BoardRepository;
 import com.example.api.repositories.member.MemberMapper;
@@ -67,7 +67,7 @@ public class BoardService {
     }
 
     @Transactional
-    public BoardList setBoard(BoardList boardList, HttpServletRequest httpServletRequestequest) throws ApiException {
+    public BoardList setBoard(BoardList boardList, HttpServletRequest httpServletRequestequest) throws BaseException {
 
         String subject = boardList.getSubject();
         String content = boardList.getContent();
@@ -80,15 +80,15 @@ public class BoardService {
         if(limitWrite > 0) {
             int limitWriteCount = boardMapper.getBoardLimitWriteCount(boardId);
             if(limitWriteCount > limitWrite) {
-                throw new ApiException("PostPermissionDeniedError", "게시판은 하루 " + limitWrite + "회 글쓰기가 가능합니다.");
+                throw new BaseException("PostPermissionDeniedError", "게시판은 하루 " + limitWrite + "회 글쓰기가 가능합니다.");
             }
         }
 
         // 내용 최소 글수 제한
         if(content.length() < board.getWriteMin()) {
-            throw new ApiException("WriteMinError", "내용 글수 최저 글수 제한");
+            throw new BaseException("WriteMinError", "내용 글수 최저 글수 제한");
         } else if(content.length() > board.getWriteMax()) {  // 내용 최대 글수 제한
-            throw new ApiException("WriteMaxError", "내용 글수 최대 글수 제한");
+            throw new BaseException("WriteMaxError", "내용 글수 최대 글수 제한");
         }
 
         int attachmentsCount = StringUtils.countMatches(content, "<img");
@@ -125,7 +125,7 @@ public class BoardService {
         return getOneBoard(boardList);
     }
 
-    public BoardAndBoardList updateBoard(BoardList boardList, HttpServletRequest httpServletRequestequest) throws ApiException {
+    public BoardAndBoardList updateBoard(BoardList boardList, HttpServletRequest httpServletRequestequest) throws BaseException {
 
         String boardId = boardList.getBoardId();
         String content = boardList.getContent();
@@ -137,19 +137,19 @@ public class BoardService {
             String ip = local.getHostAddress();
             boardList.setIp(ip);
         }catch (Exception e) {
-            throw new ApiException("InetAddressError", "IP 등록 에러");
+            throw new BaseException("InetAddressError", "IP 등록 에러");
         }
 
         int countModify = board.getCountModify();
         if(countModify == 1) {
-            throw new ApiException("WongeulNotCrystalError", "원글 수정 불가능");
+            throw new BaseException("WongeulNotCrystalError", "원글 수정 불가능");
         }
 
         // 내용 최소 글수 제한
         if(content.length() < board.getWriteMin()) {
-            throw new ApiException("WriteMinError", "내용 글수 최저 글수 제한");
+            throw new BaseException("WriteMinError", "내용 글수 최저 글수 제한");
         } else if(content.length() > board.getWriteMax()) {  // 내용 최대 글수 제한
-            throw new ApiException("WriteMaxError", "내용 글수 최대 글수 제한");
+            throw new BaseException("WriteMaxError", "내용 글수 최대 글수 제한");
         }
 
         boardList.setUpdateBy((String) httpServletRequestequest.getSession().getAttribute("userId"));
@@ -157,14 +157,14 @@ public class BoardService {
         return this.getBoard(boardList);
     }
 
-    public void delBoard(String boardId, int postId) throws ApiException {
+    public void delBoard(String boardId, int postId) throws BaseException {
 
         Board board = boardMapper.getBoard(boardId);
 
         int countDelete = board.getCountDelete();
         if(countDelete == 1) {
             // TODO 글삭제 불가능 조건 처리
-            throw new ApiException("CountDeleteError", "원글 삭제 불가능");
+            throw new BaseException("CountDeleteError", "원글 삭제 불가능");
         }
 
         boardMapper.delBoard(boardId, postId);
@@ -191,5 +191,14 @@ public class BoardService {
         return getOneBoard(boardList);
     }
 
+    @Transactional
+    public Board getBoard(String boardId) {
+        return boardMapper.getBoard(boardId);
+    }
+
+    @Transactional
+    public int getBoardLimitWriteCount(String boardId) {
+        return boardMapper.getBoardLimitWriteCount(boardId);
+    }
 
 }

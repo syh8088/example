@@ -45,7 +45,7 @@ public class CustomPersistentTokenService implements PersistentTokenRepository {
     public PersistentRememberMeToken getTokenForSeries(String seriesId) {
         PersistentLoginToken myToken = persistentRepository.findBySeries(seriesId);
         if (myToken == null) {
-//            throw new MemberException(MemberErrorCode.NOT_FOUND_MEMBER);
+//            throw new BaseException(MemberErrorCode.NOT_FOUND_MEMBER);
             return null;
         }
         return new PersistentRememberMeToken(myToken.getId(), myToken.getSeries(), myToken.getToken(), myToken.getLastused());
