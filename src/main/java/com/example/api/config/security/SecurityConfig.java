@@ -61,6 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(homeUrl, homeUrl + "/facebook/**",homeUrl + "/social_login", "/social_login.html", "/connect/facebook", "/webjars/**", "/v2/api-docs", "/swagger-resources/configuration/ui", "/swagger-resources", "/swagger-resources/configuration/security", "/swagger-ui.html", "/webjars/**").permitAll()
                 .antMatchers(homeUrl + "/admin/**").hasAnyAuthority("ADMIN")
+                .antMatchers(homeUrl + "/memberGroups/**").hasAnyAuthority("ADMIN")
                 .antMatchers(homeUrl + "/writer/**").hasAuthority("WRITER")
                 .anyRequest().authenticated()
                 .and().formLogin().successHandler(authenticationSuccessHandler)
@@ -79,7 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) {
         web.ignoring()
-                .antMatchers("/h2-console/**");
+                .antMatchers("/h2-console/**").antMatchers("/memberGroups/**");
     }
 
     @Override
