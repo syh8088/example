@@ -16,16 +16,14 @@ import java.time.LocalDateTime;
 @Setter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-
-abstract class MemeberCommon {
-
-    @Type(type = "yes_no")
+abstract class MemberCommon {
     @Convert(disableConversion = true)
-    private Boolean deleteYn = false;
+    @Type(type = "yes_no")
+    private Boolean useYn = true;
 
     @CreatedDate
-    private LocalDateTime registerYmdt;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
-    private LocalDateTime updateYmdt;
+    private LocalDateTime updatedAt;
 }

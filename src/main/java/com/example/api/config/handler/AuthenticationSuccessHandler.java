@@ -31,7 +31,7 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
         request.getSession().setAttribute("userId", userId);
 
         Member member = memberService.getMemberById(userId);
-        memberService.savePoint(10, "member_login", member.getNo());
+        memberService.savePoint(10, "member_login", member.getMemberNo());
 
         response.sendRedirect("/main");
         //super.onAuthenticationSuccess(request, response, authentication);

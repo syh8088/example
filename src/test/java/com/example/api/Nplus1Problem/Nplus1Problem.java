@@ -35,7 +35,7 @@ public class Nplus1Problem {
 
     @Test
     public void memberNplus1Problem() {
-        BDDMockito.given(memberRepository.findByNo(1));
+        BDDMockito.given(memberRepository.findByMemberNo(1));
 
     }
 

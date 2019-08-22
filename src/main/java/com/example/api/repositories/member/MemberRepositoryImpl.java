@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport
 public class MemberRepositoryImpl extends QueryDslRepositorySupport implements MemberRepositoryCustom {
 
 
-    QMember member = QMember.member;
+    QMember qMember = QMember.member;
 
     /**
      * Creates a new {@link QueryDslRepositorySupport} instance for the given domain type.
@@ -20,17 +20,16 @@ public class MemberRepositoryImpl extends QueryDslRepositorySupport implements M
 
     @Override
     public Member getMemberByNo(long no) {
-
-        return from(member)
-                .where(member.no.eq(no))
+        return from(qMember)
+                .where(qMember.memberNo.eq(no))
                 .fetchOne();
     }
 
     @Override
     public Member getMemberById(String name) {
-        return from(member)
-                .leftJoin(member.roles).fetchJoin()
-                .where(member.id.eq(name))
+        return from(qMember)
+                .leftJoin(qMember.roles).fetchJoin()
+                .where(qMember.id.eq(name))
                 .fetchOne();
     }
 }

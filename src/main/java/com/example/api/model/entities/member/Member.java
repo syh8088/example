@@ -18,10 +18,10 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
-public class Member extends MemeberCommon {
+public class Member extends MemberCommon {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long no;
+    private Long memberNo;
 
     private String id;
 

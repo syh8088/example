@@ -9,8 +9,10 @@ import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport
 
 public class MemberGroupRepositoryImpl extends QueryDslRepositorySupport implements MemberGroupRepositoryCustom {
 
-    QMemberGroup memberGroup = QMemberGroup.memberGroup;
-    QMember member = QMember.member;
+
+    QMemberGroup qMemberGroup = QMemberGroup.memberGroup;
+    QMember qMember = QMember.member;
+
 
     public MemberGroupRepositoryImpl() {
         super(MemberGroup.class);
@@ -18,21 +20,21 @@ public class MemberGroupRepositoryImpl extends QueryDslRepositorySupport impleme
 
     @Override
     public MemberGroup selectByNo(long no) {
-        return from(memberGroup)
-                .leftJoin(memberGroup.members, member).fetchJoin()
-                .leftJoin(member.roles).fetchJoin()
-                .where(memberGroup.memberGroupNo.eq(no))
+        return from(qMemberGroup)
+                .leftJoin(qMemberGroup.members, qMember).fetchJoin()
+                .leftJoin(qMember.roles).fetchJoin()
+                .where(qMemberGroup.memberGroupNo.eq(no))
                 .fetchOne();
     }
 
     @Override
     public MemberGroupViewModel selectMemberGroupViewModel(long no) {
-        return from(memberGroup)
+        return from(qMemberGroup)
                 .select(
                         Projections.bean(MemberGroupViewModel.class,
-                                memberGroup.memberGroupNo,
-                                memberGroup.name.as("customMsg")))
-                .where(memberGroup.memberGroupNo.eq(no))
+                                qMemberGroup.memberGroupNo,
+                                qMemberGroup.name.as("customMsg")))
+                .where(qMemberGroup.memberGroupNo.eq(no))
                 .fetchOne();
     }
 }

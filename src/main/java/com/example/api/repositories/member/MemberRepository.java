@@ -8,11 +8,11 @@ import org.springframework.data.repository.query.Param;
 
 public interface MemberRepository extends JpaRepository<Member, Long>, MemberRepositoryCustom {
 
-    Member findByNo(long no);
+    Member findByMemberNo(long no);
 
     Member findByIdOrAndEmail(String id, String email);
 
-    @Query(value = "select m from Member m where m.no = :no", nativeQuery = false)
+    @Query(value = "select m from Member m where m.memberNo = :no", nativeQuery = false)
     Member selectByNo(@Param("no") long no);
 
     Member findByOauthTypeAndOauthId(OauthType oauthType, String oauthId);

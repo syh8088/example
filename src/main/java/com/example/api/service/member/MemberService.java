@@ -24,7 +24,7 @@ public class MemberService {
     private final MemberCrudRepository memberCrudRepository;
     private final SessionFactory sessionFactory;
 
-    private static final String IGNORE_FIELD_WHEN_MODIFY[] = {Constants.DELETE_YN, Constants.REGISTER_YMDT, Constants.UPDATE_YMDT, Constants.EMAIL, Constants.ID, Constants.NO};
+    private static final String[] IGNORE_FIELD_WHEN_MODIFY = {Constants.DELETE_YN, Constants.REGISTER_YMDT, Constants.UPDATE_YMDT, Constants.EMAIL, Constants.ID, Constants.NO};
 
     @Autowired
     public MemberService(MemberMapper memberMapper, MemberRepository memberRepository, MemberCrudRepository memberCrudRepository, SessionFactory sessionFactory) {
@@ -42,7 +42,7 @@ public class MemberService {
                 member = memberRepository.findOne(no);
                 break;
             case "query":
-                member = memberRepository.findByNo(no);
+                member = memberRepository.findByMemberNo(no);
                 break;
             case "JPQL":
                 member = memberRepository.selectByNo(no);
@@ -103,7 +103,7 @@ public class MemberService {
 
     @Transactional
     public Member modifyNameByName(Member member) {
-        Member originMember = memberRepository.findOne(member.getNo());
+        Member originMember = memberRepository.findOne(member.getMemberNo());
 
         BeanUtils.copyProperties(member, originMember, IGNORE_FIELD_WHEN_MODIFY);
         return member;
@@ -121,8 +121,7 @@ public class MemberService {
 
     @Transactional
     public Member getMemberByOauthTypeAndId(OauthType type, String id) {
-        Member member = memberRepository.findByOauthTypeAndOauthId(type, id);
-        return member;
+        return memberRepository.findByOauthTypeAndOauthId(type, id);
     }
 
     public boolean isAlreadyRegisteredId(String id) {

@@ -118,7 +118,7 @@ public class BoardService {
             Point point = new Point();
             point.setPoint(board.getWritePoint());
             point.setType("board_create");
-            point.setMemberNo(member.getNo());
+            point.setMemberNo(member.getMemberNo());
             memberMapper.updateMemberPoint(point);
         }
 

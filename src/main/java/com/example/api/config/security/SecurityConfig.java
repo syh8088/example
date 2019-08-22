@@ -37,15 +37,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final static String homeUrl = "/main";
     private final UserServiceHandler userServiceHandler;
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
-    private final CustomAuthenticationProvider customAuthenticationProvider;
     private final OAuth2ClientContext oauth2ClientContext;
     private final MemberService memberService;
 
     @Autowired
-    public SecurityConfig(UserServiceHandler userServiceHandler, AuthenticationSuccessHandler authenticationSuccessHandler, CustomAuthenticationProvider customAuthenticationProvider, OAuth2ClientContext oauth2ClientContext, MemberService memberService) {
+    private  CustomAuthenticationProvider customAuthenticationProvider;
+
+    @Autowired
+    public SecurityConfig(UserServiceHandler userServiceHandler, AuthenticationSuccessHandler authenticationSuccessHandler, OAuth2ClientContext oauth2ClientContext, MemberService memberService) {
         this.userServiceHandler = userServiceHandler;
         this.authenticationSuccessHandler = authenticationSuccessHandler;
-        this.customAuthenticationProvider = customAuthenticationProvider;
         this.oauth2ClientContext = oauth2ClientContext;
         this.memberService = memberService;
     }

@@ -6,12 +6,12 @@
     <select id="selectById" resultType="Member">
         SELECT *
         FROM member
-        WHERE no = #{no}
+        WHERE member_no = #{no}
     </select>
 
     <update id="updateMemberPoint" parameterType="int">
         UPDATE member
         SET point = (SELECT SUM(point) FROM point WHERE member_no=${memberNo})
-        WHERE no=${memberNo}
+        WHERE member_no=${memberNo}
     </update>
 </mapper>

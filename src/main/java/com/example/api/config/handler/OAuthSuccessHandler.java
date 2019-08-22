@@ -40,21 +40,22 @@ public class OAuthSuccessHandler implements AuthenticationSuccessHandler {
         if (member == null) {
             try {
                 member = makeNewMemberByType(authentication, type);
-                memberService.savePoint(200, "member_register", member.getNo());
+                memberService.savePoint(200, "member_register", member.getMemberNo());
             } catch (BaseException e) {
                 e.printStackTrace();
             }
         } else {
             //grants = member.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
             grants = createDefaultPermissions();
-            memberService.savePoint(10, "member_login", member.getNo());
+            memberService.savePoint(10, "member_login", member.getMemberNo());
         }
 
         if (grants == null || grants.isEmpty()) {
             grants = createDefaultPermissions();
         }
 
-       SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(new User(member.getId(), member.getPassword(), grants), null, grants));
+        assert member != null;
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(new User(member.getId(), member.getPassword(), grants), null, grants));
 
         try {
             response.sendRedirect("/main");
