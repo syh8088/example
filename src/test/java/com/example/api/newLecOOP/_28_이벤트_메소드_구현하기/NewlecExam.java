@@ -1,4 +1,4 @@
-package com.example.api.newLecOOP._23_25_추상클래스만들기_추상화_구현하기;
+package com.example.api.newLecOOP._28_이벤트_메소드_구현하기;
 
 public class NewlecExam extends Exam {
 
@@ -28,6 +28,6 @@ public class NewlecExam extends Exam {
 
     @Override
     public float avg() {
-        return this.total() / 3.0f;
+        return this.total() / 4.0f;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.api.newLecOOP._23_25_추상클래스만들기_추상화_구현하기;
+package com.example.api.newLecOOP._27_팩토리_메소드;
 
 public class NewlecExam extends Exam {
 

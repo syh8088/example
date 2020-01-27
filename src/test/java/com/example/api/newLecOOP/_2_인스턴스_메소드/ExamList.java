@@ -30,8 +30,8 @@ public class ExamList {
             System.out.printf("영어 : %d\n", eng);
             System.out.printf("수학 : %d\n", math);
 
-            System.out.printf("수학 : %3d\n", total);
-            System.out.printf("수학 : %6.2f\n", avg);
+            System.out.printf("총점 : %3d\n", total);
+            System.out.printf("평균 : %6.2f\n", avg);
         }
     }
 
