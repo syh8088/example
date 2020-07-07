@@ -1,4 +1,4 @@
-package com.example.api.HashCodeTest;
+package com.example.api.Algorithm.HashTable;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
