@@ -1,4 +1,4 @@
-package com.example.api.HashCodeTest;
+package com.example.api.blogCode.hash_code_test;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
