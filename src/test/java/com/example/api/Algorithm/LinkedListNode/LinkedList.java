@@ -18,6 +18,16 @@ public class LinkedList {
         header = new Node();
     }
 
+    public Node get(int i) {
+        Node n = header;
+
+        for (int j=0; j<i; j++){
+            n = n.next;
+        }
+
+        return n;
+    }
+
     void append(int d) {
        Node end = new Node();
        end.data = d;
@@ -140,6 +150,18 @@ public class LinkedList {
         return p2;
     }
 
+    private static boolean deleteNode(Node n) {
+        if (n == null || n.next == null) {
+            return false;
+        }
+
+        Node next = n.next;
+        n.data = next.data;
+        n.next = next.next;
+
+        return true;
+    }
+
     @Test
     public void 메인_실행() {
         LinkedList ll = new LinkedList();
@@ -215,4 +237,182 @@ public class LinkedList {
         Node found = pointerKthToLast(ll.getFirst(), k);
         System.out.println("Last k(" + k + ")th data is " + found.data);
     }
+
+    @Test
+    public void 단방향_LinkedList의_중간노드_삭제() {
+        LinkedList ll = new LinkedList();
+
+        ll.append(1);
+        ll.append(2);
+        ll.append(3);
+        ll.append(4);
+        ll.retrieve();
+
+        deleteNode(ll.get(2));
+        ll.retrieve();
+    }
+
+    private static Node sumeLists(Node l1, Node l2, int carry) {
+        if (l1 == null && l2 == null && carry == 0) {
+            return null;
+        }
+
+        Node result = new Node();
+
+        int value = carry;
+
+        if (l1 != null) {
+            value += l1.data;
+        }
+
+        if (l2 != null) {
+            value += l2.data;
+        }
+
+        System.out.println("value =>" + value);
+        result.data = value % 10;
+
+        System.out.println("result =>" + result.data);
+
+        if (l1 != null || l2 != null) {
+            Node next = sumeLists(l1 == null ? null : l1.next, l2 == null ? null : l2.next, value >= 10 ? 1 : 0);
+            result.next = next;
+        }
+
+        return result;
+    }
+
+    @Test
+    public void 단방향_LinkedList의_Digit합산_알고리즘() {
+        LinkedList l1 = new LinkedList();
+
+        l1.append(9);
+        l1.append(1);
+        l1.append(4);
+        l1.retrieve();
+
+        LinkedList l2 = new LinkedList();
+
+        l2.append(6);
+        l2.append(4);
+        l2.append(3);
+        l2.retrieve();
+
+        Node node = sumeLists(l1.header.next, l2.header.next, 0);
+
+        while (node.next != null) {
+            System.out.println(node.data);
+            node = node.next;
+        }
+        System.out.println(node.data);
+        while (node.next != null) {
+            System.out.print(node.data + " -> ");
+            node = node.next;
+        }
+
+        System.out.println(node.data);
+    }
+
+    /*
+      4 -> 1 -> 9 = 419
+    + 0 -> 3 -> 4 =  34
+    -------------------
+
+     */
+    @Test
+    public void 단방향_LinkedList의_Digit합산_알고리즘_거꾸로_계산하기() {
+        LinkedList l1 = new LinkedList();
+
+        l1.append(4);
+        l1.append(1);
+        l1.append(9);
+        l1.retrieve();
+
+        LinkedList l2 = new LinkedList();
+
+        l2.append(3);
+        l2.append(4);
+        l2.retrieve();
+
+        Node node = sumLists(l1.header.next, l2.header.next);
+        while (node.next != null) {
+            System.out.println(node.data + " -> ");
+            node = node.next;
+        }
+        System.out.println(node.data);
+    }
+
+    private static Node sumLists(Node l1, Node l2) {
+        int len1 = getListLength(l1);
+        int len2 = getListLength(l2);
+
+        if (len1 < len2) {
+            l1 = LPadList(l1, len2 - len1);
+        } else {
+            l2 = LPadList(l2, len1 - len2);
+        }
+
+        Storage storage = addLists(l1, l2);
+
+        if(storage.carry != 0) {
+            storage.result = insertBefore(storage.result, storage.carry);
+        }
+
+        return storage.result;
+    }
+
+    private static Storage addLists(Node l1, Node l2) {
+
+        if (l1 == null && l2 == null) {
+            return new Storage();
+        }
+
+        Storage storage = addLists(l1.next, l2.next);
+        int value = storage.carry + l1.data + l2.data;
+        int data = value % 10;
+
+        storage.result = insertBefore(storage.result , data);
+        storage.carry = value / 10;
+
+        return storage;
+    }
+
+    private static int getListLength(Node l) {
+        int total = 0;
+
+        while (l != null) {
+            total++;
+            l = l.next;
+        }
+
+        return total;
+    }
+
+    private static Node insertBefore(Node node, int data) {
+        Node before = new Node();
+        before.data = data;
+
+        if (node != null) {
+            before.next = node;
+        }
+
+        return before;
+    }
+
+    private static Node LPadList(Node l, int length) {
+        Node head = l;
+
+        for (int i = 0; i < length; i++) {
+            head = insertBefore(head, 0);
+        }
+
+        return head;
+    }
+
+    static class Storage {
+        int carry = 0;
+        Node result = null;
+    }
+
+
 }
