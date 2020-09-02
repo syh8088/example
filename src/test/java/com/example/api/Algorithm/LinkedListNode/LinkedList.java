@@ -12,6 +12,58 @@ public class LinkedList {
     static class Node {
         int data;
         Node next = null;
+
+        public Node() {}
+
+        public Node(int i) {
+            this.data = i;
+        }
+
+        public Node addNext(int i) {
+            Node newNode = new Node();
+            newNode.data = i;
+
+            Node n = this;
+            while (n.next != null) {
+                n = n.next;
+            }
+
+            n.next = newNode;
+
+            return n;
+        }
+
+        public Node addNext(Node node) {
+
+            Node n = this;
+            while (n.next != null) {
+                n = n.next;
+            }
+
+            n.next = node.next;
+
+            return n;
+        }
+
+        public Node get(int index) {
+            Node n = this;
+
+            for (int i = 0; i < index; i++) {
+                n = n.next;
+            }
+
+            return n;
+        }
+
+        public void print() {
+            Node n = this;
+
+            while (n.next != null) {
+                System.out.print(n.data + " -> ");
+                n = n.next;
+            }
+            System.out.println(n.data);
+        }
     }
 
     public LinkedList() {
@@ -21,7 +73,7 @@ public class LinkedList {
     public Node get(int i) {
         Node n = header;
 
-        for (int j=0; j<i; j++){
+        for (int j = 0; j < i; j++) {
             n = n.next;
         }
 
@@ -29,16 +81,16 @@ public class LinkedList {
     }
 
     void append(int d) {
-       Node end = new Node();
-       end.data = d;
+        Node end = new Node();
+        end.data = d;
 
-       Node n = header;
+        Node n = header;
 
-       while (n.next != null) {
-           n = n.next;
-       }
+        while (n.next != null) {
+            n = n.next;
+        }
 
-       n.next = end;
+        n.next = end;
     }
 
     void delete(int d) {
@@ -109,7 +161,7 @@ public class LinkedList {
     private Node recursiveKthToLast(Node n, int k, Reference r) {
 
         int dd = (n != null && n.data != 0) ? n.data : 0;
-        System.out.println("Node n.data => " +  dd);
+        System.out.println("Node n.data => " + dd);
         System.out.println("입문");
         //System.out.println("숫자 => " + r.count);
         if (n == null) {
@@ -119,14 +171,14 @@ public class LinkedList {
 
         Node found = recursiveKthToLast(n.next, k, r);
 
-        System.out.println("Node found => "  + found);
+        System.out.println("Node found => " + found);
         System.out.println("카운트");
         r.count++;
 
-        System.out.println(" r.count++ ->"  +  r.count);
+        System.out.println(" r.count++ ->" + r.count);
         if (r.count == k) {
 
-            System.out.println("무슨노드야???"  +  n.data);
+            System.out.println("무슨노드야???" + n.data);
             return n;
         }
 
@@ -252,36 +304,6 @@ public class LinkedList {
         ll.retrieve();
     }
 
-    private static Node sumeLists(Node l1, Node l2, int carry) {
-        if (l1 == null && l2 == null && carry == 0) {
-            return null;
-        }
-
-        Node result = new Node();
-
-        int value = carry;
-
-        if (l1 != null) {
-            value += l1.data;
-        }
-
-        if (l2 != null) {
-            value += l2.data;
-        }
-
-        System.out.println("value =>" + value);
-        result.data = value % 10;
-
-        System.out.println("result =>" + result.data);
-
-        if (l1 != null || l2 != null) {
-            Node next = sumeLists(l1 == null ? null : l1.next, l2 == null ? null : l2.next, value >= 10 ? 1 : 0);
-            result.next = next;
-        }
-
-        return result;
-    }
-
     @Test
     public void 단방향_LinkedList의_Digit합산_알고리즘() {
         LinkedList l1 = new LinkedList();
@@ -311,6 +333,36 @@ public class LinkedList {
         }
 
         System.out.println(node.data);
+    }
+
+    private static Node sumeLists(Node l1, Node l2, int carry) {
+        if (l1 == null && l2 == null && carry == 0) {
+            return null;
+        }
+
+        Node result = new Node();
+
+        int value = carry;
+
+        if (l1 != null) {
+            value += l1.data;
+        }
+
+        if (l2 != null) {
+            value += l2.data;
+        }
+
+        System.out.println("value =>" + value);
+        result.data = value % 10;
+
+        System.out.println("result =>" + result.data);
+
+        if (l1 != null || l2 != null) {
+            Node next = sumeLists(l1 == null ? null : l1.next, l2 == null ? null : l2.next, value >= 10 ? 1 : 0);
+            result.next = next;
+        }
+
+        return result;
     }
 
     /*
@@ -354,7 +406,7 @@ public class LinkedList {
 
         Storage storage = addLists(l1, l2);
 
-        if(storage.carry != 0) {
+        if (storage.carry != 0) {
             storage.result = insertBefore(storage.result, storage.carry);
         }
 
@@ -371,7 +423,7 @@ public class LinkedList {
         int value = storage.carry + l1.data + l2.data;
         int data = value % 10;
 
-        storage.result = insertBefore(storage.result , data);
+        storage.result = insertBefore(storage.result, data);
         storage.carry = value / 10;
 
         return storage;
@@ -415,4 +467,105 @@ public class LinkedList {
     }
 
 
+    /*
+     * 주어진 두개의 단방향 Linked List 에서 교차되는 노드를 찾으시오. (단, 교차점은 값이 아닌 주소로 찾아야함)
+    -------------------
+
+     */
+    @Test
+    public void 단방향_LinkedList의_교차점_찾기() {
+        Node n1 = new Node(5);
+        Node n2 = n1.addNext(7);
+        Node n3 = n2.addNext(9);
+        Node n4 = n3.addNext(10);
+        Node n5 = n4.addNext(7);
+        Node n6 = n5.addNext(6);
+
+        Node m1 = new Node(6);
+        Node m2 = m1.addNext(8);
+        Node m3 = m2.addNext(n4);
+
+        n1.print();
+        m1.print();
+
+        Node n = getIntersection(n1, m1);
+
+        if (n != null) {
+            System.out.println("Intersection: " + n.data);
+        } else {
+            System.out.println("Not found");
+        }
+    }
+
+    private static Node getIntersection(Node l1, Node l2) {
+        int len1 = getListLength(l1);
+        int len2 = getListLength(l2);
+
+        if (len1 > len2) {
+            l1 = l1.get(len1 - len2);
+        } else if (len1 < len2) {
+            l2 = l2.get(len2 - len1);
+        }
+
+        while (l1 != null && l2 != null) {
+            if (l1 == l2) {
+                return l1;
+            }
+
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+
+        return null;
+    }
+
+
+    @Test
+    public void 단방향_LinkedList의_루프_찾기() {
+        Node n1 = new Node(1);
+        Node n2 = n1.addNext(2);
+        Node n3 = n2.addNext(3);
+        Node n4 = n3.addNext(4);
+        Node n5 = n4.addNext(5);
+        Node n6 = n5.addNext(6);
+        Node n7 = n6.addNext(7);
+        Node n8 = n7.addNext(8);
+
+        n8.addNext(n4);
+
+        Node n = findLoop(n1);
+
+        if (n != null) {
+            System.out.println("Start of loop : " + n.data);
+        } else {
+            System.out.println("Loop Not Found");
+        }
+    }
+
+    private static Node findLoop(Node head) {
+        Node fast = head;
+        Node slow = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (fast == slow) {
+                break;
+            }
+        }
+
+        if (fast == null || fast.next == null) {
+            return null;
+        }
+
+        slow = head;
+
+        while (fast != slow) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return fast;
+    }
 }
