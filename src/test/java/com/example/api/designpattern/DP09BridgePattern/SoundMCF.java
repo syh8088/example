@@ -1,4 +1,4 @@
-package com.example.api.designpattern.DP09bridgePattern;
+package com.example.api.designpattern.DP09BridgePattern;
 
 public class SoundMCF implements MorseCodeFunction {
     @Override

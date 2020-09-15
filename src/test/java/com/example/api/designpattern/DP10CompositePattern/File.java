@@ -1,4 +1,4 @@
-package com.example.api.designpattern.DP10compositePattern;
+package com.example.api.designpattern.DP10CompositePattern;
 
 public class File extends Component  {
 

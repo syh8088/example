@@ -1,4 +1,4 @@
-package com.example.api.designpattern.DP10compositePattern;
+package com.example.api.designpattern.DP10CompositePattern;
 
 /*
     컴퍼짓 패턴을 통해서 트리 구조 구현

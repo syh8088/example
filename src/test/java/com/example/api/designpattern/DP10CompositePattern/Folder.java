@@ -1,4 +1,4 @@
-package com.example.api.designpattern.DP10compositePattern;
+package com.example.api.designpattern.DP10CompositePattern;
 
 import java.util.ArrayList;
 import java.util.List;
