@@ -1,5 +1,8 @@
 package com.example.api.DI;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("DIMoney")
 public class Money {
     private int amount;
 

@@ -1,7 +1,10 @@
 package com.example.api.newLecOOP._7_생성자_오버로드;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Scanner;
 
+@Alias("ver7Program")
 public class Program {
 
     public static void main(String[] args) {

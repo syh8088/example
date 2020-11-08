@@ -1,5 +1,7 @@
 package com.example.api.designpattern.DP11DecoratorPattern.abst;
 
+import org.apache.ibatis.type.Alias;
+
 /**
  * <h2><b>Role : </b>Component</h2>
  * <p>
@@ -18,6 +20,7 @@ package com.example.api.designpattern.DP11DecoratorPattern.abst;
  *
  * @author garam park
  */
+@Alias("designatternVer11IBeverage")
 public interface IBeverage {
     /**
      * 총 가격

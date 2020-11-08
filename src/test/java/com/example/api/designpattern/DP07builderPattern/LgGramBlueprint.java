@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP07builderPattern;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer7LgGramBlueprint")
 public class LgGramBlueprint extends BluePrint {
 
     private Computer computer;

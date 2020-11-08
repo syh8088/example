@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP03templateMethodPattern.externalLibrary;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer3DefaultGameConnectHelper")
 public class DefaultGameConnectHelper extends AbstGameConnectHelper {
 
     @Override

@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP01strategyPattern;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designpatternVer1AObj")
 public class AObj {
 
     Ainterface ainterface;

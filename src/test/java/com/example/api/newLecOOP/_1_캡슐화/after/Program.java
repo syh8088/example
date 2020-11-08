@@ -1,7 +1,10 @@
 package com.example.api.newLecOOP._1_캡슐화.after;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Scanner;
 
+@Alias("Test1Program")
 public class Program {
 
     public static void main(String[] args) {

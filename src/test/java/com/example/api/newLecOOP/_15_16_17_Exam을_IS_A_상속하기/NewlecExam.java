@@ -1,7 +1,9 @@
 package com.example.api.newLecOOP._15_16_17_Exam을_IS_A_상속하기;
 
 import com.example.api.newLecOOP._10_UI코드분리하기.Exam;
+import org.apache.ibatis.type.Alias;
 
+@Alias("ver15NewlecExam")
 public class NewlecExam extends Exam {
 
     private int com;

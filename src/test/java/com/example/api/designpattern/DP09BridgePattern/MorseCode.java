@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP09BridgePattern;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer9MorseCode")
 public class MorseCode {
 
     private MorseCodeFunction morseCodeFunction;

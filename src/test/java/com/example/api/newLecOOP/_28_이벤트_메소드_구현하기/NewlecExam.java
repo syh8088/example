@@ -1,5 +1,8 @@
 package com.example.api.newLecOOP._28_이벤트_메소드_구현하기;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("ver28NewlecExam")
 public class NewlecExam extends Exam {
 
     private int com;

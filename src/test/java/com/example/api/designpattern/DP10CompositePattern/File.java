@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP10CompositePattern;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer10File")
 public class File extends Component  {
 
     public File(String name) {

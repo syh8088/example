@@ -1,5 +1,7 @@
 package com.example.api.designpattern.DP11DecoratorPattern.abst;
 
+import org.apache.ibatis.type.Alias;
+
 /**
  *  <h2><b>Role : </b>Decorator</h2>
  *  <p>
@@ -7,6 +9,7 @@ package com.example.api.designpattern.DP11DecoratorPattern.abst;
  *  </p>
  * @author garam park
  */
+@Alias("designatternVer11AbstAdding")
 public class AbstAdding implements IBeverage {
     private IBeverage base;
 

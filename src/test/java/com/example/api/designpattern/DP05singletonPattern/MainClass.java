@@ -1,5 +1,7 @@
 package com.example.api.designpattern.DP05singletonPattern;
 
+import org.apache.ibatis.type.Alias;
+
 /*
  * 객체 : 속성과 기능을 갖춘 것
  * 클래스 : 속성과 기능을 정의한 것
@@ -8,6 +10,7 @@ package com.example.api.designpattern.DP05singletonPattern;
  * 싱글톤 패턴을 통해서 하나의 인스턴스만 생성하도록 구현 할 수 있다.
  *
  */
+@Alias("designatternVer5MainClass")
 public class MainClass {
     public static void main(String[] args) {
         SystemSpeaker speaker1 = SystemSpeaker.getInstance();

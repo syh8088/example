@@ -1,7 +1,10 @@
 package com.example.api.newLecOOP._28_이벤트_메소드_구현하기;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Scanner;
 
+@Alias("ver28NewlecExamConsole")
 public class NewlecExamConsole extends ExamConsole {
 
     @Override

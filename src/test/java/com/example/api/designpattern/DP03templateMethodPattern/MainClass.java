@@ -2,6 +2,7 @@ package com.example.api.designpattern.DP03templateMethodPattern;
 
 import com.example.api.designpattern.DP03templateMethodPattern.externalLibrary.AbstGameConnectHelper;
 import com.example.api.designpattern.DP03templateMethodPattern.externalLibrary.DefaultGameConnectHelper;
+import org.apache.ibatis.type.Alias;
 
 /*
     공통적인 프로세스를 묶어 주기
@@ -18,6 +19,7 @@ import com.example.api.designpattern.DP03templateMethodPattern.externalLibrary.D
     알고리즘을 수행할 템플릿 메소드를 만든다.
     하위 클래스에서 나눠진 메소드들을 구현한다.
  */
+@Alias("designatternVer3MainClass")
 public class MainClass {
 
     public static void main(String[] args) {

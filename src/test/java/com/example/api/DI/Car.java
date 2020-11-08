@@ -1,5 +1,8 @@
 package com.example.api.DI;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("DICar")
 public class Car {
     private String name;
 

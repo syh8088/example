@@ -36,7 +36,7 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
 
     public static void main(String[] args) {
         InstrumentedHashSet<String> s = new InstrumentedHashSet<>();
-        s.addAll(List.of("틱", "탁탁", "펑"));
+       // s.addAll(List.of("틱", "탁탁", "펑"));
         System.out.println(s.getAddCount());
     }
 }

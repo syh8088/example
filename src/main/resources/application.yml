@@ -16,7 +16,11 @@ spring:
   messages:
     basename: messages/messages, messages/error
   jpa:
-    show-sql: true
+    properties:
+      hibernate:
+        # show_sql: true
+        format_sql: true
+        # default_batch_fetch_size: 1000
 
   redis:
     host: localhost

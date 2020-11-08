@@ -1,8 +1,12 @@
 package com.example.api.designpattern.DP07builderPattern;
+
+import org.apache.ibatis.type.Alias;
+
 /*
 
 
  */
+@Alias("designatternVer7MainClass2")
 public class MainClass2 {
     public static void main(String[] args) {
 

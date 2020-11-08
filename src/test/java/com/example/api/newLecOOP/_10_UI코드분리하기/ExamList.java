@@ -1,5 +1,8 @@
 package com.example.api.newLecOOP._10_UI코드분리하기;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("ver10ExamList")
 public class ExamList {
     private Exam[] exams;
     private int current;

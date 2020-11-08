@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP02adapterPattern;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer2Math")
 public class Math {
 
     // 두배

@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP09BridgePattern;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer9SoundMCF")
 public class SoundMCF implements MorseCodeFunction {
     @Override
     public void dot() {

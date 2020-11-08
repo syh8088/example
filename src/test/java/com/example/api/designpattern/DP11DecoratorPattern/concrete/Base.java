@@ -1,6 +1,7 @@
 package com.example.api.designpattern.DP11DecoratorPattern.concrete;
 
 import com.example.api.designpattern.DP11DecoratorPattern.abst.IBeverage;
+import org.apache.ibatis.type.Alias;
 
 /**
  * <h2><b>Role : </b>ConcreteComponent</h2>
@@ -10,6 +11,7 @@ import com.example.api.designpattern.DP11DecoratorPattern.abst.IBeverage;
  * @author garam park
  *
  */
+@Alias("designatternVer11Base")
 public class Base implements IBeverage {
 
     @Override

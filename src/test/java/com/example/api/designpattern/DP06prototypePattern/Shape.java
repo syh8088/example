@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP06prototypePattern;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer6Shape")
 public class Shape implements Cloneable {
 
     private String id;

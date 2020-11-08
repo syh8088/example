@@ -4,6 +4,7 @@ import com.example.api.designpattern.DP11DecoratorPattern.abst.IBeverage;
 import com.example.api.designpattern.DP11DecoratorPattern.concrete.Base;
 import com.example.api.designpattern.DP11DecoratorPattern.concrete.Espresso;
 import com.example.api.designpattern.DP11DecoratorPattern.concrete.Milk;
+import org.apache.ibatis.type.Alias;
 
 import java.util.Scanner;
 
@@ -14,6 +15,7 @@ import java.util.Scanner;
 
 
  */
+@Alias("designatternVer11MainClass")
 public class MainClass {
 
     public static void main(String[] args) {

@@ -1,8 +1,11 @@
 package com.example.api.designpattern.DP10CompositePattern;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Alias("designatternVer10Folder")
 public class Folder extends Component {
     public Folder(String name) {
         super(name);

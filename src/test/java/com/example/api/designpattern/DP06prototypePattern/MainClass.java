@@ -1,5 +1,7 @@
 package com.example.api.designpattern.DP06prototypePattern;
 
+import org.apache.ibatis.type.Alias;
+
 /*
  * 프로토타입 패턴을 통해서 복잡한 인스턴스를 복사 할 수 있다.
  *
@@ -8,6 +10,7 @@ package com.example.api.designpattern.DP06prototypePattern;
  *
  * 일러스트레이터와 같은 그림 그리기 툴을 개발 중입니다. 어떤 모양(Shape) 그릴 수 있도록 하고 복사 붙여넣기 기능이 구현해주세요.
  */
+@Alias("designatternVer6MainClass")
 public class MainClass {
 
 

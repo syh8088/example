@@ -1,10 +1,13 @@
 package com.example.api.newLecOOP._35_인터페이스를_구현하는_위치는;
 
+import org.apache.ibatis.type.Alias;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+@Alias("ver35GameFrame")
 public class GameFrame extends Frame implements WindowListener {
 
     public GameFrame() {

@@ -1,7 +1,10 @@
 package com.example.api.newLecOOP._8_Getters와Setters;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Scanner;
 
+@Alias("ver8Program")
 public class Program {
 
     public static void main(String[] args) {

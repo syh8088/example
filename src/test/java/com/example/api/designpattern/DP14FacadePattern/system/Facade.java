@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP14FacadePattern.system;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer14Facade")
 public class Facade {
 
     private HelpSystem1 helpSystem01;

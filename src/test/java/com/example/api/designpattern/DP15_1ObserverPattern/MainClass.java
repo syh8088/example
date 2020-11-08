@@ -1,11 +1,14 @@
 package com.example.api.designpattern.DP15_1ObserverPattern;
 
+import org.apache.ibatis.type.Alias;
+
 /*
     옵저버 패턴을 통해 이벤트 발생 후 객체 외부에서 처리 할 수 있다.
 
     키워드 : 객체 외부, 이벤트 처리
 
  */
+@Alias("designatternVer15MainClass")
 public class MainClass {
 
     public static void main(String[] args) {

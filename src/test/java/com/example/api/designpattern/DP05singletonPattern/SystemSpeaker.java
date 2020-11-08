@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP05singletonPattern;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer5SystemSpeaker")
 public class SystemSpeaker {
     static private SystemSpeaker instance;
     private int volume;

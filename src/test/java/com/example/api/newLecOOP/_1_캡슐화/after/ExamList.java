@@ -1,7 +1,10 @@
 package com.example.api.newLecOOP._1_캡슐화.after;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Scanner;
 
+@Alias("Test1ExamList")
 public class ExamList {
     Exam[] exams;
     int current;

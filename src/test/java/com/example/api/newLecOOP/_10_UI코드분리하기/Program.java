@@ -1,7 +1,10 @@
 package com.example.api.newLecOOP._10_UI코드분리하기;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Scanner;
 
+@Alias("ver10Program")
 public class Program {
 
     public static void main(String[] args) {

@@ -1,7 +1,10 @@
 package com.example.api.newLecOOP._2_인스턴스_메소드;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Scanner;
 
+@Alias("ver2ExamList")
 public class ExamList {
     Exam[] exams;
     int current;

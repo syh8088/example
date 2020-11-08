@@ -1,5 +1,8 @@
 package com.example.api.newLecOOP._27_팩토리_메소드;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("ver27NewlecExam")
 public class NewlecExam extends Exam {
 
     private int com;

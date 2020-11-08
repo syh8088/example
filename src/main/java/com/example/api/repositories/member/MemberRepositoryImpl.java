@@ -4,16 +4,13 @@ import com.example.api.model.entities.member.Member;
 import com.example.api.model.entities.member.QMember;
 import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
 
+import java.util.List;
+
 public class MemberRepositoryImpl extends QueryDslRepositorySupport implements MemberRepositoryCustom {
 
 
     QMember qMember = QMember.member;
 
-    /**
-     * Creates a new {@link QueryDslRepositorySupport} instance for the given domain type.
-     *
-     * @param domainClass must not be {@literal null}.
-     */
     public MemberRepositoryImpl() {
         super(Member.class);
     }
@@ -31,5 +28,12 @@ public class MemberRepositoryImpl extends QueryDslRepositorySupport implements M
                 .leftJoin(qMember.roles).fetchJoin()
                 .where(qMember.id.eq(name))
                 .fetchOne();
+    }
+
+    @Override
+    public List<Member> selectAll() {
+        return from(qMember)
+                .join(qMember.memberGroup)
+                .fetch();
     }
 }

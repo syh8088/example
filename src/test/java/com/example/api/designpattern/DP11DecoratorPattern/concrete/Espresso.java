@@ -2,6 +2,7 @@ package com.example.api.designpattern.DP11DecoratorPattern.concrete;
 
 import com.example.api.designpattern.DP11DecoratorPattern.abst.AbstAdding;
 import com.example.api.designpattern.DP11DecoratorPattern.abst.IBeverage;
+import org.apache.ibatis.type.Alias;
 
 /**
  * <h2><b>Role : </b>ConcreteDecorator</h2>
@@ -9,6 +10,7 @@ import com.example.api.designpattern.DP11DecoratorPattern.abst.IBeverage;
  *  실질적인 장식 인스턴스 및 정의이며, 책임이 추가되는 부분입니다.
  *  </p>
  */
+@Alias("designatternVer11Espresso")
 public class Espresso extends AbstAdding {
     static protected int espressoCount = 0;
 

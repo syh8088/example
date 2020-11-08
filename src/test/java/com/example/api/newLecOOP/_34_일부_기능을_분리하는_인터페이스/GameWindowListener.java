@@ -1,9 +1,12 @@
 package com.example.api.newLecOOP._34_일부_기능을_분리하는_인터페이스;
 
+import org.apache.ibatis.type.Alias;
+
 import javax.swing.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+@Alias("ver34GameWindowListener")
 public class GameWindowListener implements WindowListener {
     @Override
     public void windowOpened(WindowEvent e) {

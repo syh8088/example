@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP03templateMethodPattern.externalLibrary;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer3AbstGameConnectHelper")
 public abstract class AbstGameConnectHelper {
     /*유저가 게임 접속시 다음을 고려 해야 합니다.*/
 

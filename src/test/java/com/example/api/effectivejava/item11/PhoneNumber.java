@@ -1,9 +1,12 @@
 package com.example.api.effectivejava.item11;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.HashMap;
 import java.util.Map;
 
 // equals를 재정의하면 hashCode로 재정의해야 함을 보여준다. (70-71쪽)
+@Alias("effectivejavaVer11PhoneNumber")
 public final class PhoneNumber {
     private final short areaCode, prefix, lineNum;
 

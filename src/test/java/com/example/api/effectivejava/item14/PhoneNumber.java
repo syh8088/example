@@ -1,9 +1,12 @@
 package com.example.api.effectivejava.item14;
+import org.apache.ibatis.type.Alias;
+
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import static java.util.Comparator.*;
 
 // PhoneNumber를 비교할 수 있게 만든다. (91-92쪽)
+@Alias("effectivejavaVer14PhoneNumber")
 public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
     private final short areaCode, prefix, lineNum;
 

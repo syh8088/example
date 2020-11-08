@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP06prototypePattern;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer6Circle")
 public class Circle extends Shape {
     private int x, y, r;
 

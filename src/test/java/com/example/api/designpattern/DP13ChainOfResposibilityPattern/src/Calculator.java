@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP13ChainOfResposibilityPattern.src;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer13Calculator")
 public abstract class Calculator {
 
     private Calculator nextCaculator;

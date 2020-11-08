@@ -1,9 +1,12 @@
 package com.example.api.designpattern.DP13ChainOfResposibilityPattern.src;
 
+import org.apache.ibatis.type.Alias;
+
 /*
     다양한 처리 방식을 유연하게 연결 할 수 있다.
 
  */
+@Alias("designatternVer13MainClass")
 public class MainClass {
     public static void main(String[] args) {
         Calculator plus = new PlusCalculator();

@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP07builderPattern;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer7Computer")
 public class Computer {
     private String cpu;
     private String ram;

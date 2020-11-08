@@ -1,7 +1,9 @@
 package com.example.api.DI;
 
+import org.apache.ibatis.type.Alias;
 import org.springframework.stereotype.Component;
 
+@Alias("DIHyundaiMaker")
 //@Component("hyundai")
 public class HyundaiMaker implements CarMaker {
 

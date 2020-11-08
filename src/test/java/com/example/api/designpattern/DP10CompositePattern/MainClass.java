@@ -1,9 +1,12 @@
 package com.example.api.designpattern.DP10CompositePattern;
 
+import org.apache.ibatis.type.Alias;
+
 /*
     컴퍼짓 패턴을 통해서 트리 구조 구현
     키워드 : 컨테이너/내용물/동일시
  */
+@Alias("designatternVer10MainClass")
 public class MainClass {
     public static void main(String[] args) {
         Folder

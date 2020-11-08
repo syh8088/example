@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP15_1ObserverPattern;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer15Button")
 public class Button {
 
     public void onClick(){

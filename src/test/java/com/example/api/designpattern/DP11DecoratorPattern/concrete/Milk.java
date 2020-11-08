@@ -2,6 +2,7 @@ package com.example.api.designpattern.DP11DecoratorPattern.concrete;
 
 import com.example.api.designpattern.DP11DecoratorPattern.abst.AbstAdding;
 import com.example.api.designpattern.DP11DecoratorPattern.abst.IBeverage;
+import org.apache.ibatis.type.Alias;
 
 /**
  * <h2><b>Role : </b>ConcreteDecorator</h2>
@@ -11,6 +12,7 @@ import com.example.api.designpattern.DP11DecoratorPattern.abst.IBeverage;
  * @author garam park
  *
  */
+@Alias("designatternVer11Milk")
 public class Milk extends AbstAdding {
 
     public Milk(IBeverage meterial) {

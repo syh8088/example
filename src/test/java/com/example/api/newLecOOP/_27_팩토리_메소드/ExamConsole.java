@@ -1,7 +1,10 @@
 package com.example.api.newLecOOP._27_팩토리_메소드;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Scanner;
 
+@Alias("ver27ExamConsole")
 public abstract class ExamConsole {
 
     // Composition Has A 일체형

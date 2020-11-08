@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP01strategyPattern;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designpatternVer1Main")
 public class Main {
     public static void main(String[] args) {
 

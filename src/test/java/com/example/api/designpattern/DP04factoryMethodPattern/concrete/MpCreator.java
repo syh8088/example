@@ -2,9 +2,11 @@ package com.example.api.designpattern.DP04factoryMethodPattern.concrete;
 
 import com.example.api.designpattern.DP04factoryMethodPattern.framework.Item;
 import com.example.api.designpattern.DP04factoryMethodPattern.framework.ItemCreator;
+import org.apache.ibatis.type.Alias;
 
 import java.util.Date;
 
+@Alias("designatternVer4MpCreator")
 public class MpCreator extends ItemCreator {
 
     @Override

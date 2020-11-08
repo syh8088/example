@@ -2,7 +2,9 @@ package com.example.api.designpattern.DP12VisitorPattern.concrete;
 
 import com.example.api.designpattern.DP12VisitorPattern.contract.Visitable;
 import com.example.api.designpattern.DP12VisitorPattern.contract.Visitor;
+import org.apache.ibatis.type.Alias;
 
+@Alias("designatternVer12VisitorA")
 public class VisitorA implements Visitor {
 
     private int number;

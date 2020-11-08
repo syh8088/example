@@ -1,5 +1,8 @@
 package com.example.api.newLecOOP._28_이벤트_메소드_구현하기;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("ver28Exam")
 public abstract class Exam {
     int kor;
     int eng;

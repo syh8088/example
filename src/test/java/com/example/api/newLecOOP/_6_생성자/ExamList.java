@@ -1,7 +1,10 @@
 package com.example.api.newLecOOP._6_생성자;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Scanner;
 
+@Alias("ver6ExamList")
 public class ExamList {
     Exam[] exams;
     int current;

@@ -1,6 +1,7 @@
 package com.example.api.designpattern.DP14FacadePattern;
 
 import com.example.api.designpattern.DP14FacadePattern.system.Facade;
+import org.apache.ibatis.type.Alias;
 
 /*
     복잡한 과정을 간단하게 제공
@@ -10,6 +11,7 @@ import com.example.api.designpattern.DP14FacadePattern.system.Facade;
     키워드 : 단순한 접근
 
  */
+@Alias("designatternVer14MainClass")
 public class MainClass {
 
     public static void main(String[] args) {

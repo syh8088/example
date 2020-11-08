@@ -1,5 +1,8 @@
 package com.example.api.newLecOOP._8_Getters와Setters;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("ver8Exam")
 public class Exam {
     int kor;
     int eng;

@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP04factoryMethodPattern.framework;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer4ItemCreator")
 public abstract class ItemCreator {
 
     // 팩토리 메소드 -> 템플릿 메소드

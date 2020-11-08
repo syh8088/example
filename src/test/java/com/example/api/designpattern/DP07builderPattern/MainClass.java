@@ -1,10 +1,14 @@
 package com.example.api.designpattern.DP07builderPattern;
+
+import org.apache.ibatis.type.Alias;
+
 /*
     복잡한 단계가 필요한 인스턴스 생성을 빌더 패턴을 통해서 구현할 수 있다.
 
     복잡한 단계를 거쳐야 생성되는 객체의 구현을 서브 클래스에게 넘겨주는 패턴
 
  */
+@Alias("designatternVer7MainClass")
 public class MainClass {
     public static void main(String[] args) {
 

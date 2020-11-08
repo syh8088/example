@@ -1,10 +1,12 @@
 package com.example.api.DI;
 
+import org.apache.ibatis.type.Alias;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
+@Alias("DIOrderManager")
 //@Service
 public class OrderManager {
     //private HyundaiMaker maker;

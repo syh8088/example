@@ -1,5 +1,7 @@
 package com.example.api.designpattern.DP09BridgePattern;
 
+import org.apache.ibatis.type.Alias;
+
 /*
     브릿지 패턴에 대해서 이해
     어탭터 패턴과 브릿지 패턴을 연결하여 이해
@@ -10,6 +12,7 @@ package com.example.api.designpattern.DP09BridgePattern;
      - 기능과 구현을 두 개의 별도 클래스로 구현한다.
 
  */
+@Alias("designatternVer9MainClass")
 public class MainClass {
     public static void main(String[] args) {
         PrintMorseCode code = new PrintMorseCode(new DefaultMCF());

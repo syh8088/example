@@ -1,5 +1,8 @@
 package com.example.api.designpattern.DP10CompositePattern;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("designatternVer10Component")
 abstract public class Component {
 
     public Component(String name) {

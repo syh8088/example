@@ -158,6 +158,42 @@ public class LinkedList {
         return header;
     }
 
+    @Test
+    public void test() {
+        LinkedList ll = new LinkedList();
+
+        ll.append(2);
+        ll.append(1);
+        ll.append(3);
+        ll.append(4);
+        ll.retrieve();
+
+        int k = 2; // 뒤에서 k번째 값은 kth.data 입니다.
+        Reference r = new Reference();
+        Node found = test2(ll.getFirst(), k, r);
+        System.out.println("Last k(" + k + ")th data is " + found.data);
+    }
+
+    private Node test2(Node first, int k, Reference r) {
+        if (first == null) {
+            return null;
+        }
+
+        Node node = test2(first.next, k, r);
+
+        r.count++;
+
+        if (r.count == k) {
+            return first;
+        }
+
+
+        System.out.println("first = " + first.data);
+        System.out.println("node = " + node);
+        return node;
+    }
+
+
     private Node recursiveKthToLast(Node n, int k, Reference r) {
 
         int dd = (n != null && n.data != 0) ? n.data : 0;

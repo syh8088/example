@@ -45,7 +45,7 @@ public class Member extends MemberCommon {
     private String snsYn;
 
     // ManyToOne
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "member_group_no")
     @JsonIgnore
     private MemberGroup memberGroup;
@@ -56,7 +56,4 @@ public class Member extends MemberCommon {
                 joinColumns = @JoinColumn(name = "memberNo"),
                 inverseJoinColumns = @JoinColumn(name = "roleNo"))
     private List<Role> roles = new ArrayList<>();
-
-
-
 }

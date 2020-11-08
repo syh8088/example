@@ -1,9 +1,12 @@
 package com.example.api.newLecOOP._33_인터페이스_새로운_객체로_바꾸기;
 
+import org.apache.ibatis.type.Alias;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
+@Alias("ver33Program")
 public class Program {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
