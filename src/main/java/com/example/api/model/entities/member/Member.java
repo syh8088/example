@@ -26,6 +26,7 @@ public class Member extends MemberCommon {
     private String id;
 
     @Encrypt
+    @Column(name = "example_password")
     private String password;
 
     private String name;
